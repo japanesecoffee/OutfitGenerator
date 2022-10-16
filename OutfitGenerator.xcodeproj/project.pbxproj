@@ -13,7 +13,18 @@
 		967328ED28FA5C2400F7D909 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 967328EB28FA5C2400F7D909 /* Main.storyboard */; };
 		967328EF28FA5C2600F7D909 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 967328EE28FA5C2600F7D909 /* Assets.xcassets */; };
 		967328F228FA5C2600F7D909 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 967328F028FA5C2600F7D909 /* LaunchScreen.storyboard */; };
+		967ADA9428FCCB5B00942FF1 /* OutfitGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967ADA9328FCCB5B00942FF1 /* OutfitGeneratorTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		967ADA9528FCCB5B00942FF1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 967328DA28FA5C2400F7D909 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 967328E128FA5C2400F7D909;
+			remoteInfo = OutfitGenerator;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		967328E228FA5C2400F7D909 /* OutfitGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutfitGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,10 +35,19 @@
 		967328EE28FA5C2600F7D909 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		967328F128FA5C2600F7D909 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		967328F328FA5C2600F7D909 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		967ADA9128FCCB5B00942FF1 /* OutfitGeneratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OutfitGeneratorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		967ADA9328FCCB5B00942FF1 /* OutfitGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitGeneratorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		967328DF28FA5C2400F7D909 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		967ADA8E28FCCB5B00942FF1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				967328E428FA5C2400F7D909 /* OutfitGenerator */,
+				967ADA9228FCCB5B00942FF1 /* OutfitGeneratorTests */,
 				967328E328FA5C2400F7D909 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				967328E228FA5C2400F7D909 /* OutfitGenerator.app */,
+				967ADA9128FCCB5B00942FF1 /* OutfitGeneratorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -65,6 +87,14 @@
 				967328F328FA5C2600F7D909 /* Info.plist */,
 			);
 			path = OutfitGenerator;
+			sourceTree = "<group>";
+		};
+		967ADA9228FCCB5B00942FF1 /* OutfitGeneratorTests */ = {
+			isa = PBXGroup;
+			children = (
+				967ADA9328FCCB5B00942FF1 /* OutfitGeneratorTests.swift */,
+			);
+			path = OutfitGeneratorTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,6 +117,24 @@
 			productReference = 967328E228FA5C2400F7D909 /* OutfitGenerator.app */;
 			productType = "com.apple.product-type.application";
 		};
+		967ADA9028FCCB5B00942FF1 /* OutfitGeneratorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 967ADA9928FCCB5B00942FF1 /* Build configuration list for PBXNativeTarget "OutfitGeneratorTests" */;
+			buildPhases = (
+				967ADA8D28FCCB5B00942FF1 /* Sources */,
+				967ADA8E28FCCB5B00942FF1 /* Frameworks */,
+				967ADA8F28FCCB5B00942FF1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				967ADA9628FCCB5B00942FF1 /* PBXTargetDependency */,
+			);
+			name = OutfitGeneratorTests;
+			productName = OutfitGeneratorTests;
+			productReference = 967ADA9128FCCB5B00942FF1 /* OutfitGeneratorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -99,6 +147,10 @@
 				TargetAttributes = {
 					967328E128FA5C2400F7D909 = {
 						CreatedOnToolsVersion = 14.0.1;
+					};
+					967ADA9028FCCB5B00942FF1 = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = 967328E128FA5C2400F7D909;
 					};
 				};
 			};
@@ -116,6 +168,7 @@
 			projectRoot = "";
 			targets = (
 				967328E128FA5C2400F7D909 /* OutfitGenerator */,
+				967ADA9028FCCB5B00942FF1 /* OutfitGeneratorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -128,6 +181,13 @@
 				967328F228FA5C2600F7D909 /* LaunchScreen.storyboard in Resources */,
 				967328EF28FA5C2600F7D909 /* Assets.xcassets in Resources */,
 				967328ED28FA5C2400F7D909 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		967ADA8F28FCCB5B00942FF1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +204,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		967ADA8D28FCCB5B00942FF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				967ADA9428FCCB5B00942FF1 /* OutfitGeneratorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		967ADA9628FCCB5B00942FF1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 967328E128FA5C2400F7D909 /* OutfitGenerator */;
+			targetProxy = 967ADA9528FCCB5B00942FF1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		967328EB28FA5C2400F7D909 /* Main.storyboard */ = {
@@ -336,6 +412,50 @@
 			};
 			name = Release;
 		};
+		967ADA9728FCCB5B00942FF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q3U773K53Y;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.japanesecoffee.OutfitGeneratorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OutfitGenerator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OutfitGenerator";
+			};
+			name = Debug;
+		};
+		967ADA9828FCCB5B00942FF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q3U773K53Y;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.japanesecoffee.OutfitGeneratorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OutfitGenerator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OutfitGenerator";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -353,6 +473,15 @@
 			buildConfigurations = (
 				967328F728FA5C2600F7D909 /* Debug */,
 				967328F828FA5C2600F7D909 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		967ADA9928FCCB5B00942FF1 /* Build configuration list for PBXNativeTarget "OutfitGeneratorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				967ADA9728FCCB5B00942FF1 /* Debug */,
+				967ADA9828FCCB5B00942FF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
