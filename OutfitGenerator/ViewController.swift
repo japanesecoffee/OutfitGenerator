@@ -8,6 +8,12 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var stylesView = Styles()
+    
+    override func loadView() {
+        view = stylesView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

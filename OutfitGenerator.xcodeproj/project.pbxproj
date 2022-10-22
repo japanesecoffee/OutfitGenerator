@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		96376F8629024B0100E34E54 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96376F8529024B0100E34E54 /* Styles.swift */; };
 		967328E628FA5C2400F7D909 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967328E528FA5C2400F7D909 /* AppDelegate.swift */; };
 		967328E828FA5C2400F7D909 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967328E728FA5C2400F7D909 /* SceneDelegate.swift */; };
 		967328EA28FA5C2400F7D909 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967328E928FA5C2400F7D909 /* ViewController.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		96376F8529024B0100E34E54 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		967328E228FA5C2400F7D909 /* OutfitGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutfitGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		967328E528FA5C2400F7D909 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		967328E728FA5C2400F7D909 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		96376F8729024B2500E34E54 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				96376F8529024B0100E34E54 /* Styles.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		967328D928FA5C2400F7D909 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +89,7 @@
 				967328E528FA5C2400F7D909 /* AppDelegate.swift */,
 				967328E728FA5C2400F7D909 /* SceneDelegate.swift */,
 				967328E928FA5C2400F7D909 /* ViewController.swift */,
+				96376F8729024B2500E34E54 /* Views */,
 				967328EE28FA5C2600F7D909 /* Assets.xcassets */,
 				967328F028FA5C2600F7D909 /* LaunchScreen.storyboard */,
 				967328F328FA5C2600F7D909 /* Info.plist */,
@@ -197,6 +208,7 @@
 				967328EA28FA5C2400F7D909 /* ViewController.swift in Sources */,
 				967328E628FA5C2400F7D909 /* AppDelegate.swift in Sources */,
 				967328E828FA5C2400F7D909 /* SceneDelegate.swift in Sources */,
+				96376F8629024B0100E34E54 /* Styles.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
