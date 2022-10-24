@@ -88,8 +88,8 @@
 			children = (
 				967328E528FA5C2400F7D909 /* AppDelegate.swift */,
 				967328E728FA5C2400F7D909 /* SceneDelegate.swift */,
-				967328E928FA5C2400F7D909 /* ViewController.swift */,
 				96376F8729024B2500E34E54 /* Views */,
+				96974E3A290648B5007501AE /* Controllers */,
 				967328EE28FA5C2600F7D909 /* Assets.xcassets */,
 				967328F028FA5C2600F7D909 /* LaunchScreen.storyboard */,
 				967328F328FA5C2600F7D909 /* Info.plist */,
@@ -103,6 +103,14 @@
 				967ADA9328FCCB5B00942FF1 /* OutfitGeneratorTests.swift */,
 			);
 			path = OutfitGeneratorTests;
+			sourceTree = "<group>";
+		};
+		96974E3A290648B5007501AE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				967328E928FA5C2400F7D909 /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

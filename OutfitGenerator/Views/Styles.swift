@@ -9,6 +9,8 @@ import UIKit
 
 class Styles: UIView {
     
+    let button = UIButton(type: .system)
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         createSubviews()
@@ -23,7 +25,6 @@ class Styles: UIView {
     func createSubviews() {
         backgroundColor = UIColor(white: 0.9, alpha: 1)
         
-        let button = UIButton(type: .system)
         button.backgroundColor = .systemGreen
         button.setTitle("Create", for: .normal)
         
