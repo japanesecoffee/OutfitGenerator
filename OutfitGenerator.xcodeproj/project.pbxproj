@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10264FA3AF501C7962388EFF /* Pods_OutfitGeneratorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EA3D7815EE63312BAAE67EA /* Pods_OutfitGeneratorTests.framework */; };
 		96376F8629024B0100E34E54 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96376F8529024B0100E34E54 /* Styles.swift */; };
 		967328E628FA5C2400F7D909 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967328E528FA5C2400F7D909 /* AppDelegate.swift */; };
 		967328E828FA5C2400F7D909 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967328E728FA5C2400F7D909 /* SceneDelegate.swift */; };
@@ -14,6 +15,8 @@
 		967328EF28FA5C2600F7D909 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 967328EE28FA5C2600F7D909 /* Assets.xcassets */; };
 		967328F228FA5C2600F7D909 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 967328F028FA5C2600F7D909 /* LaunchScreen.storyboard */; };
 		967ADA9428FCCB5B00942FF1 /* OutfitGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967ADA9328FCCB5B00942FF1 /* OutfitGeneratorTests.swift */; };
+		96F0E5AF291CBBBC00B5BB3F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96F0E5AE291CBBBB00B5BB3F /* GoogleService-Info.plist */; };
+		BC302B78A1602231CDA09574 /* Pods_OutfitGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C01469FAA1C35AE26E434C /* Pods_OutfitGenerator.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +30,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22CDE9721252498C28560BFE /* Pods-OutfitGeneratorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OutfitGeneratorTests.debug.xcconfig"; path = "Target Support Files/Pods-OutfitGeneratorTests/Pods-OutfitGeneratorTests.debug.xcconfig"; sourceTree = "<group>"; };
+		31A549F5D4583051609860DD /* Pods-OutfitGenerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OutfitGenerator.debug.xcconfig"; path = "Target Support Files/Pods-OutfitGenerator/Pods-OutfitGenerator.debug.xcconfig"; sourceTree = "<group>"; };
+		53DBDCEEFA5257B16123C9A2 /* Pods-OutfitGenerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OutfitGenerator.release.xcconfig"; path = "Target Support Files/Pods-OutfitGenerator/Pods-OutfitGenerator.release.xcconfig"; sourceTree = "<group>"; };
+		6A3AB680B38A63E33FBC264D /* Pods-OutfitGeneratorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OutfitGeneratorTests.release.xcconfig"; path = "Target Support Files/Pods-OutfitGeneratorTests/Pods-OutfitGeneratorTests.release.xcconfig"; sourceTree = "<group>"; };
 		96376F8529024B0100E34E54 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		967328E228FA5C2400F7D909 /* OutfitGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutfitGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		967328E528FA5C2400F7D909 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +44,9 @@
 		967328F328FA5C2600F7D909 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		967ADA9128FCCB5B00942FF1 /* OutfitGeneratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OutfitGeneratorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		967ADA9328FCCB5B00942FF1 /* OutfitGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitGeneratorTests.swift; sourceTree = "<group>"; };
+		96F0E5AE291CBBBB00B5BB3F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9EA3D7815EE63312BAAE67EA /* Pods_OutfitGeneratorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OutfitGeneratorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1C01469FAA1C35AE26E434C /* Pods_OutfitGenerator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OutfitGenerator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC302B78A1602231CDA09574 /* Pods_OutfitGenerator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10264FA3AF501C7962388EFF /* Pods_OutfitGeneratorTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +83,8 @@
 				967328E428FA5C2400F7D909 /* OutfitGenerator */,
 				967ADA9228FCCB5B00942FF1 /* OutfitGeneratorTests */,
 				967328E328FA5C2400F7D909 /* Products */,
+				E1D303364E5F120EE710EA2F /* Pods */,
+				A27650145F8B67BFF2DCBA25 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,6 +107,7 @@
 				967328EE28FA5C2600F7D909 /* Assets.xcassets */,
 				967328F028FA5C2600F7D909 /* LaunchScreen.storyboard */,
 				967328F328FA5C2600F7D909 /* Info.plist */,
+				96F0E5AE291CBBBB00B5BB3F /* GoogleService-Info.plist */,
 			);
 			path = OutfitGenerator;
 			sourceTree = "<group>";
@@ -113,6 +128,26 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		A27650145F8B67BFF2DCBA25 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F1C01469FAA1C35AE26E434C /* Pods_OutfitGenerator.framework */,
+				9EA3D7815EE63312BAAE67EA /* Pods_OutfitGeneratorTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E1D303364E5F120EE710EA2F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				31A549F5D4583051609860DD /* Pods-OutfitGenerator.debug.xcconfig */,
+				53DBDCEEFA5257B16123C9A2 /* Pods-OutfitGenerator.release.xcconfig */,
+				22CDE9721252498C28560BFE /* Pods-OutfitGeneratorTests.debug.xcconfig */,
+				6A3AB680B38A63E33FBC264D /* Pods-OutfitGeneratorTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -120,9 +155,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 967328F628FA5C2600F7D909 /* Build configuration list for PBXNativeTarget "OutfitGenerator" */;
 			buildPhases = (
+				D42C67FB0596662AA88AC9BD /* [CP] Check Pods Manifest.lock */,
 				967328DE28FA5C2400F7D909 /* Sources */,
 				967328DF28FA5C2400F7D909 /* Frameworks */,
 				967328E028FA5C2400F7D909 /* Resources */,
+				3E6DE5A0E2ECDCF0CDF571E9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -137,6 +174,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 967ADA9928FCCB5B00942FF1 /* Build configuration list for PBXNativeTarget "OutfitGeneratorTests" */;
 			buildPhases = (
+				89434F713DC6277FFFFC1076 /* [CP] Check Pods Manifest.lock */,
 				967ADA8D28FCCB5B00942FF1 /* Sources */,
 				967ADA8E28FCCB5B00942FF1 /* Frameworks */,
 				967ADA8F28FCCB5B00942FF1 /* Resources */,
@@ -196,6 +234,7 @@
 			files = (
 				967328F228FA5C2600F7D909 /* LaunchScreen.storyboard in Resources */,
 				967328EF28FA5C2600F7D909 /* Assets.xcassets in Resources */,
+				96F0E5AF291CBBBC00B5BB3F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +246,70 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3E6DE5A0E2ECDCF0CDF571E9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OutfitGenerator/Pods-OutfitGenerator-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OutfitGenerator/Pods-OutfitGenerator-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OutfitGenerator/Pods-OutfitGenerator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89434F713DC6277FFFFC1076 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OutfitGeneratorTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D42C67FB0596662AA88AC9BD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OutfitGenerator-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		967328DE28FA5C2400F7D909 /* Sources */ = {
@@ -366,6 +469,7 @@
 		};
 		967328F728FA5C2600F7D909 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31A549F5D4583051609860DD /* Pods-OutfitGenerator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -393,6 +497,7 @@
 		};
 		967328F828FA5C2600F7D909 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53DBDCEEFA5257B16123C9A2 /* Pods-OutfitGenerator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -420,6 +525,7 @@
 		};
 		967ADA9728FCCB5B00942FF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22CDE9721252498C28560BFE /* Pods-OutfitGeneratorTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -442,6 +548,7 @@
 		};
 		967ADA9828FCCB5B00942FF1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A3AB680B38A63E33FBC264D /* Pods-OutfitGeneratorTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
