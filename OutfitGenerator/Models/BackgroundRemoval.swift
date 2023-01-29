@@ -13,21 +13,7 @@ struct BackgroundRemoval {
     // Completion handler that returns the segmented image.
     typealias RemovalCallback = (NSData?) -> Void
 
-    func removeBackground(for image: UIImage, onCompletion: @escaping RemovalCallback) {
-        let outfitGeneratorKeys = OutfitGeneratorKeys()
-        
-        let url = "https://background-removal4.p.rapidapi.com/v1/results"
-        
-        let headers = [
-            "X-RapidAPI-Key": outfitGeneratorKeys.rapidAPIKey
-        ] as NSMutableDictionary
-
-        var imageAsData = NSData()
-
-        var httpBody: Data
-
-        let boundary = (UUID().uuidString)
-        
+    func createMultipartFormData(with image: UIImage, boundary: String) -> Data {
         // Creates a multipart form to upload the image.
         let mutableData = NSMutableData()
         mutableData.appendString("--\(boundary)\r\n")
@@ -36,8 +22,24 @@ struct BackgroundRemoval {
         mutableData.append(imageData)
         mutableData.appendString("\r\n")
         mutableData.appendString("--\(boundary)--")
-        headers["Content-Type"] = "multipart/form-data; boundary=\(boundary)"
-        httpBody = mutableData as Data
+        let httpBody = mutableData as Data
+        
+        return httpBody
+    }
+    
+    func removeBackground(for image: UIImage, onCompletion: @escaping RemovalCallback) {
+        let url = "https://background-removal4.p.rapidapi.com/v1/results"
+        
+        let outfitGeneratorKeys = OutfitGeneratorKeys()
+        
+        let boundary = (UUID().uuidString)
+
+        let headers = [
+            "X-RapidAPI-Key": outfitGeneratorKeys.rapidAPIKey,
+            "Content-Type": "multipart/form-data; boundary=\(boundary)"
+        ] as NSMutableDictionary
+
+        let httpBody = createMultipartFormData(with: image, boundary: boundary)
         
         // Prepares the request.
         var request = URLRequest(url: URL(string: url)!)
@@ -62,9 +64,9 @@ struct BackgroundRemoval {
                     if status["code"] == "ok" {
                         let entity = (result["entities"] as! [[String: Any]])[0]
                         let imageAsBase64 = entity["image"] as! String
-                        imageAsData = NSData(base64Encoded: imageAsBase64)!
+                        let imageData = NSData(base64Encoded: imageAsBase64)!
                         
-                        onCompletion(imageAsData)
+                        onCompletion(imageData)
                     }
                 } catch {
                     print(error)
