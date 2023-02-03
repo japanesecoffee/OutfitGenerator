@@ -14,7 +14,7 @@
 		967328EA28FA5C2400F7D909 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967328E928FA5C2400F7D909 /* ViewController.swift */; };
 		967328EF28FA5C2600F7D909 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 967328EE28FA5C2600F7D909 /* Assets.xcassets */; };
 		967328F228FA5C2600F7D909 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 967328F028FA5C2600F7D909 /* LaunchScreen.storyboard */; };
-		967ADA9428FCCB5B00942FF1 /* OutfitGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967ADA9328FCCB5B00942FF1 /* OutfitGeneratorTests.swift */; };
+		967ADA9428FCCB5B00942FF1 /* BackgroundRemovalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967ADA9328FCCB5B00942FF1 /* BackgroundRemovalTests.swift */; };
 		9694FA75295F82230016D367 /* BackgroundRemoval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9694FA74295F82230016D367 /* BackgroundRemoval.swift */; };
 		96F0E5AF291CBBBC00B5BB3F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96F0E5AE291CBBBB00B5BB3F /* GoogleService-Info.plist */; };
 		BC302B78A1602231CDA09574 /* Pods_OutfitGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C01469FAA1C35AE26E434C /* Pods_OutfitGenerator.framework */; };
@@ -43,8 +43,8 @@
 		967328EE28FA5C2600F7D909 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		967328F128FA5C2600F7D909 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		967328F328FA5C2600F7D909 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		967ADA9128FCCB5B00942FF1 /* OutfitGeneratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OutfitGeneratorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		967ADA9328FCCB5B00942FF1 /* OutfitGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitGeneratorTests.swift; sourceTree = "<group>"; };
+		967ADA9128FCCB5B00942FF1 /* BackgroundRemovalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BackgroundRemovalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		967ADA9328FCCB5B00942FF1 /* BackgroundRemovalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundRemovalTests.swift; sourceTree = "<group>"; };
 		9694FA74295F82230016D367 /* BackgroundRemoval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundRemoval.swift; sourceTree = "<group>"; };
 		96F0E5AE291CBBBB00B5BB3F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9EA3D7815EE63312BAAE67EA /* Pods_OutfitGeneratorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OutfitGeneratorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,7 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				967328E228FA5C2400F7D909 /* OutfitGenerator.app */,
-				967ADA9128FCCB5B00942FF1 /* OutfitGeneratorTests.xctest */,
+				967ADA9128FCCB5B00942FF1 /* BackgroundRemovalTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -118,7 +118,7 @@
 		967ADA9228FCCB5B00942FF1 /* OutfitGeneratorTests */ = {
 			isa = PBXGroup;
 			children = (
-				967ADA9328FCCB5B00942FF1 /* OutfitGeneratorTests.swift */,
+				967ADA9328FCCB5B00942FF1 /* BackgroundRemovalTests.swift */,
 			);
 			path = OutfitGeneratorTests;
 			sourceTree = "<group>";
@@ -181,9 +181,9 @@
 			productReference = 967328E228FA5C2400F7D909 /* OutfitGenerator.app */;
 			productType = "com.apple.product-type.application";
 		};
-		967ADA9028FCCB5B00942FF1 /* OutfitGeneratorTests */ = {
+		967ADA9028FCCB5B00942FF1 /* BackgroundRemovalTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 967ADA9928FCCB5B00942FF1 /* Build configuration list for PBXNativeTarget "OutfitGeneratorTests" */;
+			buildConfigurationList = 967ADA9928FCCB5B00942FF1 /* Build configuration list for PBXNativeTarget "BackgroundRemovalTests" */;
 			buildPhases = (
 				89434F713DC6277FFFFC1076 /* [CP] Check Pods Manifest.lock */,
 				967ADA8D28FCCB5B00942FF1 /* Sources */,
@@ -195,9 +195,9 @@
 			dependencies = (
 				967ADA9628FCCB5B00942FF1 /* PBXTargetDependency */,
 			);
-			name = OutfitGeneratorTests;
+			name = BackgroundRemovalTests;
 			productName = OutfitGeneratorTests;
-			productReference = 967ADA9128FCCB5B00942FF1 /* OutfitGeneratorTests.xctest */;
+			productReference = 967ADA9128FCCB5B00942FF1 /* BackgroundRemovalTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -233,7 +233,7 @@
 			projectRoot = "";
 			targets = (
 				967328E128FA5C2400F7D909 /* OutfitGenerator */,
-				967ADA9028FCCB5B00942FF1 /* OutfitGeneratorTests */,
+				967ADA9028FCCB5B00942FF1 /* BackgroundRemovalTests */,
 			);
 		};
 /* End PBXProject section */
@@ -339,7 +339,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				967ADA9428FCCB5B00942FF1 /* OutfitGeneratorTests.swift in Sources */,
+				967ADA9428FCCB5B00942FF1 /* BackgroundRemovalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,7 +542,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Q3U773K53Y;
+				DEVELOPMENT_TEAM = 845G8X8JMS;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
@@ -565,7 +565,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Q3U773K53Y;
+				DEVELOPMENT_TEAM = 845G8X8JMS;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
@@ -602,7 +602,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		967ADA9928FCCB5B00942FF1 /* Build configuration list for PBXNativeTarget "OutfitGeneratorTests" */ = {
+		967ADA9928FCCB5B00942FF1 /* Build configuration list for PBXNativeTarget "BackgroundRemovalTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				967ADA9728FCCB5B00942FF1 /* Debug */,
