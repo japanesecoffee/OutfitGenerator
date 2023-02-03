@@ -34,8 +34,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "967ADA9028FCCB5B00942FF1"
-               BuildableName = "OutfitGeneratorTests.xctest"
-               BlueprintName = "OutfitGeneratorTests"
+               BuildableName = "BackgroundRemovalTests.xctest"
+               BlueprintName = "BackgroundRemovalTests"
                ReferencedContainer = "container:OutfitGenerator.xcodeproj">
             </BuildableReference>
          </TestableReference>

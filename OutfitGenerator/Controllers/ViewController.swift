@@ -31,17 +31,13 @@ class ViewController: UIViewController {
     }
     
     // Uploads images to Firebase Cloud Storage.
-    func uploadImage(_ image: UIImage) {
+    func uploadImage(_ imageData: NSData) {
         let storageReference = Storage.storage().reference()
-        
-        guard let imageData = image.pngData() else {
-            return
-        }
         
         // Each uploaded image gets a unique ID.
         let imagesReference = storageReference.child("images/\(UUID().uuidString).png")
         
-        imagesReference.putData(imageData, metadata: nil) { (_, error) in
+        imagesReference.putData(imageData as Data, metadata: nil) { (_, error) in
             guard error == nil else {
                 print("Failed to upload")
                 return
@@ -68,6 +64,9 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
             return
         }
         
-        uploadImage(image)
+        let backgroundRemoval = BackgroundRemoval()
+        backgroundRemoval.removeBackground(for: image) { (segmentedImageData) in
+            self.uploadImage(segmentedImageData!)
+        }
     }
 }
