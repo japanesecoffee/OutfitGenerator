@@ -10,17 +10,35 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var stylesView = Styles()
+//    var stylesView = Styles()
     
-    override func loadView() {
-        stylesView.button.addTarget(self, action: #selector(launchCamera), for: .touchUpInside)
-        
-        view = stylesView
-    }
+    private let collectionView = UICollectionView(
+        frame: .zero,
+        collectionViewLayout: UICollectionViewFlowLayout()
+    )
+    
+//    override func loadView() {
+//        stylesView.button.addTarget(self, action: #selector(launchCamera), for: .touchUpInside)
+//
+//        view = stylesView
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        collectionView.register(
+            ClothingCollectionViewCell.self,
+            forCellWithReuseIdentifier: ClothingCollectionViewCell.identifier
+        )
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        view.addSubview(collectionView)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        collectionView.frame = view.bounds
     }
 
     @objc func launchCamera(sender: UIButton!) {
@@ -68,5 +86,70 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         backgroundRemoval.removeBackground(for: image) { (segmentedImageData) in
             self.uploadImage(segmentedImageData!)
         }
+    }
+}
+
+// MARK: - Collection view protocol methods
+
+extension ViewController:
+    UICollectionViewDelegate,
+    UICollectionViewDataSource,
+    UICollectionViewDelegateFlowLayout
+{
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        return 30
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: ClothingCollectionViewCell.identifier,
+            for: indexPath
+        )
+        cell.backgroundColor = .systemGreen // Helps visualize the collection view cells. Delete later.
+        
+        return cell
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        return CGSize(width: (view.frame.size.width / 3) - 3, height: (view.frame.size.width / 3) - 3)
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumInteritemSpacingForSectionAt section: Int
+    ) -> CGFloat {
+        return 1
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumLineSpacingForSectionAt section: Int
+    ) -> CGFloat {
+        return 1
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int
+    ) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
     }
 }
