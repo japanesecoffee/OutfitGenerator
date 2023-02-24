@@ -27,6 +27,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         collectionView.register(
+            ClothingCollectionReusableView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: ClothingCollectionReusableView.identifier
+        )
+        collectionView.register(
             ClothingCollectionViewCell.self,
             forCellWithReuseIdentifier: ClothingCollectionViewCell.identifier
         )
@@ -151,5 +156,28 @@ extension ViewController:
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+    }
+    
+    // Methods for header.
+    func collectionView(
+        _ collectionView: UICollectionView,
+        viewForSupplementaryElementOfKind kind: String,
+        at indexPath: IndexPath
+    ) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(
+            ofKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: ClothingCollectionReusableView.identifier,
+            for: indexPath
+        ) as! ClothingCollectionReusableView
+        
+        return header
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        referenceSizeForHeaderInSection section: Int
+    ) -> CGSize {
+        return CGSize(width: view.frame.size.width, height: view.frame.size.width / 6)
     }
 }
