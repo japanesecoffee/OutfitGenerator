@@ -11,9 +11,8 @@ class ClothingCollectionReusableView: UICollectionReusableView {
     
     static let identifier = "ClothingCollectionReusableView"
     
-    private let title: UILabel = {
+    let title: UILabel = {
         let title = UILabel()
-        title.text = "Tops"
         return title
     }()
     

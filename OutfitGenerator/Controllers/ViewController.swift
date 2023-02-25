@@ -102,6 +102,10 @@ extension ViewController:
     UICollectionViewDelegateFlowLayout
 {
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 3
+    }
+    
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
@@ -169,6 +173,14 @@ extension ViewController:
             withReuseIdentifier: ClothingCollectionReusableView.identifier,
             for: indexPath
         ) as! ClothingCollectionReusableView
+        
+        if indexPath.section == 0 {
+            header.title.text = "Tops"
+        } else if indexPath.section == 1 {
+            header.title.text = "Bottoms"
+        } else {
+            header.title.text = "Shoes"
+        }
         
         return header
     }
