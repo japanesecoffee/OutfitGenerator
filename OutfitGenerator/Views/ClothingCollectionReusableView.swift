@@ -18,7 +18,7 @@ class ClothingCollectionReusableView: UICollectionReusableView {
         return title
     }()
     
-    private let button: UIButton = {
+    let button: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "arrow.up"), for: .normal)
         return button

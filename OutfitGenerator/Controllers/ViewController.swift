@@ -12,6 +12,10 @@ class ViewController: UIViewController {
     
 //    var stylesView = Styles()
     
+    private var topSectionIsExpanded = true
+    private var bottomSectionIsExpanded = true
+    private var shoeSectionIsExpanded = true
+    
     private let collectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: UICollectionViewFlowLayout()
@@ -110,7 +114,17 @@ extension ViewController:
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return 30
+        let numberOfItems: Int
+
+        if section == 0 {
+            numberOfItems = topSectionIsExpanded ? 30 : 0
+        } else if section == 1 {
+            numberOfItems = bottomSectionIsExpanded ? 30 : 0
+        } else {
+            numberOfItems = shoeSectionIsExpanded ? 30 : 0
+        }
+
+        return numberOfItems
     }
     
     func collectionView(
@@ -175,6 +189,7 @@ extension ViewController:
         ) as! ClothingCollectionReusableView
         
         header.delegate = self
+        header.button.tag = indexPath.section
         
         if indexPath.section == 0 {
             header.title.text = "Tops"
@@ -200,6 +215,14 @@ extension ViewController:
 
 extension ViewController: HeaderDelegate {
     func toggleNumberOfItems(inSection: Int) {
-        print("Toggled items in section \(inSection)")
+        if inSection == 0 {
+            topSectionIsExpanded = !topSectionIsExpanded
+        } else if inSection == 1 {
+            bottomSectionIsExpanded = !bottomSectionIsExpanded
+        } else {
+            shoeSectionIsExpanded = !shoeSectionIsExpanded
+        }
+
+        collectionView.reloadSections(IndexSet(integer: inSection))
     }
 }
