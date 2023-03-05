@@ -11,6 +11,8 @@ class ClothingCollectionReusableView: UICollectionReusableView {
     
     static let identifier = "ClothingCollectionReusableView"
     
+    var delegate: HeaderDelegate?
+    
     let title: UILabel = {
         let title = UILabel()
         return title
@@ -47,6 +49,7 @@ class ClothingCollectionReusableView: UICollectionReusableView {
         stackView.addArrangedSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.widthAnchor.constraint(equalToConstant: headerWidth / 3).isActive = true
+        button.addTarget(self, action: #selector(headerButtonTapped), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -55,6 +58,10 @@ class ClothingCollectionReusableView: UICollectionReusableView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+    }
+    
+    @objc func headerButtonTapped(sender: UIButton!) {
+        delegate?.toggleNumberOfItems(inSection: sender.tag)
     }
 }
 

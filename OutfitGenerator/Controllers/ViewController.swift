@@ -174,6 +174,8 @@ extension ViewController:
             for: indexPath
         ) as! ClothingCollectionReusableView
         
+        header.delegate = self
+        
         if indexPath.section == 0 {
             header.title.text = "Tops"
         } else if indexPath.section == 1 {
@@ -191,5 +193,13 @@ extension ViewController:
         referenceSizeForHeaderInSection section: Int
     ) -> CGSize {
         return CGSize(width: view.frame.size.width, height: view.frame.size.width / 6)
+    }
+}
+
+// MARK: - Header protocol methods
+
+extension ViewController: HeaderDelegate {
+    func toggleNumberOfItems(inSection: Int) {
+        print("Toggled items in section \(inSection)")
     }
 }
