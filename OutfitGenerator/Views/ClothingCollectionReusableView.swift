@@ -57,3 +57,7 @@ class ClothingCollectionReusableView: UICollectionReusableView {
         super.layoutSubviews()
     }
 }
+
+protocol HeaderDelegate {
+    func toggleNumberOfItems(inSection: Int)
+}
