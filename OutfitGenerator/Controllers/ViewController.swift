@@ -207,7 +207,7 @@ extension ViewController:
         layout collectionViewLayout: UICollectionViewLayout,
         referenceSizeForHeaderInSection section: Int
     ) -> CGSize {
-        return CGSize(width: view.frame.size.width, height: view.frame.size.width / 6)
+        return CGSize(width: view.frame.size.width, height: view.frame.size.width / 9)
     }
 }
 
