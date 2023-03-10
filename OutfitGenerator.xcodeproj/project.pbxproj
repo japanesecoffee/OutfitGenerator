@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		10264FA3AF501C7962388EFF /* Pods_OutfitGeneratorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EA3D7815EE63312BAAE67EA /* Pods_OutfitGeneratorTests.framework */; };
+		9621ABC02995E69D00B77A6B /* ClothingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9621ABBF2995E69D00B77A6B /* ClothingCollectionViewCell.swift */; };
 		96376F8629024B0100E34E54 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96376F8529024B0100E34E54 /* Styles.swift */; };
 		967328E628FA5C2400F7D909 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967328E528FA5C2400F7D909 /* AppDelegate.swift */; };
 		967328E828FA5C2400F7D909 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967328E728FA5C2400F7D909 /* SceneDelegate.swift */; };
@@ -16,6 +17,7 @@
 		967328F228FA5C2600F7D909 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 967328F028FA5C2600F7D909 /* LaunchScreen.storyboard */; };
 		967ADA9428FCCB5B00942FF1 /* BackgroundRemovalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967ADA9328FCCB5B00942FF1 /* BackgroundRemovalTests.swift */; };
 		9694FA75295F82230016D367 /* BackgroundRemoval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9694FA74295F82230016D367 /* BackgroundRemoval.swift */; };
+		96E3447229A5BA50000131B1 /* ClothingCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E3447129A5BA50000131B1 /* ClothingCollectionReusableView.swift */; };
 		96F0E5AF291CBBBC00B5BB3F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96F0E5AE291CBBBB00B5BB3F /* GoogleService-Info.plist */; };
 		BC302B78A1602231CDA09574 /* Pods_OutfitGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C01469FAA1C35AE26E434C /* Pods_OutfitGenerator.framework */; };
 /* End PBXBuildFile section */
@@ -35,6 +37,7 @@
 		31A549F5D4583051609860DD /* Pods-OutfitGenerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OutfitGenerator.debug.xcconfig"; path = "Target Support Files/Pods-OutfitGenerator/Pods-OutfitGenerator.debug.xcconfig"; sourceTree = "<group>"; };
 		53DBDCEEFA5257B16123C9A2 /* Pods-OutfitGenerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OutfitGenerator.release.xcconfig"; path = "Target Support Files/Pods-OutfitGenerator/Pods-OutfitGenerator.release.xcconfig"; sourceTree = "<group>"; };
 		6A3AB680B38A63E33FBC264D /* Pods-OutfitGeneratorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OutfitGeneratorTests.release.xcconfig"; path = "Target Support Files/Pods-OutfitGeneratorTests/Pods-OutfitGeneratorTests.release.xcconfig"; sourceTree = "<group>"; };
+		9621ABBF2995E69D00B77A6B /* ClothingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingCollectionViewCell.swift; sourceTree = "<group>"; };
 		96376F8529024B0100E34E54 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		967328E228FA5C2400F7D909 /* OutfitGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutfitGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		967328E528FA5C2400F7D909 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +49,7 @@
 		967ADA9128FCCB5B00942FF1 /* BackgroundRemovalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BackgroundRemovalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		967ADA9328FCCB5B00942FF1 /* BackgroundRemovalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundRemovalTests.swift; sourceTree = "<group>"; };
 		9694FA74295F82230016D367 /* BackgroundRemoval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundRemoval.swift; sourceTree = "<group>"; };
+		96E3447129A5BA50000131B1 /* ClothingCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingCollectionReusableView.swift; sourceTree = "<group>"; };
 		96F0E5AE291CBBBB00B5BB3F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9EA3D7815EE63312BAAE67EA /* Pods_OutfitGeneratorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OutfitGeneratorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C01469FAA1C35AE26E434C /* Pods_OutfitGenerator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OutfitGenerator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +79,8 @@
 			isa = PBXGroup;
 			children = (
 				96376F8529024B0100E34E54 /* Styles.swift */,
+				9621ABBF2995E69D00B77A6B /* ClothingCollectionViewCell.swift */,
+				96E3447129A5BA50000131B1 /* ClothingCollectionReusableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -327,8 +333,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96E3447229A5BA50000131B1 /* ClothingCollectionReusableView.swift in Sources */,
 				967328EA28FA5C2400F7D909 /* ViewController.swift in Sources */,
 				967328E628FA5C2400F7D909 /* AppDelegate.swift in Sources */,
+				9621ABC02995E69D00B77A6B /* ClothingCollectionViewCell.swift in Sources */,
 				967328E828FA5C2400F7D909 /* SceneDelegate.swift in Sources */,
 				9694FA75295F82230016D367 /* BackgroundRemoval.swift in Sources */,
 				96376F8629024B0100E34E54 /* Styles.swift in Sources */,
