@@ -10,8 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-//    var stylesView = Styles()
-    
     private var topSectionIsExpanded = true
     private var bottomSectionIsExpanded = true
     private var shoeSectionIsExpanded = true
@@ -20,12 +18,6 @@ class ViewController: UIViewController {
         frame: .zero,
         collectionViewLayout: UICollectionViewFlowLayout()
     )
-    
-//    override func loadView() {
-//        stylesView.button.addTarget(self, action: #selector(launchCamera), for: .touchUpInside)
-//
-//        view = stylesView
-//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +42,7 @@ class ViewController: UIViewController {
         collectionView.frame = view.bounds
     }
 
+    // This function does not have a button linked at this time. Will link later.
     @objc func launchCamera(sender: UIButton!) {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = .camera
@@ -73,18 +66,17 @@ class ViewController: UIViewController {
     }
 }
 
-// MARK: - UIImagePickerControllerDelegate and UINavigationControllerDelegate methods
+// MARK: - Image picker controller protocol methods
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
 
     func imagePickerController(
         _ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
-    {
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
+    ) {
         picker.dismiss(animated: true, completion: nil)
 
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
@@ -105,7 +97,6 @@ extension ViewController:
     UICollectionViewDataSource,
     UICollectionViewDelegateFlowLayout
 {
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3
     }
