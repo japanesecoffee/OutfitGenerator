@@ -19,14 +19,21 @@ class ClothingCollectionReusableView: UICollectionReusableView {
     }()
     
     let button: UIButton = {
-        let button = UIButton(type: .system)
-        let image = UIImage(
+        let button = UIButton(type: .custom)
+        let normalButtonImage = UIImage(
             systemName: "chevron.up"
         )?.withTintColor(
             .systemGreen,
             renderingMode: .alwaysOriginal
         )
-        button.setImage(image, for: .normal)
+        let selectedButtonImage = UIImage(
+            systemName: "chevron.down"
+        )?.withTintColor(
+            .systemGreen,
+            renderingMode: .alwaysOriginal
+        )
+        button.setImage(normalButtonImage, for: .normal)
+        button.setImage(selectedButtonImage, for: .selected)
         return button
     }()
     
