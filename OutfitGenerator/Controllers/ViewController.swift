@@ -41,14 +41,6 @@ class ViewController: UIViewController {
         
         collectionView.frame = view.bounds
     }
-
-    // This function does not have a button linked at this time. Will link later.
-    @objc func launchCamera(sender: UIButton!) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = .camera
-        imagePicker.delegate = self
-        present(imagePicker, animated: true)
-    }
     
     // Uploads images to Firebase Cloud Storage.
     func uploadImage(_ imageData: NSData) {
@@ -209,6 +201,13 @@ extension ViewController:
 // MARK: - Header protocol methods
 
 extension ViewController: HeaderDelegate {
+    func launchCamera() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .camera
+        imagePicker.delegate = self
+        present(imagePicker, animated: true)
+    }
+    
     func toggleNumberOfItems(inSection: Int) {
         if inSection == 0 {
             topSectionIsExpanded = !topSectionIsExpanded

@@ -69,6 +69,7 @@ class ClothingCollectionReusableView: UICollectionReusableView {
         stackView.addArrangedSubview(addButton)
         addButton.translatesAutoresizingMaskIntoConstraints = false
         addButton.heightAnchor.constraint(equalToConstant: collectionViewCellWidth / 6).isActive = true
+        addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         
         stackView.addArrangedSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -86,11 +87,17 @@ class ClothingCollectionReusableView: UICollectionReusableView {
         super.layoutSubviews()
     }
     
+    @objc func addButtonTapped(sender: UIButton!) {
+        delegate?.launchCamera()
+    }
+    
     @objc func headerButtonTapped(sender: UIButton!) {
         delegate?.toggleNumberOfItems(inSection: sender.tag)
     }
 }
 
 protocol HeaderDelegate {
+    func launchCamera()
+    
     func toggleNumberOfItems(inSection: Int)
 }
