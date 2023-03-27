@@ -13,9 +13,12 @@ class ClothingCollectionReusableView: UICollectionReusableView {
     
     var delegate: HeaderDelegate?
     
-    let title: UILabel = {
-        let title = UILabel()
-        return title
+    let addButton: UIButton = {
+        var configuration = UIButton.Configuration.tinted()
+        configuration.baseBackgroundColor = .systemGreen
+        configuration.baseForegroundColor = .systemGreen
+        let addButton = UIButton(configuration: configuration)
+        return addButton
     }()
     
     let button: UIButton = {
@@ -45,7 +48,7 @@ class ClothingCollectionReusableView: UICollectionReusableView {
         let stackView = UIStackView()
         stackView.clipsToBounds = true
         stackView.axis = .horizontal
-        stackView.distribution = .fill
+        stackView.distribution = .equalSpacing
         stackView.alignment = .center
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(
@@ -63,9 +66,9 @@ class ClothingCollectionReusableView: UICollectionReusableView {
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
-        stackView.addArrangedSubview(title)
-        title.translatesAutoresizingMaskIntoConstraints = false
-        title.heightAnchor.constraint(equalToConstant: collectionViewCellWidth / 6).isActive = true
+        stackView.addArrangedSubview(addButton)
+        addButton.translatesAutoresizingMaskIntoConstraints = false
+        addButton.heightAnchor.constraint(equalToConstant: collectionViewCellWidth / 6).isActive = true
         
         stackView.addArrangedSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false

@@ -183,14 +183,14 @@ extension ViewController:
         header.button.tag = indexPath.section
         
         if indexPath.section == 0 {
-            header.title.text = "Tops"
+            header.addButton.setTitle("Tops +", for: .normal)
             // Sections are expanded by default. If a section collapses, the button is selected.
             header.button.isSelected = topSectionIsExpanded ? false : true
         } else if indexPath.section == 1 {
-            header.title.text = "Bottoms"
+            header.addButton.setTitle("Bottoms +", for: .normal)
             header.button.isSelected = bottomSectionIsExpanded ? false : true
         } else {
-            header.title.text = "Shoes"
+            header.addButton.setTitle("Shoes +", for: .normal)
             header.button.isSelected = shoeSectionIsExpanded ? false : true
         }
         
