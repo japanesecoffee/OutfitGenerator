@@ -172,18 +172,18 @@ extension ViewController:
         ) as! ClothingCollectionReusableView
         
         header.delegate = self
-        header.button.tag = indexPath.section
+        header.toggleButton.tag = indexPath.section
         
         if indexPath.section == 0 {
             header.addButton.setTitle("Tops +", for: .normal)
             // Sections are expanded by default. If a section collapses, the button is selected.
-            header.button.isSelected = topSectionIsExpanded ? false : true
+            header.toggleButton.isSelected = topSectionIsExpanded ? false : true
         } else if indexPath.section == 1 {
             header.addButton.setTitle("Bottoms +", for: .normal)
-            header.button.isSelected = bottomSectionIsExpanded ? false : true
+            header.toggleButton.isSelected = bottomSectionIsExpanded ? false : true
         } else {
             header.addButton.setTitle("Shoes +", for: .normal)
-            header.button.isSelected = shoeSectionIsExpanded ? false : true
+            header.toggleButton.isSelected = shoeSectionIsExpanded ? false : true
         }
         
         return header
