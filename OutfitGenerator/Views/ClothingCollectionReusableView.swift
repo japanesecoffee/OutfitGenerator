@@ -13,13 +13,16 @@ class ClothingCollectionReusableView: UICollectionReusableView {
     
     var delegate: HeaderDelegate?
     
-    let title: UILabel = {
-        let title = UILabel()
-        return title
+    let addButton: UIButton = {
+        var configuration = UIButton.Configuration.tinted()
+        configuration.baseBackgroundColor = .systemGreen
+        configuration.baseForegroundColor = .systemGreen
+        let addButton = UIButton(configuration: configuration)
+        return addButton
     }()
     
-    let button: UIButton = {
-        let button = UIButton(type: .custom)
+    let toggleButton: UIButton = {
+        let toggleButton = UIButton(type: .custom)
         let normalButtonImage = UIImage(
             systemName: "chevron.up"
         )?.withTintColor(
@@ -32,9 +35,9 @@ class ClothingCollectionReusableView: UICollectionReusableView {
             .systemGreen,
             renderingMode: .alwaysOriginal
         )
-        button.setImage(normalButtonImage, for: .normal)
-        button.setImage(selectedButtonImage, for: .selected)
-        return button
+        toggleButton.setImage(normalButtonImage, for: .normal)
+        toggleButton.setImage(selectedButtonImage, for: .selected)
+        return toggleButton
     }()
     
     override init(frame: CGRect) {
@@ -45,7 +48,7 @@ class ClothingCollectionReusableView: UICollectionReusableView {
         let stackView = UIStackView()
         stackView.clipsToBounds = true
         stackView.axis = .horizontal
-        stackView.distribution = .fill
+        stackView.distribution = .equalSpacing
         stackView.alignment = .center
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(
@@ -63,16 +66,17 @@ class ClothingCollectionReusableView: UICollectionReusableView {
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
-        stackView.addArrangedSubview(title)
-        title.translatesAutoresizingMaskIntoConstraints = false
-        title.heightAnchor.constraint(equalToConstant: collectionViewCellWidth / 6).isActive = true
+        stackView.addArrangedSubview(addButton)
+        addButton.translatesAutoresizingMaskIntoConstraints = false
+        addButton.heightAnchor.constraint(equalToConstant: collectionViewCellWidth / 6).isActive = true
+        addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         
-        stackView.addArrangedSubview(button)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.heightAnchor.constraint(equalToConstant: collectionViewCellWidth / 6).isActive = true
-        button.widthAnchor.constraint(equalToConstant: collectionViewCellWidth / 6).isActive = true
-        button.layer.cornerRadius = collectionViewCellWidth / 12
-        button.addTarget(self, action: #selector(headerButtonTapped), for: .touchUpInside)
+        stackView.addArrangedSubview(toggleButton)
+        toggleButton.translatesAutoresizingMaskIntoConstraints = false
+        toggleButton.heightAnchor.constraint(equalToConstant: collectionViewCellWidth / 6).isActive = true
+        toggleButton.widthAnchor.constraint(equalToConstant: collectionViewCellWidth / 6).isActive = true
+        toggleButton.layer.cornerRadius = collectionViewCellWidth / 12
+        toggleButton.addTarget(self, action: #selector(toggleButtonTapped), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -83,11 +87,17 @@ class ClothingCollectionReusableView: UICollectionReusableView {
         super.layoutSubviews()
     }
     
-    @objc func headerButtonTapped(sender: UIButton!) {
+    @objc func addButtonTapped(sender: UIButton!) {
+        delegate?.launchCamera()
+    }
+    
+    @objc func toggleButtonTapped(sender: UIButton!) {
         delegate?.toggleNumberOfItems(inSection: sender.tag)
     }
 }
 
 protocol HeaderDelegate {
+    func launchCamera()
+    
     func toggleNumberOfItems(inSection: Int)
 }

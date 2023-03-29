@@ -41,14 +41,6 @@ class ViewController: UIViewController {
         
         collectionView.frame = view.bounds
     }
-
-    // This function does not have a button linked at this time. Will link later.
-    @objc func launchCamera(sender: UIButton!) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = .camera
-        imagePicker.delegate = self
-        present(imagePicker, animated: true)
-    }
     
     // Uploads images to Firebase Cloud Storage.
     func uploadImage(_ imageData: NSData) {
@@ -180,18 +172,18 @@ extension ViewController:
         ) as! ClothingCollectionReusableView
         
         header.delegate = self
-        header.button.tag = indexPath.section
+        header.toggleButton.tag = indexPath.section
         
         if indexPath.section == 0 {
-            header.title.text = "Tops"
+            header.addButton.setTitle("Tops +", for: .normal)
             // Sections are expanded by default. If a section collapses, the button is selected.
-            header.button.isSelected = topSectionIsExpanded ? false : true
+            header.toggleButton.isSelected = topSectionIsExpanded ? false : true
         } else if indexPath.section == 1 {
-            header.title.text = "Bottoms"
-            header.button.isSelected = bottomSectionIsExpanded ? false : true
+            header.addButton.setTitle("Bottoms +", for: .normal)
+            header.toggleButton.isSelected = bottomSectionIsExpanded ? false : true
         } else {
-            header.title.text = "Shoes"
-            header.button.isSelected = shoeSectionIsExpanded ? false : true
+            header.addButton.setTitle("Shoes +", for: .normal)
+            header.toggleButton.isSelected = shoeSectionIsExpanded ? false : true
         }
         
         return header
@@ -209,6 +201,13 @@ extension ViewController:
 // MARK: - Header protocol methods
 
 extension ViewController: HeaderDelegate {
+    func launchCamera() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .camera
+        imagePicker.delegate = self
+        present(imagePicker, animated: true)
+    }
+    
     func toggleNumberOfItems(inSection: Int) {
         if inSection == 0 {
             topSectionIsExpanded = !topSectionIsExpanded
