@@ -8,6 +8,9 @@ PODS:
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/Logger (~> 7.0)
     - nanopb (~> 2.30907.0)
+  - FirebaseDatabase (7.11.0):
+    - FirebaseCore (~> 7.0)
+    - leveldb-library (~> 1.22)
   - FirebaseStorage (7.11.0):
     - FirebaseCore (~> 7.0)
     - GTMSessionFetcher/Core (~> 1.4)
@@ -19,6 +22,7 @@ PODS:
     - GoogleUtilities/Environment
   - GTMSessionFetcher/Core (1.5.0)
   - Keys (1.0.1)
+  - leveldb-library (1.22.1)
   - nanopb (2.30907.0):
     - nanopb/decode (= 2.30907.0)
     - nanopb/encode (= 2.30907.0)
@@ -28,6 +32,7 @@ PODS:
 
 DEPENDENCIES:
   - FirebaseCore
+  - FirebaseDatabase
   - FirebaseStorage
   - Keys (from `Pods/CocoaPodsKeys`)
 
@@ -35,10 +40,12 @@ SPEC REPOS:
   trunk:
     - FirebaseCore
     - FirebaseCoreDiagnostics
+    - FirebaseDatabase
     - FirebaseStorage
     - GoogleDataTransport
     - GoogleUtilities
     - GTMSessionFetcher
+    - leveldb-library
     - nanopb
     - PromisesObjC
 
@@ -49,14 +56,16 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   FirebaseCore: 0a43b7f1c5b36f3358cd703011ca4c7e0df55870
   FirebaseCoreDiagnostics: ee1184d51da3293335b83355aad20f537acc24cf
+  FirebaseDatabase: 6c39fbf1c8514a2f32e610f9bf9ef30c535dc15a
   FirebaseStorage: 8542711850ca181a3931c0ed483006a7b46039e7
   GoogleDataTransport: 1024b1a4dfbd7a0e92cb20d7e0a6f1fb66b449a4
   GoogleUtilities: 31c5b01f978a70c6cff2afc6272b3f1921614b43
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
+  leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
 
-PODFILE CHECKSUM: c2b4ef6b869b0540ef45aad9d638591d19b1bd32
+PODFILE CHECKSUM: 159d292a3ef09114f331468411d2a1cd14b1ffd6
 
 COCOAPODS: 1.11.3
