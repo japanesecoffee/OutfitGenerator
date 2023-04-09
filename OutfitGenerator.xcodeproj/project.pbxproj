@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		772FACE61FC07DD612CE6184 /* Pods_BackgroundRemovalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC30F54E629E0E4ED0444460 /* Pods_BackgroundRemovalTests.framework */; };
+		961A0B9029E2632D005991B9 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961A0B8F29E2632D005991B9 /* Queue.swift */; };
 		9621ABC02995E69D00B77A6B /* ClothingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9621ABBF2995E69D00B77A6B /* ClothingCollectionViewCell.swift */; };
 		967328E628FA5C2400F7D909 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967328E528FA5C2400F7D909 /* AppDelegate.swift */; };
 		967328E828FA5C2400F7D909 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967328E728FA5C2400F7D909 /* SceneDelegate.swift */; };
@@ -38,6 +39,7 @@
 		53DBDCEEFA5257B16123C9A2 /* Pods-OutfitGenerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OutfitGenerator.release.xcconfig"; path = "Target Support Files/Pods-OutfitGenerator/Pods-OutfitGenerator.release.xcconfig"; sourceTree = "<group>"; };
 		6A3AB680B38A63E33FBC264D /* Pods-OutfitGeneratorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OutfitGeneratorTests.release.xcconfig"; path = "Target Support Files/Pods-OutfitGeneratorTests/Pods-OutfitGeneratorTests.release.xcconfig"; sourceTree = "<group>"; };
 		901E74DFA0AAB1636FEDEA8E /* Pods-BackgroundRemovalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackgroundRemovalTests.debug.xcconfig"; path = "Target Support Files/Pods-BackgroundRemovalTests/Pods-BackgroundRemovalTests.debug.xcconfig"; sourceTree = "<group>"; };
+		961A0B8F29E2632D005991B9 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		9621ABBF2995E69D00B77A6B /* ClothingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingCollectionViewCell.swift; sourceTree = "<group>"; };
 		967328E228FA5C2400F7D909 /* OutfitGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutfitGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		967328E528FA5C2400F7D909 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				9694FA74295F82230016D367 /* BackgroundRemoval.swift */,
+				961A0B8F29E2632D005991B9 /* Queue.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96E3447229A5BA50000131B1 /* ClothingCollectionReusableView.swift in Sources */,
+				961A0B9029E2632D005991B9 /* Queue.swift in Sources */,
 				967328EA28FA5C2400F7D909 /* ViewController.swift in Sources */,
 				967328E628FA5C2400F7D909 /* AppDelegate.swift in Sources */,
 				9621ABC02995E69D00B77A6B /* ClothingCollectionViewCell.swift in Sources */,
