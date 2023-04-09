@@ -5,6 +5,7 @@
 //  Created by Jason on 10/14/22.
 //
 
+import FirebaseDatabase
 import FirebaseStorage
 import UIKit
 
@@ -13,6 +14,8 @@ class ViewController: UIViewController {
     private var topSectionIsExpanded = true
     private var bottomSectionIsExpanded = true
     private var shoeSectionIsExpanded = true
+    
+    private var queue = Queue<Int>()
     
     private let collectionView = UICollectionView(
         frame: .zero,
@@ -54,7 +57,25 @@ class ViewController: UIViewController {
                 print("Failed to upload")
                 return
             }
+            
+            self.saveImage(imagesReference.fullPath)
         }
+    }
+    
+    // Saves image references to Firebase Realtime Database
+    func saveImage(_ reference: String) {
+        let databaseReference = Database.database().reference()
+        
+        if queue.peek == 0 {
+            databaseReference.child("tops").childByAutoId().setValue(reference)
+        } else if queue.peek == 1 {
+            databaseReference.child("bottoms").childByAutoId().setValue(reference)
+        } else {
+            databaseReference.child("shoes").childByAutoId().setValue(reference)
+        }
+        
+        // Dequeues the queue after saving the reference
+        queue.dequeue()
     }
 }
 
@@ -63,6 +84,9 @@ class ViewController: UIViewController {
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+        
+        // Dequeues the queue when the user cancels out of the camera
+        queue.dequeue()
     }
 
     func imagePickerController(
@@ -172,6 +196,7 @@ extension ViewController:
         ) as! ClothingCollectionReusableView
         
         header.delegate = self
+        header.addButton.tag = indexPath.section
         header.toggleButton.tag = indexPath.section
         
         if indexPath.section == 0 {
@@ -201,7 +226,12 @@ extension ViewController:
 // MARK: - Header protocol methods
 
 extension ViewController: HeaderDelegate {
-    func launchCamera() {
+    func launchCamera(inSection: Int) {
+        // Using a queue to track which node each image reference gets saved to
+        // A global variable does not work here because launchCamera(inSection:) may be called again
+        // before saveImage(_:) executes, changing the variable before it can be used in saveImage(_:)
+        queue.enqueue(inSection)
+        
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = .camera
         imagePicker.delegate = self
