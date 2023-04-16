@@ -15,7 +15,13 @@ class ViewController: UIViewController {
     private var bottomSectionIsExpanded = true
     private var shoeSectionIsExpanded = true
     
+    private var topsImageReferencesArray = [String]()
+    private var bottomsImageReferencesArray = [String]()
+    private var shoesImageReferencesArray = [String]()
+    
     private var queue = Queue<Int>()
+    
+    private let databaseReference = Database.database().reference()
     
     private let collectionView = UICollectionView(
         frame: .zero,
@@ -37,6 +43,8 @@ class ViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         view.addSubview(collectionView)
+        
+        addDatabaseListeners()
     }
     
     override func viewDidLayoutSubviews() {
@@ -64,8 +72,6 @@ class ViewController: UIViewController {
     
     // Saves image references to Firebase Realtime Database
     func saveImage(_ reference: String) {
-        let databaseReference = Database.database().reference()
-        
         if queue.peek == 0 {
             databaseReference.child("tops").childByAutoId().setValue(reference)
         } else if queue.peek == 1 {
@@ -76,6 +82,43 @@ class ViewController: UIViewController {
         
         // Dequeues the queue after saving the reference
         queue.dequeue()
+    }
+    
+    // Adds listeners to the tops, bottoms, and shoes nodes.
+    // The listener triggers once when attached and again every time the data changes.
+    private func addDatabaseListeners() {
+        databaseReference.child("tops").observe(DataEventType.childAdded) { (snapshot) in
+            guard let value = snapshot.value as? String else {
+                return
+            }
+            self.topsImageReferencesArray.append(value)
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadSections(IndexSet(integer: 0))
+            }
+        }
+        
+        databaseReference.child("bottoms").observe(DataEventType.childAdded) { (snapshot) in
+            guard let value = snapshot.value as? String else {
+                return
+            }
+            self.bottomsImageReferencesArray.append(value)
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadSections(IndexSet(integer: 1))
+            }
+        }
+        
+        databaseReference.child("shoes").observe(DataEventType.childAdded) { (snapshot) in
+            guard let value = snapshot.value as? String else {
+                return
+            }
+            self.shoesImageReferencesArray.append(value)
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadSections(IndexSet(integer: 2))
+            }
+        }
     }
 }
 
