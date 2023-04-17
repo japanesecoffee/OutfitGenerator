@@ -11,7 +11,7 @@ class ClothingCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "ClothingCollectionViewCell"
     
-    private let imageView: UIImageView = {
+    let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true

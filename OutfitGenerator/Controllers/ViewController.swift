@@ -7,6 +7,7 @@
 
 import FirebaseDatabase
 import FirebaseStorage
+import FirebaseStorageUI
 import UIKit
 
 class ViewController: UIViewController {
@@ -22,6 +23,7 @@ class ViewController: UIViewController {
     private var queue = Queue<Int>()
     
     private let databaseReference = Database.database().reference()
+    private let storageReference = Storage.storage().reference()
     
     private let collectionView = UICollectionView(
         frame: .zero,
@@ -55,8 +57,6 @@ class ViewController: UIViewController {
     
     // Uploads images to Firebase Cloud Storage.
     func uploadImage(_ imageData: NSData) {
-        let storageReference = Storage.storage().reference()
-        
         // Each uploaded image gets a unique ID.
         let imagesReference = storageReference.child("images/\(UUID().uuidString).png")
         
@@ -93,9 +93,7 @@ class ViewController: UIViewController {
             }
             self.topsImageReferencesArray.append(value)
             
-            DispatchQueue.main.async {
-                self.collectionView.reloadSections(IndexSet(integer: 0))
-            }
+            self.collectionView.reloadSections(IndexSet(integer: 0))
         }
         
         databaseReference.child("bottoms").observe(DataEventType.childAdded) { (snapshot) in
@@ -104,9 +102,7 @@ class ViewController: UIViewController {
             }
             self.bottomsImageReferencesArray.append(value)
             
-            DispatchQueue.main.async {
-                self.collectionView.reloadSections(IndexSet(integer: 1))
-            }
+            self.collectionView.reloadSections(IndexSet(integer: 1))
         }
         
         databaseReference.child("shoes").observe(DataEventType.childAdded) { (snapshot) in
@@ -115,9 +111,7 @@ class ViewController: UIViewController {
             }
             self.shoesImageReferencesArray.append(value)
             
-            DispatchQueue.main.async {
-                self.collectionView.reloadSections(IndexSet(integer: 2))
-            }
+            self.collectionView.reloadSections(IndexSet(integer: 2))
         }
     }
 }
@@ -167,11 +161,11 @@ extension ViewController:
         let numberOfItems: Int
 
         if section == 0 {
-            numberOfItems = topSectionIsExpanded ? 30 : 0
+            numberOfItems = topSectionIsExpanded ? topsImageReferencesArray.count : 0
         } else if section == 1 {
-            numberOfItems = bottomSectionIsExpanded ? 30 : 0
+            numberOfItems = bottomSectionIsExpanded ? bottomsImageReferencesArray.count : 0
         } else {
-            numberOfItems = shoeSectionIsExpanded ? 30 : 0
+            numberOfItems = shoeSectionIsExpanded ? shoesImageReferencesArray.count : 0
         }
 
         return numberOfItems
@@ -184,8 +178,19 @@ extension ViewController:
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: ClothingCollectionViewCell.identifier,
             for: indexPath
-        )
-        cell.backgroundColor = .systemGreen // Helps visualize the collection view cells. Delete later.
+        ) as! ClothingCollectionViewCell
+        
+        let imageReference: StorageReference
+        
+        if indexPath.section == 0 {
+            imageReference = storageReference.child(topsImageReferencesArray[indexPath.row])
+        } else if indexPath.section == 1 {
+            imageReference = storageReference.child(bottomsImageReferencesArray[indexPath.row])
+        } else {
+            imageReference = storageReference.child(shoesImageReferencesArray[indexPath.row])
+        }
+
+        cell.imageView.sd_setImage(with: imageReference)
         
         return cell
     }
