@@ -15,6 +15,7 @@ target 'OutfitGenerator' do
   pod 'FirebaseCore'
   pod 'FirebaseDatabase'
   pod 'FirebaseStorage'
+  pod 'FirebaseStorageUI'
 
   target 'BackgroundRemovalTests' do
     inherit! :search_paths
