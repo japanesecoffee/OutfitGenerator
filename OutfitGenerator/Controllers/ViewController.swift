@@ -189,8 +189,15 @@ extension ViewController:
         } else {
             imageReference = storageReference.child(shoesImageReferencesArray[indexPath.row])
         }
+        
+        let placeholderImage = UIImage(
+            systemName: "photo"
+        )?.withTintColor(
+            .systemGray6,
+            renderingMode: .alwaysOriginal
+        )
 
-        cell.imageView.sd_setImage(with: imageReference)
+        cell.imageView.sd_setImage(with: imageReference, placeholderImage: placeholderImage)
         
         return cell
     }
