@@ -20,6 +20,10 @@ class ViewController: UIViewController {
     private var bottomsImageReferencesArray = [String]()
     private var shoesImageReferencesArray = [String]()
     
+    private var topsDatabaseHandle: UInt!
+    private var bottomsDatabaseHandle: UInt!
+    private var shoesDatabaseHandle: UInt!
+    
     private var queue = Queue<Int>()
     
     private let databaseReference = Database.database().reference()
@@ -47,6 +51,14 @@ class ViewController: UIViewController {
         view.addSubview(collectionView)
         
         addDatabaseListeners()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        databaseReference.child("tops").removeObserver(withHandle: topsDatabaseHandle)
+        databaseReference.child("bottoms").removeObserver(withHandle: bottomsDatabaseHandle)
+        databaseReference.child("shoes").removeObserver(withHandle: shoesDatabaseHandle)
     }
     
     override func viewDidLayoutSubviews() {
@@ -87,7 +99,7 @@ class ViewController: UIViewController {
     // Adds listeners to the tops, bottoms, and shoes nodes.
     // The listener triggers once when attached and again every time the data changes.
     private func addDatabaseListeners() {
-        databaseReference.child("tops").observe(DataEventType.childAdded) { (snapshot) in
+        topsDatabaseHandle = databaseReference.child("tops").observe(DataEventType.childAdded) { (snapshot) in
             guard let value = snapshot.value as? String else {
                 return
             }
@@ -96,7 +108,7 @@ class ViewController: UIViewController {
             self.collectionView.reloadSections(IndexSet(integer: 0))
         }
         
-        databaseReference.child("bottoms").observe(DataEventType.childAdded) { (snapshot) in
+        bottomsDatabaseHandle = databaseReference.child("bottoms").observe(DataEventType.childAdded) { (snapshot) in
             guard let value = snapshot.value as? String else {
                 return
             }
@@ -105,7 +117,7 @@ class ViewController: UIViewController {
             self.collectionView.reloadSections(IndexSet(integer: 1))
         }
         
-        databaseReference.child("shoes").observe(DataEventType.childAdded) { (snapshot) in
+        shoesDatabaseHandle = databaseReference.child("shoes").observe(DataEventType.childAdded) { (snapshot) in
             guard let value = snapshot.value as? String else {
                 return
             }
