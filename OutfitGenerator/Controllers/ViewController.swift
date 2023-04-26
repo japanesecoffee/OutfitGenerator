@@ -49,6 +49,10 @@ class ViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         view.addSubview(collectionView)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         addDatabaseListeners()
     }
