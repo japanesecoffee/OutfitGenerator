@@ -100,9 +100,13 @@ class ViewController: UIViewController {
         queue.dequeue()
     }
     
-    // Adds listeners to the tops, bottoms, and shoes nodes.
+    // Clears out data source arrays and adds listeners to the tops, bottoms, and shoes nodes.
     // The listener triggers once when attached and again every time the data changes.
     private func addDatabaseListeners() {
+        topsImageReferencesArray = []
+        bottomsImageReferencesArray = []
+        shoesImageReferencesArray = []
+        
         topsDatabaseHandle = databaseReference.child("tops").observe(DataEventType.childAdded) { (snapshot) in
             guard let value = snapshot.value as? String else {
                 return
