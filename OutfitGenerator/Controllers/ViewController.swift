@@ -12,6 +12,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    // MARK: - Properties
+    
     private var topSectionIsExpanded = true
     private var bottomSectionIsExpanded = true
     private var shoeSectionIsExpanded = true
@@ -24,15 +26,20 @@ class ViewController: UIViewController {
     private var bottomsDatabaseHandle: UInt!
     private var shoesDatabaseHandle: UInt!
     
+    private var topsDatabaseReference: DatabaseReference!
+    private var bottomsDatabaseReference: DatabaseReference!
+    private var shoesDatabaseReference: DatabaseReference!
+    
     private var queue = Queue<Int>()
     
-    private let databaseReference = Database.database().reference()
     private let storageReference = Storage.storage().reference()
     
     private let collectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: UICollectionViewFlowLayout()
     )
+    
+    // MARK: - View controller lifecycle methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +56,10 @@ class ViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         view.addSubview(collectionView)
+        
+        topsDatabaseReference = Database.database().reference().child("tops")
+        bottomsDatabaseReference = Database.database().reference().child("bottoms")
+        shoesDatabaseReference = Database.database().reference().child("shoes")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,9 +71,9 @@ class ViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        databaseReference.child("tops").removeObserver(withHandle: topsDatabaseHandle)
-        databaseReference.child("bottoms").removeObserver(withHandle: bottomsDatabaseHandle)
-        databaseReference.child("shoes").removeObserver(withHandle: shoesDatabaseHandle)
+        topsDatabaseReference.removeObserver(withHandle: topsDatabaseHandle)
+        bottomsDatabaseReference.removeObserver(withHandle: bottomsDatabaseHandle)
+        shoesDatabaseReference.removeObserver(withHandle: shoesDatabaseHandle)
     }
     
     override func viewDidLayoutSubviews() {
@@ -71,8 +82,10 @@ class ViewController: UIViewController {
         collectionView.frame = view.bounds
     }
     
+    // MARK: - Image saving methods
+    
     // Uploads images to Firebase Cloud Storage.
-    func uploadImage(_ imageData: NSData) {
+    private func uploadImage(_ imageData: NSData) {
         // Each uploaded image gets a unique ID.
         let imagesReference = storageReference.child("images/\(UUID().uuidString).png")
         
@@ -87,18 +100,20 @@ class ViewController: UIViewController {
     }
     
     // Saves image references to Firebase Realtime Database
-    func saveImage(_ reference: String) {
+    private func saveImage(_ reference: String) {
         if queue.peek == 0 {
-            databaseReference.child("tops").childByAutoId().setValue(reference)
+            topsDatabaseReference.childByAutoId().setValue(reference)
         } else if queue.peek == 1 {
-            databaseReference.child("bottoms").childByAutoId().setValue(reference)
+            bottomsDatabaseReference.childByAutoId().setValue(reference)
         } else {
-            databaseReference.child("shoes").childByAutoId().setValue(reference)
+            shoesDatabaseReference.childByAutoId().setValue(reference)
         }
         
         // Dequeues the queue after saving the reference
         queue.dequeue()
     }
+    
+    // MARK: - Data source methods
     
     // Clears out data source arrays and adds listeners to the tops, bottoms, and shoes nodes.
     // The listener triggers once when attached and again every time the data changes.
@@ -107,7 +122,7 @@ class ViewController: UIViewController {
         bottomsImageReferencesArray = []
         shoesImageReferencesArray = []
         
-        topsDatabaseHandle = databaseReference.child("tops").observe(DataEventType.childAdded) { (snapshot) in
+        topsDatabaseHandle = topsDatabaseReference.observe(DataEventType.childAdded) { (snapshot) in
             guard let value = snapshot.value as? String else {
                 return
             }
@@ -116,7 +131,7 @@ class ViewController: UIViewController {
             self.collectionView.reloadSections(IndexSet(integer: 0))
         }
         
-        bottomsDatabaseHandle = databaseReference.child("bottoms").observe(DataEventType.childAdded) { (snapshot) in
+        bottomsDatabaseHandle = bottomsDatabaseReference.observe(DataEventType.childAdded) { (snapshot) in
             guard let value = snapshot.value as? String else {
                 return
             }
@@ -125,7 +140,7 @@ class ViewController: UIViewController {
             self.collectionView.reloadSections(IndexSet(integer: 1))
         }
         
-        shoesDatabaseHandle = databaseReference.child("shoes").observe(DataEventType.childAdded) { (snapshot) in
+        shoesDatabaseHandle = shoesDatabaseReference.observe(DataEventType.childAdded) { (snapshot) in
             guard let value = snapshot.value as? String else {
                 return
             }
