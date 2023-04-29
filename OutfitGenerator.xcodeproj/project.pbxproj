@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		10264FA3AF501C7962388EFF /* Pods_OutfitGeneratorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EA3D7815EE63312BAAE67EA /* Pods_OutfitGeneratorTests.framework */; };
+		772FACE61FC07DD612CE6184 /* Pods_BackgroundRemovalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC30F54E629E0E4ED0444460 /* Pods_BackgroundRemovalTests.framework */; };
+		961A0B9029E2632D005991B9 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961A0B8F29E2632D005991B9 /* Queue.swift */; };
 		9621ABC02995E69D00B77A6B /* ClothingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9621ABBF2995E69D00B77A6B /* ClothingCollectionViewCell.swift */; };
 		967328E628FA5C2400F7D909 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967328E528FA5C2400F7D909 /* AppDelegate.swift */; };
 		967328E828FA5C2400F7D909 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967328E728FA5C2400F7D909 /* SceneDelegate.swift */; };
@@ -34,8 +35,11 @@
 /* Begin PBXFileReference section */
 		22CDE9721252498C28560BFE /* Pods-OutfitGeneratorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OutfitGeneratorTests.debug.xcconfig"; path = "Target Support Files/Pods-OutfitGeneratorTests/Pods-OutfitGeneratorTests.debug.xcconfig"; sourceTree = "<group>"; };
 		31A549F5D4583051609860DD /* Pods-OutfitGenerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OutfitGenerator.debug.xcconfig"; path = "Target Support Files/Pods-OutfitGenerator/Pods-OutfitGenerator.debug.xcconfig"; sourceTree = "<group>"; };
+		4DECB8AFC89569C75B090DE2 /* Pods-BackgroundRemovalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackgroundRemovalTests.release.xcconfig"; path = "Target Support Files/Pods-BackgroundRemovalTests/Pods-BackgroundRemovalTests.release.xcconfig"; sourceTree = "<group>"; };
 		53DBDCEEFA5257B16123C9A2 /* Pods-OutfitGenerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OutfitGenerator.release.xcconfig"; path = "Target Support Files/Pods-OutfitGenerator/Pods-OutfitGenerator.release.xcconfig"; sourceTree = "<group>"; };
 		6A3AB680B38A63E33FBC264D /* Pods-OutfitGeneratorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OutfitGeneratorTests.release.xcconfig"; path = "Target Support Files/Pods-OutfitGeneratorTests/Pods-OutfitGeneratorTests.release.xcconfig"; sourceTree = "<group>"; };
+		901E74DFA0AAB1636FEDEA8E /* Pods-BackgroundRemovalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackgroundRemovalTests.debug.xcconfig"; path = "Target Support Files/Pods-BackgroundRemovalTests/Pods-BackgroundRemovalTests.debug.xcconfig"; sourceTree = "<group>"; };
+		961A0B8F29E2632D005991B9 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		9621ABBF2995E69D00B77A6B /* ClothingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingCollectionViewCell.swift; sourceTree = "<group>"; };
 		967328E228FA5C2400F7D909 /* OutfitGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutfitGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		967328E528FA5C2400F7D909 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,7 +53,7 @@
 		9694FA74295F82230016D367 /* BackgroundRemoval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundRemoval.swift; sourceTree = "<group>"; };
 		96E3447129A5BA50000131B1 /* ClothingCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingCollectionReusableView.swift; sourceTree = "<group>"; };
 		96F0E5AE291CBBBB00B5BB3F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		9EA3D7815EE63312BAAE67EA /* Pods_OutfitGeneratorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OutfitGeneratorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC30F54E629E0E4ED0444460 /* Pods_BackgroundRemovalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BackgroundRemovalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C01469FAA1C35AE26E434C /* Pods_OutfitGenerator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OutfitGenerator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -66,7 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10264FA3AF501C7962388EFF /* Pods_OutfitGeneratorTests.framework in Frameworks */,
+				772FACE61FC07DD612CE6184 /* Pods_BackgroundRemovalTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				9694FA74295F82230016D367 /* BackgroundRemoval.swift */,
+				961A0B8F29E2632D005991B9 /* Queue.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -146,7 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				F1C01469FAA1C35AE26E434C /* Pods_OutfitGenerator.framework */,
-				9EA3D7815EE63312BAAE67EA /* Pods_OutfitGeneratorTests.framework */,
+				EC30F54E629E0E4ED0444460 /* Pods_BackgroundRemovalTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -158,6 +163,8 @@
 				53DBDCEEFA5257B16123C9A2 /* Pods-OutfitGenerator.release.xcconfig */,
 				22CDE9721252498C28560BFE /* Pods-OutfitGeneratorTests.debug.xcconfig */,
 				6A3AB680B38A63E33FBC264D /* Pods-OutfitGeneratorTests.release.xcconfig */,
+				901E74DFA0AAB1636FEDEA8E /* Pods-BackgroundRemovalTests.debug.xcconfig */,
+				4DECB8AFC89569C75B090DE2 /* Pods-BackgroundRemovalTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -294,7 +301,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-OutfitGeneratorTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-BackgroundRemovalTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -331,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96E3447229A5BA50000131B1 /* ClothingCollectionReusableView.swift in Sources */,
+				961A0B9029E2632D005991B9 /* Queue.swift in Sources */,
 				967328EA28FA5C2400F7D909 /* ViewController.swift in Sources */,
 				967328E628FA5C2400F7D909 /* AppDelegate.swift in Sources */,
 				9621ABC02995E69D00B77A6B /* ClothingCollectionViewCell.swift in Sources */,
@@ -541,7 +549,7 @@
 		};
 		967ADA9728FCCB5B00942FF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 22CDE9721252498C28560BFE /* Pods-OutfitGeneratorTests.debug.xcconfig */;
+			baseConfigurationReference = 901E74DFA0AAB1636FEDEA8E /* Pods-BackgroundRemovalTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -564,7 +572,7 @@
 		};
 		967ADA9828FCCB5B00942FF1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6A3AB680B38A63E33FBC264D /* Pods-OutfitGeneratorTests.release.xcconfig */;
+			baseConfigurationReference = 4DECB8AFC89569C75B090DE2 /* Pods-BackgroundRemovalTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;

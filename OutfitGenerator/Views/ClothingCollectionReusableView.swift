@@ -88,7 +88,7 @@ class ClothingCollectionReusableView: UICollectionReusableView {
     }
     
     @objc func addButtonTapped(sender: UIButton!) {
-        delegate?.launchCamera()
+        delegate?.launchCamera(inSection: sender.tag)
     }
     
     @objc func toggleButtonTapped(sender: UIButton!) {
@@ -97,7 +97,7 @@ class ClothingCollectionReusableView: UICollectionReusableView {
 }
 
 protocol HeaderDelegate {
-    func launchCamera()
+    func launchCamera(inSection: Int)
     
     func toggleNumberOfItems(inSection: Int)
 }
