@@ -18,7 +18,7 @@ struct BackgroundRemoval {
         let mutableData = NSMutableData()
         mutableData.appendString("--\(boundary)\r\n")
         mutableData.appendString("Content-Disposition: form-data; name=\"image\"\r\n\r\n")
-        let imageData = image.pngData()!
+        let imageData = image.jpegData(compressionQuality: 0.7)!
         mutableData.append(imageData)
         mutableData.appendString("\r\n")
         mutableData.appendString("--\(boundary)--")
