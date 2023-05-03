@@ -172,7 +172,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         }
         
         let backgroundRemoval = BackgroundRemoval()
-        backgroundRemoval.removeBackground(for: image) { (segmentedImageData) in
+        backgroundRemoval.removeBackground(for: image.resize(by: 0.1)) { (segmentedImageData) in
             self.uploadImage(segmentedImageData!)
         }
     }
