@@ -10,26 +10,44 @@ import XCTest
 
 final class ImageScaleTests: XCTestCase {
 
+    var sut: UIImage!
+    
     override func setUpWithError() throws {
         try super.setUpWithError()
+        sut = UIImage()
     }
 
     override func tearDownWithError() throws {
+        sut = nil
         try super.tearDownWithError()
     }
     
-    func testImageScaleReducesImageSize() throws {
+    func testImageScaleCanReduceImageSize() throws {
         // Given.
         let imageSize = CGSize(width: 50, height: 50)
         UIGraphicsBeginImageContext(imageSize)
-        let image = UIGraphicsGetImageFromCurrentImageContext()!
+        sut = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
         // When.
-        let scaledImage = image.resize(by: 0.5)
+        let scaledImage = sut.resize(by: 0.5)
         
         // Then.
-        XCTAssertLessThan(scaledImage.size.height * scaledImage.size.width, image.size.height * image.size.width)
+        XCTAssertLessThan(scaledImage.size.height * scaledImage.size.width, sut.size.height * sut.size.width)
+    }
+    
+    func testImageScaleCanIncreaseImageSize() throws {
+        // Given.
+        let imageSize = CGSize(width: 50, height: 50)
+        UIGraphicsBeginImageContext(imageSize)
+        sut = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        // When.
+        let scaledImage = sut.resize(by: 1.5)
+        
+        // Then.
+        XCTAssertGreaterThan(scaledImage.size.height * scaledImage.size.width, sut.size.height * sut.size.width)
     }
 
 }
