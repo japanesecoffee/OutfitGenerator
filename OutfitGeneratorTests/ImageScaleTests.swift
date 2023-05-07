@@ -49,5 +49,18 @@ final class ImageScaleTests: XCTestCase {
         // Then.
         XCTAssertGreaterThan(scaledImage.size.height * scaledImage.size.width, sut.size.height * sut.size.width)
     }
-
+    
+    func testScaledImageHasSameAspectRatio() throws {
+        // Given.
+        let imageSize = CGSize(width: 50, height: 50)
+        UIGraphicsBeginImageContext(imageSize)
+        sut = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        // When.
+        let scaledImage = sut.resize(by: 0.5)
+        
+        // Then.
+        XCTAssertEqual(scaledImage.size.width / scaledImage.size.height, sut.size.width / sut.size.height)
+    }
 }
