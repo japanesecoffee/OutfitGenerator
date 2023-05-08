@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ClosetViewController.swift
 //  OutfitGenerator
 //
 //  Created by Jason on 10/14/22.
@@ -10,7 +10,7 @@ import FirebaseStorage
 import FirebaseStorageUI
 import UIKit
 
-class ViewController: UIViewController {
+class ClosetViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -153,7 +153,7 @@ class ViewController: UIViewController {
 
 // MARK: - Image picker controller protocol methods
 
-extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension ClosetViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
         
@@ -180,7 +180,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
 
 // MARK: - Collection view protocol methods
 
-extension ViewController:
+extension ClosetViewController:
     UICollectionViewDelegate,
     UICollectionViewDataSource,
     UICollectionViewDelegateFlowLayout
@@ -315,7 +315,7 @@ extension ViewController:
 
 // MARK: - Header protocol methods
 
-extension ViewController: HeaderDelegate {
+extension ClosetViewController: HeaderDelegate {
     func launchCamera(inSection: Int) {
         // Using a queue to track which node each image reference gets saved to
         // A global variable does not work here because launchCamera(inSection:) may be called again
