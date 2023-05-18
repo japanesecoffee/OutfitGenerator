@@ -23,12 +23,13 @@ class ClothingItem: UIView {
     
     func createSubviews() {
         imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = .white
         
         addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
-        imageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
-        imageView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
+        imageView.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
+        imageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 0).isActive = true
+        imageView.rightAnchor.constraint(equalTo: rightAnchor, constant: 0).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
     }
 }

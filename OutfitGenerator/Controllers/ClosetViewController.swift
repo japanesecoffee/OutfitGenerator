@@ -271,6 +271,35 @@ extension ClosetViewController:
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        
+        let imageReference: StorageReference
+        
+        if indexPath.section == 0 {
+            imageReference = storageReference.child(topsImageReferencesArray[indexPath.row])
+        } else if indexPath.section == 1 {
+            imageReference = storageReference.child(bottomsImageReferencesArray[indexPath.row])
+        } else {
+            imageReference = storageReference.child(shoesImageReferencesArray[indexPath.row])
+        }
+        
+        let placeholderImage = UIImage(
+            systemName: "photo"
+        )?.withTintColor(
+            .systemGray6,
+            renderingMode: .alwaysOriginal
+        )
+        
+        let clothingItemViewController = ClothingItemViewController()
+        clothingItemViewController.clothingItemView.imageView.sd_setImage(
+            with: imageReference,
+            placeholderImage: placeholderImage
+        )
+        
+        let navigationController = UINavigationController(
+            rootViewController: clothingItemViewController
+        )
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true)
     }
     
     // Methods for header.
