@@ -34,7 +34,7 @@ class ClosetViewController: UIViewController {
     
     private let storageReference = Storage.storage().reference()
     
-    private let collectionView = UICollectionView(
+    let collectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: UICollectionViewFlowLayout()
     )

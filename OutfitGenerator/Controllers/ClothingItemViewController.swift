@@ -14,6 +14,22 @@ class ClothingItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            title: "Back",
+            style: .plain,
+            target: self,
+            action: #selector(backButtonTapped)
+        )
+        
         view = clothingItemView
+    }
+    
+    @objc private func backButtonTapped() {
+        guard let closetViewController = presentingViewController as? ClosetViewController else {
+            return
+        }
+
+        dismiss(animated: true)
+        closetViewController.collectionView.reloadData()
     }
 }
