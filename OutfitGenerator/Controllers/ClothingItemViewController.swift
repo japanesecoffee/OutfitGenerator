@@ -21,6 +21,19 @@ class ClothingItemViewController: UIViewController {
             action: #selector(backButtonTapped)
         )
         
+        navigationController?.isToolbarHidden = false
+        
+        var toolbarItemsArray = [UIBarButtonItem]()
+        toolbarItemsArray.append(
+            UIBarButtonItem(
+                title: "Retake",
+                style: .plain,
+                target: self,
+                action: #selector(retakeButtonTapped)
+            )
+        )
+        toolbarItems = toolbarItemsArray
+        
         view = clothingItemView
     }
     
@@ -31,5 +44,7 @@ class ClothingItemViewController: UIViewController {
 
         dismiss(animated: true)
         closetViewController.collectionView.reloadData()
+    }
+    @objc private func retakeButtonTapped() {
     }
 }
