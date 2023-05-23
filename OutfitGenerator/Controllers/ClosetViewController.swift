@@ -294,6 +294,7 @@ extension ClosetViewController:
             with: imageReference,
             placeholderImage: placeholderImage
         )
+        clothingItemViewController.imageReference = imageReference
         
         let navigationController = UINavigationController(
             rootViewController: clothingItemViewController

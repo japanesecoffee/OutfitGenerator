@@ -5,11 +5,14 @@
 //  Created by Jason on 5/7/23.
 //
 
+import FirebaseStorage
 import UIKit
 
 class ClothingItemViewController: UIViewController {
     
     var clothingItemView = ClothingItem()
+
+    var imageReference = Storage.storage().reference()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +57,18 @@ class ClothingItemViewController: UIViewController {
         imagePicker.delegate = self
         present(imagePicker, animated: true)
     }
+
+    // MARK: - Image saving methods
+
+    // Replaces images in Firebase Cloud Storage.
+    private func replaceImage(_ imageData: NSData) {
+        imageReference.putData(imageData as Data, metadata: nil) { (_, error) in
+            guard error == nil else {
+                print("Failed to upload")
+                return
+            }
+        }
+    }
 }
 
 // MARK: - Image picker controller protocol methods
@@ -68,5 +83,14 @@ extension ClothingItemViewController: UIImagePickerControllerDelegate, UINavigat
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
     ) {
         picker.dismiss(animated: true, completion: nil)
+
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            return
+        }
+
+        let backgroundRemoval = BackgroundRemoval()
+        backgroundRemoval.removeBackground(for: image.resize(by: 0.1)) { (segmentedImageData) in
+            self.replaceImage(segmentedImageData!)
+        }
     }
 }
