@@ -37,6 +37,8 @@ class ClothingItemViewController: UIViewController {
         view = clothingItemView
     }
     
+    // MARK: - Action methods
+
     @objc private func backButtonTapped() {
         guard let closetViewController = presentingViewController as? ClosetViewController else {
             return
@@ -45,6 +47,26 @@ class ClothingItemViewController: UIViewController {
         dismiss(animated: true)
         closetViewController.collectionView.reloadData()
     }
+
     @objc private func retakeButtonTapped() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .camera
+        imagePicker.delegate = self
+        present(imagePicker, animated: true)
+    }
+}
+
+// MARK: - Image picker controller protocol methods
+
+extension ClothingItemViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
+    ) {
+        picker.dismiss(animated: true, completion: nil)
     }
 }
