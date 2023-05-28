@@ -6,6 +6,7 @@
 //
 
 import FirebaseStorage
+import SDWebImage
 import UIKit
 
 class ClothingItemViewController: UIViewController {
@@ -67,6 +68,30 @@ class ClothingItemViewController: UIViewController {
                 print("Failed to upload")
                 return
             }
+            
+            self.updateViews()
+        }
+    }
+    
+    // MARK: - View update methods
+    
+    // Allows the image view and collection view to show the new image.
+    private func updateViews() {
+        // Removes image from memory and disk cache.
+        SDImageCache.shared.removeImage(forKey: imageReference.description)
+
+        let placeholderImage = UIImage(
+            systemName: "photo"
+        )?.withTintColor(
+            .systemGray6,
+            renderingMode: .alwaysOriginal
+        )
+
+        DispatchQueue.main.async {
+            self.clothingItemView.imageView.sd_setImage(
+                with: self.imageReference,
+                placeholderImage: placeholderImage
+            )
         }
     }
 }
