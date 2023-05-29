@@ -14,6 +14,13 @@ class ClothingItemViewController: UIViewController {
     var clothingItemView = ClothingItem()
 
     var imageReference = Storage.storage().reference()
+    
+    private let placeholderImage = UIImage(
+        systemName: "photo"
+    )?.withTintColor(
+        .systemGray6,
+        renderingMode: .alwaysOriginal
+    )
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,17 +87,10 @@ class ClothingItemViewController: UIViewController {
         // Removes image from memory and disk cache.
         SDImageCache.shared.removeImage(forKey: imageReference.description)
 
-        let placeholderImage = UIImage(
-            systemName: "photo"
-        )?.withTintColor(
-            .systemGray6,
-            renderingMode: .alwaysOriginal
-        )
-
         DispatchQueue.main.async {
             self.clothingItemView.imageView.sd_setImage(
                 with: self.imageReference,
-                placeholderImage: placeholderImage
+                placeholderImage: self.placeholderImage
             )
         }
     }
@@ -112,6 +112,9 @@ extension ClothingItemViewController: UIImagePickerControllerDelegate, UINavigat
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             return
         }
+        
+        // Shows a placeholder image while the new image gets processed and uploaded.
+        clothingItemView.imageView.sd_setImage(with: nil, placeholderImage: placeholderImage)
 
         let backgroundRemoval = BackgroundRemoval()
         backgroundRemoval.removeBackground(for: image.resize(by: 0.1)) { (segmentedImageData) in
