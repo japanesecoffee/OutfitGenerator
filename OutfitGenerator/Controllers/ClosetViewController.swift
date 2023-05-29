@@ -128,7 +128,10 @@ class ClosetViewController: UIViewController {
             }
             self.topsImageReferencesArray.append(value)
             
-            self.collectionView.reloadSections(IndexSet(integer: 0))
+            // Calling reloadData() instead of reloadSections(_:) to prevent invalid batch updates.
+            // Firebase Database callbacks are invoked on the main thread, so
+            // DispatchQueue.main.async is not needed.
+            self.collectionView.reloadData()
         }
         
         bottomsDatabaseHandle = bottomsDatabaseReference.observe(DataEventType.childAdded) { (snapshot) in
@@ -137,7 +140,7 @@ class ClosetViewController: UIViewController {
             }
             self.bottomsImageReferencesArray.append(value)
             
-            self.collectionView.reloadSections(IndexSet(integer: 1))
+            self.collectionView.reloadData()
         }
         
         shoesDatabaseHandle = shoesDatabaseReference.observe(DataEventType.childAdded) { (snapshot) in
@@ -146,7 +149,7 @@ class ClosetViewController: UIViewController {
             }
             self.shoesImageReferencesArray.append(value)
             
-            self.collectionView.reloadSections(IndexSet(integer: 2))
+            self.collectionView.reloadData()
         }
     }
 }

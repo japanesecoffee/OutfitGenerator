@@ -51,12 +51,7 @@ class ClothingItemViewController: UIViewController {
     // MARK: - Action methods
 
     @objc private func backButtonTapped() {
-        guard let closetViewController = presentingViewController as? ClosetViewController else {
-            return
-        }
-
         dismiss(animated: true)
-        closetViewController.collectionView.reloadData()
     }
 
     @objc private func retakeButtonTapped() {
