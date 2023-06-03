@@ -24,6 +24,11 @@ class ClothingItemViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.configureWithDefaultBackground()
+        navigationController?.navigationBar.standardAppearance = navigationBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
 
         let backButtonConfiguration = UIImage.SymbolConfiguration(weight: .bold)
         let backButtonImage = UIImage(
@@ -42,6 +47,10 @@ class ClothingItemViewController: UIViewController {
         backButton.sizeToFit()
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
 
+        let toolbarAppearance = UIToolbarAppearance()
+        toolbarAppearance.configureWithDefaultBackground()
+        navigationController?.toolbar.standardAppearance = toolbarAppearance
+        navigationController?.toolbar.scrollEdgeAppearance = toolbarAppearance
         navigationController?.isToolbarHidden = false
         
         var toolbarItemsArray = [UIBarButtonItem]()
