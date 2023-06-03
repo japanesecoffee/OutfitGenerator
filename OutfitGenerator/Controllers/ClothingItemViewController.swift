@@ -51,6 +51,7 @@ class ClothingItemViewController: UIViewController {
         toolbarAppearance.configureWithDefaultBackground()
         navigationController?.toolbar.standardAppearance = toolbarAppearance
         navigationController?.toolbar.scrollEdgeAppearance = toolbarAppearance
+        navigationController?.toolbar.tintColor = .systemGreen
         navigationController?.isToolbarHidden = false
         
         var toolbarItemsArray = [UIBarButtonItem]()
