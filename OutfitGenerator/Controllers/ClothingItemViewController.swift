@@ -25,13 +25,23 @@ class ClothingItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            title: "Back",
-            style: .plain,
-            target: self,
-            action: #selector(backButtonTapped)
+        let backButtonConfiguration = UIImage.SymbolConfiguration(weight: .bold)
+        let backButtonImage = UIImage(
+            systemName: "chevron.left",
+            withConfiguration: backButtonConfiguration
+        )?.withTintColor(
+            .systemGreen,
+            renderingMode: .alwaysOriginal
         )
-        
+        let backButton = UIButton(type: .system)
+        backButton.setImage(backButtonImage, for: .normal)
+        backButton.setTitle(" Back", for: .normal)
+        backButton.setTitleColor(.systemGreen, for: .normal)
+        backButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        backButton.sizeToFit()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+
         navigationController?.isToolbarHidden = false
         
         var toolbarItemsArray = [UIBarButtonItem]()
