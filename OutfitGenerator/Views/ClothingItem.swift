@@ -11,9 +11,42 @@ class ClothingItem: UIView {
     
     var imageView = UIImageView()
     
+    var toolbarItemsArray = [UIBarButtonItem]()
+    
+    var delegate: ClothingItemDelegate?
+    
+    let backButton: UIButton = {
+        let backButtonConfiguration = UIImage.SymbolConfiguration(weight: .bold)
+        let backButtonImage = UIImage(
+            systemName: "chevron.left",
+            withConfiguration: backButtonConfiguration
+        )?.withTintColor(
+            .systemGreen,
+            renderingMode: .alwaysOriginal
+        )
+        let backButton = UIButton(type: .system)
+        backButton.setImage(backButtonImage, for: .normal)
+        backButton.setTitle(" Back", for: .normal)
+        backButton.setTitleColor(.systemGreen, for: .normal)
+        backButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        backButton.sizeToFit()
+        return backButton
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         createSubviews()
+        
+        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        
+        toolbarItemsArray.append(
+            UIBarButtonItem(
+                title: "Retake",
+                style: .plain,
+                target: self,
+                action: #selector(retakeButtonTapped)
+            )
+        )
     }
     
     required init?(coder: NSCoder) {
@@ -32,4 +65,18 @@ class ClothingItem: UIView {
         imageView.rightAnchor.constraint(equalTo: rightAnchor, constant: 0).isActive = true
         imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
     }
+    
+    @objc private func backButtonTapped() {
+        delegate?.dismiss()
+    }
+
+    @objc private func retakeButtonTapped() {
+        delegate?.launchCamera()
+    }
+}
+
+protocol ClothingItemDelegate {
+    func dismiss()
+    
+    func launchCamera()
 }

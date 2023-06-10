@@ -25,27 +25,13 @@ class ClothingItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        clothingItemView.delegate = self
+        
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithDefaultBackground()
         navigationController?.navigationBar.standardAppearance = navigationBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
-
-        let backButtonConfiguration = UIImage.SymbolConfiguration(weight: .bold)
-        let backButtonImage = UIImage(
-            systemName: "chevron.left",
-            withConfiguration: backButtonConfiguration
-        )?.withTintColor(
-            .systemGreen,
-            renderingMode: .alwaysOriginal
-        )
-        let backButton = UIButton(type: .system)
-        backButton.setImage(backButtonImage, for: .normal)
-        backButton.setTitle(" Back", for: .normal)
-        backButton.setTitleColor(.systemGreen, for: .normal)
-        backButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
-        backButton.sizeToFit()
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: clothingItemView.backButton)
 
         let toolbarAppearance = UIToolbarAppearance()
         toolbarAppearance.configureWithDefaultBackground()
@@ -53,32 +39,9 @@ class ClothingItemViewController: UIViewController {
         navigationController?.toolbar.scrollEdgeAppearance = toolbarAppearance
         navigationController?.toolbar.tintColor = .systemGreen
         navigationController?.isToolbarHidden = false
-        
-        var toolbarItemsArray = [UIBarButtonItem]()
-        toolbarItemsArray.append(
-            UIBarButtonItem(
-                title: "Retake",
-                style: .plain,
-                target: self,
-                action: #selector(retakeButtonTapped)
-            )
-        )
-        toolbarItems = toolbarItemsArray
+        toolbarItems = clothingItemView.toolbarItemsArray
         
         view = clothingItemView
-    }
-    
-    // MARK: - Action methods
-
-    @objc private func backButtonTapped() {
-        dismiss(animated: true)
-    }
-
-    @objc private func retakeButtonTapped() {
-        let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = .camera
-        imagePicker.delegate = self
-        present(imagePicker, animated: true)
     }
 
     // MARK: - Image saving methods
@@ -135,5 +98,20 @@ extension ClothingItemViewController: UIImagePickerControllerDelegate, UINavigat
         backgroundRemoval.removeBackground(for: image.resize(by: 0.1)) { (segmentedImageData) in
             self.replaceImage(segmentedImageData!)
         }
+    }
+}
+
+// MARK: - Clothing item protocol methods
+
+extension ClothingItemViewController: ClothingItemDelegate {
+    func dismiss() {
+        dismiss(animated: true)
+    }
+    
+    func launchCamera() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .camera
+        imagePicker.delegate = self
+        present(imagePicker, animated: true)
     }
 }
