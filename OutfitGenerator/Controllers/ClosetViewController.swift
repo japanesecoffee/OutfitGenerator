@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ClosetViewController.swift
 //  OutfitGenerator
 //
 //  Created by Jason on 10/14/22.
@@ -10,7 +10,7 @@ import FirebaseStorage
 import FirebaseStorageUI
 import UIKit
 
-class ViewController: UIViewController {
+class ClosetViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     
     private let storageReference = Storage.storage().reference()
     
-    private let collectionView = UICollectionView(
+    let collectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: UICollectionViewFlowLayout()
     )
@@ -128,7 +128,10 @@ class ViewController: UIViewController {
             }
             self.topsImageReferencesArray.append(value)
             
-            self.collectionView.reloadSections(IndexSet(integer: 0))
+            // Calling reloadData() instead of reloadSections(_:) to prevent invalid batch updates.
+            // Firebase Database callbacks are invoked on the main thread, so
+            // DispatchQueue.main.async is not needed.
+            self.collectionView.reloadData()
         }
         
         bottomsDatabaseHandle = bottomsDatabaseReference.observe(DataEventType.childAdded) { (snapshot) in
@@ -137,7 +140,7 @@ class ViewController: UIViewController {
             }
             self.bottomsImageReferencesArray.append(value)
             
-            self.collectionView.reloadSections(IndexSet(integer: 1))
+            self.collectionView.reloadData()
         }
         
         shoesDatabaseHandle = shoesDatabaseReference.observe(DataEventType.childAdded) { (snapshot) in
@@ -146,14 +149,14 @@ class ViewController: UIViewController {
             }
             self.shoesImageReferencesArray.append(value)
             
-            self.collectionView.reloadSections(IndexSet(integer: 2))
+            self.collectionView.reloadData()
         }
     }
 }
 
 // MARK: - Image picker controller protocol methods
 
-extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension ClosetViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
         
@@ -180,7 +183,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
 
 // MARK: - Collection view protocol methods
 
-extension ViewController:
+extension ClosetViewController:
     UICollectionViewDelegate,
     UICollectionViewDataSource,
     UICollectionViewDelegateFlowLayout
@@ -271,6 +274,36 @@ extension ViewController:
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        
+        let imageReference: StorageReference
+        
+        if indexPath.section == 0 {
+            imageReference = storageReference.child(topsImageReferencesArray[indexPath.row])
+        } else if indexPath.section == 1 {
+            imageReference = storageReference.child(bottomsImageReferencesArray[indexPath.row])
+        } else {
+            imageReference = storageReference.child(shoesImageReferencesArray[indexPath.row])
+        }
+        
+        let placeholderImage = UIImage(
+            systemName: "photo"
+        )?.withTintColor(
+            .systemGray6,
+            renderingMode: .alwaysOriginal
+        )
+        
+        let clothingItemViewController = ClothingItemViewController()
+        clothingItemViewController.clothingItemView.imageView.sd_setImage(
+            with: imageReference,
+            placeholderImage: placeholderImage
+        )
+        clothingItemViewController.imageReference = imageReference
+        
+        let navigationController = UINavigationController(
+            rootViewController: clothingItemViewController
+        )
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true)
     }
     
     // Methods for header.
@@ -315,7 +348,7 @@ extension ViewController:
 
 // MARK: - Header protocol methods
 
-extension ViewController: HeaderDelegate {
+extension ClosetViewController: HeaderDelegate {
     func launchCamera(inSection: Int) {
         // Using a queue to track which node each image reference gets saved to
         // A global variable does not work here because launchCamera(inSection:) may be called again
