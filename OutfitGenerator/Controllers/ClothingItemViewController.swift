@@ -104,6 +104,15 @@ extension ClothingItemViewController: UIImagePickerControllerDelegate, UINavigat
 // MARK: - Clothing item protocol methods
 
 extension ClothingItemViewController: ClothingItemDelegate {
+    func deleteItem() {
+        // Deletes image from Firebase Cloud Storage.
+        imageReference.delete { (error) in
+            if let error = error {
+                print("There was an error deleting from Cloud Storage: \(error)")
+            }
+        }
+    }
+    
     func dismiss() {
         dismiss(animated: true)
     }

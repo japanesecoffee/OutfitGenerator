@@ -94,11 +94,13 @@ class ClothingItem: UIView {
     }
     
     @objc private func deleteButtonTapped() {
-        
+        delegate?.deleteItem()
     }
 }
 
 protocol ClothingItemDelegate {
+    func deleteItem()
+    
     func dismiss()
     
     func launchCamera()
