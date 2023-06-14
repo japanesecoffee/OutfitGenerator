@@ -5,6 +5,7 @@
 //  Created by Jason on 5/7/23.
 //
 
+import FirebaseDatabase
 import FirebaseStorage
 import SDWebImage
 import UIKit
@@ -14,6 +15,8 @@ class ClothingItemViewController: UIViewController {
     var clothingItemView = ClothingItem()
 
     var imageReference = Storage.storage().reference()
+    
+    var databaseReference: DatabaseReference!
     
     private let placeholderImage = UIImage(
         systemName: "photo"
@@ -110,6 +113,9 @@ extension ClothingItemViewController: ClothingItemDelegate {
             if let error = error {
                 print("There was an error deleting from Cloud Storage: \(error)")
             }
+            
+            // Deletes reference from Firebase Realtime Database.
+            self.databaseReference.removeValue()
         }
     }
     

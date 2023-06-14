@@ -288,13 +288,17 @@ extension ClosetViewController:
         collectionView.deselectItem(at: indexPath, animated: true)
         
         let imageReference: StorageReference
+        let databaseReference: DatabaseReference
         
         if indexPath.section == 0 {
             imageReference = storageReference.child(topsImageReferencesArray[indexPath.row])
+            databaseReference = topsDatabaseReference.child(topsDatabaseReferencesArray[indexPath.row])
         } else if indexPath.section == 1 {
             imageReference = storageReference.child(bottomsImageReferencesArray[indexPath.row])
+            databaseReference = bottomsDatabaseReference.child(bottomsDatabaseReferencesArray[indexPath.row])
         } else {
             imageReference = storageReference.child(shoesImageReferencesArray[indexPath.row])
+            databaseReference = shoesDatabaseReference.child(shoesDatabaseReferencesArray[indexPath.row])
         }
         
         let placeholderImage = UIImage(
@@ -310,6 +314,7 @@ extension ClosetViewController:
             placeholderImage: placeholderImage
         )
         clothingItemViewController.imageReference = imageReference
+        clothingItemViewController.databaseReference = databaseReference
         
         let navigationController = UINavigationController(
             rootViewController: clothingItemViewController
