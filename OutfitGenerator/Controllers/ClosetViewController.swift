@@ -22,6 +22,10 @@ class ClosetViewController: UIViewController {
     private var bottomsImageReferencesArray = [String]()
     private var shoesImageReferencesArray = [String]()
     
+    private var topsDatabaseReferencesArray = [String]()
+    private var bottomsDatabaseReferencesArray = [String]()
+    private var shoesDatabaseReferencesArray = [String]()
+    
     private var topsDatabaseHandle: UInt!
     private var bottomsDatabaseHandle: UInt!
     private var shoesDatabaseHandle: UInt!
@@ -122,11 +126,17 @@ class ClosetViewController: UIViewController {
         bottomsImageReferencesArray = []
         shoesImageReferencesArray = []
         
+        topsDatabaseReferencesArray = []
+        bottomsDatabaseReferencesArray = []
+        shoesDatabaseReferencesArray = []
+        
         topsDatabaseHandle = topsDatabaseReference.observe(DataEventType.childAdded) { (snapshot) in
+            // If the value is not nil, the key is not nil.
             guard let value = snapshot.value as? String else {
                 return
             }
             self.topsImageReferencesArray.append(value)
+            self.topsDatabaseReferencesArray.append(snapshot.key)
             
             // Calling reloadData() instead of reloadSections(_:) to prevent invalid batch updates.
             // Firebase Database callbacks are invoked on the main thread, so
@@ -139,6 +149,7 @@ class ClosetViewController: UIViewController {
                 return
             }
             self.bottomsImageReferencesArray.append(value)
+            self.bottomsDatabaseReferencesArray.append(snapshot.key)
             
             self.collectionView.reloadData()
         }
@@ -148,6 +159,7 @@ class ClosetViewController: UIViewController {
                 return
             }
             self.shoesImageReferencesArray.append(value)
+            self.shoesDatabaseReferencesArray.append(snapshot.key)
             
             self.collectionView.reloadData()
         }
