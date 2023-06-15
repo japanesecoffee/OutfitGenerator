@@ -116,6 +116,9 @@ extension ClothingItemViewController: ClothingItemDelegate {
             
             // Deletes reference from Firebase Realtime Database.
             self.databaseReference.removeValue()
+            
+            // Deletes image cache.
+            SDImageCache.shared.removeImage(forKey: self.imageReference.description)
         }
     }
     
