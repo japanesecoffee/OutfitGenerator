@@ -108,18 +108,33 @@ extension ClothingItemViewController: UIImagePickerControllerDelegate, UINavigat
 
 extension ClothingItemViewController: ClothingItemDelegate {
     func deleteItem() {
-        // Deletes image from Firebase Cloud Storage.
-        imageReference.delete { (error) in
-            if let error = error {
-                print("There was an error deleting from Cloud Storage: \(error)")
+        let alert = UIAlertController(
+            title: "Delete Item",
+            message: "This action cannot be undone.",
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            alert.dismiss(animated: true)
+        })
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            // Deletes image from Firebase Cloud Storage.
+            self.imageReference.delete { (error) in
+                if let error = error {
+                    print("There was an error deleting from Cloud Storage: \(error)")
+                }
+                
+                // Deletes reference from Firebase Realtime Database.
+                self.databaseReference.removeValue()
+                
+                // Deletes image cache.
+                SDImageCache.shared.removeImage(forKey: self.imageReference.description)
+                
+                self.dismiss(animated: true)
             }
-            
-            // Deletes reference from Firebase Realtime Database.
-            self.databaseReference.removeValue()
-            
-            // Deletes image cache.
-            SDImageCache.shared.removeImage(forKey: self.imageReference.description)
-        }
+        })
+        
+        present(alert, animated: true)
     }
     
     func dismiss() {
