@@ -122,21 +122,20 @@ class ClosetViewController: UIViewController {
     // Clears out data source arrays and adds listeners to the tops, bottoms, and shoes nodes.
     // The listener triggers once when attached and again every time the data changes.
     private func addDatabaseListeners() {
-        topsImageReferencesArray = []
-        bottomsImageReferencesArray = []
-        shoesImageReferencesArray = []
-        
-        topsDatabaseReferencesArray = []
-        bottomsDatabaseReferencesArray = []
-        shoesDatabaseReferencesArray = []
-        
-        topsDatabaseHandle = topsDatabaseReference.observe(DataEventType.childAdded) { (snapshot) in
-            // If the value is not nil, the key is not nil.
-            guard let value = snapshot.value as? String else {
-                return
+        topsDatabaseHandle = topsDatabaseReference.observe(.value) { (snapshot) in
+            self.topsImageReferencesArray = []
+            self.topsDatabaseReferencesArray = []
+            
+            if snapshot.exists() {
+                for childNode in snapshot.children.allObjects as! [DataSnapshot] {
+                    // If the value is not nil, the key is not nil.
+                    guard let value = childNode.value as? String else {
+                        return
+                    }
+                    self.topsImageReferencesArray.append(value)
+                    self.topsDatabaseReferencesArray.append(childNode.key)
+                }
             }
-            self.topsImageReferencesArray.append(value)
-            self.topsDatabaseReferencesArray.append(snapshot.key)
             
             // Calling reloadData() instead of reloadSections(_:) to prevent invalid batch updates.
             // Firebase Database callbacks are invoked on the main thread, so
@@ -144,22 +143,36 @@ class ClosetViewController: UIViewController {
             self.collectionView.reloadData()
         }
         
-        bottomsDatabaseHandle = bottomsDatabaseReference.observe(DataEventType.childAdded) { (snapshot) in
-            guard let value = snapshot.value as? String else {
-                return
+        bottomsDatabaseHandle = bottomsDatabaseReference.observe(.value) { (snapshot) in
+            self.bottomsImageReferencesArray = []
+            self.bottomsDatabaseReferencesArray = []
+            
+            if snapshot.exists() {
+                for childNode in snapshot.children.allObjects as! [DataSnapshot] {
+                    guard let value = childNode.value as? String else {
+                        return
+                    }
+                    self.bottomsImageReferencesArray.append(value)
+                    self.bottomsDatabaseReferencesArray.append(childNode.key)
+                }
             }
-            self.bottomsImageReferencesArray.append(value)
-            self.bottomsDatabaseReferencesArray.append(snapshot.key)
             
             self.collectionView.reloadData()
         }
         
-        shoesDatabaseHandle = shoesDatabaseReference.observe(DataEventType.childAdded) { (snapshot) in
-            guard let value = snapshot.value as? String else {
-                return
+        shoesDatabaseHandle = shoesDatabaseReference.observe(.value) { (snapshot) in
+            self.shoesImageReferencesArray = []
+            self.shoesDatabaseReferencesArray = []
+            
+            if snapshot.exists() {
+                for childNode in snapshot.children.allObjects as! [DataSnapshot] {
+                    guard let value = childNode.value as? String else {
+                        return
+                    }
+                    self.shoesImageReferencesArray.append(value)
+                    self.shoesDatabaseReferencesArray.append(childNode.key)
+                }
             }
-            self.shoesImageReferencesArray.append(value)
-            self.shoesDatabaseReferencesArray.append(snapshot.key)
             
             self.collectionView.reloadData()
         }
