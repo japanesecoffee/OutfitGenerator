@@ -118,20 +118,24 @@ extension ClothingItemViewController: ClothingItemDelegate {
             alert.dismiss(animated: true)
         })
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            // Deletes reference from Firebase Realtime Database.
+            self.databaseReference.removeValue { (error, databaseReference) in
+                if let error = error {
+                    print("There was an error deleting from Realtime Database: \(error)")
+                }
+            }
+            
             // Deletes image from Firebase Cloud Storage.
             self.imageReference.delete { (error) in
                 if let error = error {
                     print("There was an error deleting from Cloud Storage: \(error)")
                 }
-                
-                // Deletes reference from Firebase Realtime Database.
-                self.databaseReference.removeValue()
-                
-                // Deletes image cache.
-                SDImageCache.shared.removeImage(forKey: self.imageReference.description)
-                
-                self.dismiss(animated: true)
             }
+            
+            // Deletes image cache.
+            SDImageCache.shared.removeImage(forKey: self.imageReference.description)
+            
+            self.dismiss(animated: true)
         })
         
         present(alert, animated: true)
