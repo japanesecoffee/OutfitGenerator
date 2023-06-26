@@ -22,6 +22,10 @@ class ClosetViewController: UIViewController {
     private var bottomsImageReferencesArray = [String]()
     private var shoesImageReferencesArray = [String]()
     
+    private var topsDatabaseReferencesArray = [String]()
+    private var bottomsDatabaseReferencesArray = [String]()
+    private var shoesDatabaseReferencesArray = [String]()
+    
     private var topsDatabaseHandle: UInt!
     private var bottomsDatabaseHandle: UInt!
     private var shoesDatabaseHandle: UInt!
@@ -118,15 +122,20 @@ class ClosetViewController: UIViewController {
     // Clears out data source arrays and adds listeners to the tops, bottoms, and shoes nodes.
     // The listener triggers once when attached and again every time the data changes.
     private func addDatabaseListeners() {
-        topsImageReferencesArray = []
-        bottomsImageReferencesArray = []
-        shoesImageReferencesArray = []
-        
-        topsDatabaseHandle = topsDatabaseReference.observe(DataEventType.childAdded) { (snapshot) in
-            guard let value = snapshot.value as? String else {
-                return
+        topsDatabaseHandle = topsDatabaseReference.observe(.value) { (snapshot) in
+            self.topsImageReferencesArray = []
+            self.topsDatabaseReferencesArray = []
+            
+            if snapshot.exists() {
+                for childNode in snapshot.children.allObjects as! [DataSnapshot] {
+                    // If the value is not nil, the key is not nil.
+                    guard let value = childNode.value as? String else {
+                        return
+                    }
+                    self.topsImageReferencesArray.append(value)
+                    self.topsDatabaseReferencesArray.append(childNode.key)
+                }
             }
-            self.topsImageReferencesArray.append(value)
             
             // Calling reloadData() instead of reloadSections(_:) to prevent invalid batch updates.
             // Firebase Database callbacks are invoked on the main thread, so
@@ -134,20 +143,36 @@ class ClosetViewController: UIViewController {
             self.collectionView.reloadData()
         }
         
-        bottomsDatabaseHandle = bottomsDatabaseReference.observe(DataEventType.childAdded) { (snapshot) in
-            guard let value = snapshot.value as? String else {
-                return
+        bottomsDatabaseHandle = bottomsDatabaseReference.observe(.value) { (snapshot) in
+            self.bottomsImageReferencesArray = []
+            self.bottomsDatabaseReferencesArray = []
+            
+            if snapshot.exists() {
+                for childNode in snapshot.children.allObjects as! [DataSnapshot] {
+                    guard let value = childNode.value as? String else {
+                        return
+                    }
+                    self.bottomsImageReferencesArray.append(value)
+                    self.bottomsDatabaseReferencesArray.append(childNode.key)
+                }
             }
-            self.bottomsImageReferencesArray.append(value)
             
             self.collectionView.reloadData()
         }
         
-        shoesDatabaseHandle = shoesDatabaseReference.observe(DataEventType.childAdded) { (snapshot) in
-            guard let value = snapshot.value as? String else {
-                return
+        shoesDatabaseHandle = shoesDatabaseReference.observe(.value) { (snapshot) in
+            self.shoesImageReferencesArray = []
+            self.shoesDatabaseReferencesArray = []
+            
+            if snapshot.exists() {
+                for childNode in snapshot.children.allObjects as! [DataSnapshot] {
+                    guard let value = childNode.value as? String else {
+                        return
+                    }
+                    self.shoesImageReferencesArray.append(value)
+                    self.shoesDatabaseReferencesArray.append(childNode.key)
+                }
             }
-            self.shoesImageReferencesArray.append(value)
             
             self.collectionView.reloadData()
         }
@@ -276,13 +301,17 @@ extension ClosetViewController:
         collectionView.deselectItem(at: indexPath, animated: true)
         
         let imageReference: StorageReference
+        let databaseReference: DatabaseReference
         
         if indexPath.section == 0 {
             imageReference = storageReference.child(topsImageReferencesArray[indexPath.row])
+            databaseReference = topsDatabaseReference.child(topsDatabaseReferencesArray[indexPath.row])
         } else if indexPath.section == 1 {
             imageReference = storageReference.child(bottomsImageReferencesArray[indexPath.row])
+            databaseReference = bottomsDatabaseReference.child(bottomsDatabaseReferencesArray[indexPath.row])
         } else {
             imageReference = storageReference.child(shoesImageReferencesArray[indexPath.row])
+            databaseReference = shoesDatabaseReference.child(shoesDatabaseReferencesArray[indexPath.row])
         }
         
         let placeholderImage = UIImage(
@@ -298,6 +327,7 @@ extension ClosetViewController:
             placeholderImage: placeholderImage
         )
         clothingItemViewController.imageReference = imageReference
+        clothingItemViewController.databaseReference = databaseReference
         
         let navigationController = UINavigationController(
             rootViewController: clothingItemViewController

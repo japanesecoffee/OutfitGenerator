@@ -5,6 +5,7 @@
 //  Created by Jason on 5/7/23.
 //
 
+import FirebaseDatabase
 import FirebaseStorage
 import SDWebImage
 import UIKit
@@ -14,6 +15,8 @@ class ClothingItemViewController: UIViewController {
     var clothingItemView = ClothingItem()
 
     var imageReference = Storage.storage().reference()
+    
+    var databaseReference: DatabaseReference!
     
     private let placeholderImage = UIImage(
         systemName: "photo"
@@ -104,6 +107,40 @@ extension ClothingItemViewController: UIImagePickerControllerDelegate, UINavigat
 // MARK: - Clothing item protocol methods
 
 extension ClothingItemViewController: ClothingItemDelegate {
+    func deleteItem() {
+        let alert = UIAlertController(
+            title: "Delete Item",
+            message: "This action cannot be undone.",
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            alert.dismiss(animated: true)
+        })
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            // Deletes reference from Firebase Realtime Database.
+            self.databaseReference.removeValue { (error, databaseReference) in
+                if let error = error {
+                    print("There was an error deleting from Realtime Database: \(error)")
+                }
+            }
+            
+            // Deletes image from Firebase Cloud Storage.
+            self.imageReference.delete { (error) in
+                if let error = error {
+                    print("There was an error deleting from Cloud Storage: \(error)")
+                }
+            }
+            
+            // Deletes image cache.
+            SDImageCache.shared.removeImage(forKey: self.imageReference.description)
+            
+            self.dismiss(animated: true)
+        })
+        
+        present(alert, animated: true)
+    }
+    
     func dismiss() {
         dismiss(animated: true)
     }

@@ -39,6 +39,10 @@ class ClothingItem: UIView {
         
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         
+        let fixedSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        fixedSpace.width = 20.0
+        
+        toolbarItemsArray.append(fixedSpace)
         toolbarItemsArray.append(
             UIBarButtonItem(
                 title: "Retake",
@@ -47,6 +51,21 @@ class ClothingItem: UIView {
                 action: #selector(retakeButtonTapped)
             )
         )
+        toolbarItemsArray.append(
+            UIBarButtonItem(
+                barButtonSystemItem: .flexibleSpace,
+                target: nil, action: nil
+            )
+        )
+        toolbarItemsArray.append(
+            UIBarButtonItem(
+                title: "Delete",
+                style: .plain,
+                target: self,
+                action: #selector(deleteButtonTapped)
+            )
+        )
+        toolbarItemsArray.append(fixedSpace)
     }
     
     required init?(coder: NSCoder) {
@@ -73,9 +92,15 @@ class ClothingItem: UIView {
     @objc private func retakeButtonTapped() {
         delegate?.launchCamera()
     }
+    
+    @objc private func deleteButtonTapped() {
+        delegate?.deleteItem()
+    }
 }
 
 protocol ClothingItemDelegate {
+    func deleteItem()
+    
     func dismiss()
     
     func launchCamera()
