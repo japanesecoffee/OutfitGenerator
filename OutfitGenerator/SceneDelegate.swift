@@ -20,8 +20,34 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = ClosetViewController()
+        window?.rootViewController = createTabBarController()
         window?.makeKeyAndVisible()
+    }
+    
+    func createClosetViewController() -> ClosetViewController {
+        let closetViewController = ClosetViewController()
+        closetViewController.tabBarItem = UITabBarItem(title: "Closet", image: UIImage(systemName: "cabinet"), selectedImage: nil)
+        
+        return closetViewController
+    }
+    
+    func createGeneratorViewController() -> GeneratorViewController {
+        let generatorViewController = GeneratorViewController()
+        generatorViewController.tabBarItem = UITabBarItem(title: "Generator", image: UIImage(systemName: "wand.and.stars"), selectedImage: nil)
+        
+        return generatorViewController
+    }
+    
+    func createTabBarController() -> UITabBarController {
+        let tabBarController = UITabBarController()
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.configureWithDefaultBackground()
+        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+        UITabBar.appearance().tintColor = .systemGreen
+        tabBarController.viewControllers = [createClosetViewController(), createGeneratorViewController()]
+        tabBarController.selectedIndex = 1
+        
+        return tabBarController
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
