@@ -33,12 +33,15 @@ class GeneratorView: UIView {
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
+        topsImageView.contentMode = .scaleAspectFit
         stackView.addArrangedSubview(topsImageView)
         topsImageView.translatesAutoresizingMaskIntoConstraints = false
         
+        bottomsImageView.contentMode = .scaleAspectFit
         stackView.addArrangedSubview(bottomsImageView)
         bottomsImageView.translatesAutoresizingMaskIntoConstraints = false
         
+        shoesImageView.contentMode = .scaleAspectFit
         stackView.addArrangedSubview(shoesImageView)
         shoesImageView.translatesAutoresizingMaskIntoConstraints = false
     }
