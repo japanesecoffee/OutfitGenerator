@@ -11,6 +11,7 @@
 		960AF1B32A4E6ACD00377AAF /* GeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960AF1B22A4E6ACD00377AAF /* GeneratorViewController.swift */; };
 		961A0B9029E2632D005991B9 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961A0B8F29E2632D005991B9 /* Queue.swift */; };
 		9621ABC02995E69D00B77A6B /* ClothingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9621ABBF2995E69D00B77A6B /* ClothingCollectionViewCell.swift */; };
+		962CD9932A63A48100D92ECA /* OutfitGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962CD9922A63A48100D92ECA /* OutfitGenerator.swift */; };
 		967328E628FA5C2400F7D909 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967328E528FA5C2400F7D909 /* AppDelegate.swift */; };
 		967328E828FA5C2400F7D909 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967328E728FA5C2400F7D909 /* SceneDelegate.swift */; };
 		967328EA28FA5C2400F7D909 /* ClosetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967328E928FA5C2400F7D909 /* ClosetViewController.swift */; };
@@ -48,6 +49,7 @@
 		960AF1B22A4E6ACD00377AAF /* GeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorViewController.swift; sourceTree = "<group>"; };
 		961A0B8F29E2632D005991B9 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		9621ABBF2995E69D00B77A6B /* ClothingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingCollectionViewCell.swift; sourceTree = "<group>"; };
+		962CD9922A63A48100D92ECA /* OutfitGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitGenerator.swift; sourceTree = "<group>"; };
 		967328E228FA5C2400F7D909 /* OutfitGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutfitGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		967328E528FA5C2400F7D909 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		967328E728FA5C2400F7D909 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			children = (
 				9694FA74295F82230016D367 /* BackgroundRemoval.swift */,
 				96A93A1C2A01F46500A3D374 /* ImageScale.swift */,
+				962CD9922A63A48100D92ECA /* OutfitGenerator.swift */,
 				961A0B8F29E2632D005991B9 /* Queue.swift */,
 			);
 			path = Models;
@@ -363,6 +366,7 @@
 				967328EA28FA5C2400F7D909 /* ClosetViewController.swift in Sources */,
 				967328E628FA5C2400F7D909 /* AppDelegate.swift in Sources */,
 				9621ABC02995E69D00B77A6B /* ClothingCollectionViewCell.swift in Sources */,
+				962CD9932A63A48100D92ECA /* OutfitGenerator.swift in Sources */,
 				967328E828FA5C2400F7D909 /* SceneDelegate.swift in Sources */,
 				96A93A1D2A01F46500A3D374 /* ImageScale.swift in Sources */,
 				9694FA75295F82230016D367 /* BackgroundRemoval.swift in Sources */,
