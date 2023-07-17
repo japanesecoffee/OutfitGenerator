@@ -13,6 +13,8 @@ class GeneratorView: UIView {
     var bottomsImageView = UIImageView()
     var shoesImageView = UIImageView()
     
+    var delegate: GeneratorViewDelegate?
+    
     let leftSideButton = UIButton(type: .system)
     let rightSideButton = UIButton(type: .system)
     
@@ -59,11 +61,13 @@ class GeneratorView: UIView {
 
         horizontalStackView.addArrangedSubview(leftSideButton)
         leftSideButton.translatesAutoresizingMaskIntoConstraints = false
+        leftSideButton.addTarget(self, action: #selector(sideButtonTapped), for: .touchUpInside)
 
         horizontalStackView.addArrangedSubview(verticalStackView)
 
         horizontalStackView.addArrangedSubview(rightSideButton)
         rightSideButton.translatesAutoresizingMaskIntoConstraints = false
+        rightSideButton.addTarget(self, action: #selector(sideButtonTapped), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -94,4 +98,12 @@ class GeneratorView: UIView {
         rightSideButton.heightAnchor.constraint(equalToConstant: height).isActive = true
         rightSideButton.widthAnchor.constraint(equalToConstant: width / 2).isActive = true
     }
+    
+    @objc func sideButtonTapped() {
+        delegate?.generateOutfit()
+    }
+}
+
+protocol GeneratorViewDelegate {
+    func generateOutfit()
 }

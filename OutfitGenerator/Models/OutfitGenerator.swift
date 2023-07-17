@@ -15,9 +15,9 @@ class OutfitGenerator {
     private var shoesImageReferencesArray = [String]()
     
     func getClothingItems() {
-        var topsDatabaseReference: DatabaseReference!
-        var bottomsDatabaseReference: DatabaseReference!
-        var shoesDatabaseReference: DatabaseReference!
+        let topsDatabaseReference = Database.database().reference().child("tops")
+        let bottomsDatabaseReference = Database.database().reference().child("bottoms")
+        let shoesDatabaseReference = Database.database().reference().child("shoes")
         
         topsDatabaseReference.observeSingleEvent(of: .value) { (snapshot) in
             self.topsImageReferencesArray = []
