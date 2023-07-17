@@ -13,37 +13,57 @@ class GeneratorView: UIView {
     var bottomsImageView = UIImageView()
     var shoesImageView = UIImageView()
     
+    let leftSideButton = UIButton(type: .system)
+    let rightSideButton = UIButton(type: .system)
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.backgroundColor = .white
         
-        let stackView = UIStackView()
-        stackView.clipsToBounds = true
-        stackView.axis = .vertical
-        stackView.distribution = .equalSpacing
-        stackView.alignment = .center
-        stackView.isLayoutMarginsRelativeArrangement = true
-        addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+        let verticalStackView = UIStackView()
+        verticalStackView.clipsToBounds = true
+        verticalStackView.axis = .vertical
+        verticalStackView.distribution = .equalSpacing
+        verticalStackView.alignment = .center
+        verticalStackView.isLayoutMarginsRelativeArrangement = true
+        addSubview(verticalStackView)
+        verticalStackView.translatesAutoresizingMaskIntoConstraints = false
         
         topsImageView.contentMode = .scaleAspectFit
-        stackView.addArrangedSubview(topsImageView)
+        verticalStackView.addArrangedSubview(topsImageView)
         topsImageView.translatesAutoresizingMaskIntoConstraints = false
         
         bottomsImageView.contentMode = .scaleAspectFit
-        stackView.addArrangedSubview(bottomsImageView)
+        verticalStackView.addArrangedSubview(bottomsImageView)
         bottomsImageView.translatesAutoresizingMaskIntoConstraints = false
         
         shoesImageView.contentMode = .scaleAspectFit
-        stackView.addArrangedSubview(shoesImageView)
+        verticalStackView.addArrangedSubview(shoesImageView)
         shoesImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let horizontalStackView = UIStackView()
+        horizontalStackView.clipsToBounds = true
+        horizontalStackView.axis = .horizontal
+        horizontalStackView.distribution = .equalSpacing
+        horizontalStackView.alignment = .center
+        horizontalStackView.isLayoutMarginsRelativeArrangement = true
+        addSubview(horizontalStackView)
+        horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            horizontalStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            horizontalStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            horizontalStackView.topAnchor.constraint(equalTo: topAnchor),
+            horizontalStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+
+        horizontalStackView.addArrangedSubview(leftSideButton)
+        leftSideButton.translatesAutoresizingMaskIntoConstraints = false
+
+        horizontalStackView.addArrangedSubview(verticalStackView)
+
+        horizontalStackView.addArrangedSubview(rightSideButton)
+        rightSideButton.translatesAutoresizingMaskIntoConstraints = false
     }
     
     required init?(coder: NSCoder) {
@@ -57,6 +77,7 @@ class GeneratorView: UIView {
         let tabBarController = self.window?.rootViewController as! UITabBarController
         let tabBarHeight = tabBarController.tabBar.frame.size.height
         let height = self.frame.size.height - statusBarHeight! - tabBarHeight
+        let width = self.frame.size.width - (height / 3)
         
         topsImageView.heightAnchor.constraint(equalToConstant: height / 3).isActive = true
         topsImageView.widthAnchor.constraint(equalToConstant: height / 3).isActive = true
@@ -66,5 +87,11 @@ class GeneratorView: UIView {
         
         shoesImageView.heightAnchor.constraint(equalToConstant: height / 3).isActive = true
         shoesImageView.widthAnchor.constraint(equalToConstant: height / 3).isActive = true
+        
+        leftSideButton.heightAnchor.constraint(equalToConstant: height).isActive = true
+        leftSideButton.widthAnchor.constraint(equalToConstant: width / 2).isActive = true
+        
+        rightSideButton.heightAnchor.constraint(equalToConstant: height).isActive = true
+        rightSideButton.widthAnchor.constraint(equalToConstant: width / 2).isActive = true
     }
 }
