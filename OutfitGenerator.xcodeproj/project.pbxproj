@@ -19,6 +19,7 @@
 		967328F228FA5C2600F7D909 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 967328F028FA5C2600F7D909 /* LaunchScreen.storyboard */; };
 		967ADA9428FCCB5B00942FF1 /* BackgroundRemovalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967ADA9328FCCB5B00942FF1 /* BackgroundRemovalTests.swift */; };
 		967CC2062A5FA18200DA7583 /* GeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967CC2052A5FA18200DA7583 /* GeneratorView.swift */; };
+		968BF3BC2A709D1E00BC33F3 /* ImageViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968BF3BB2A709D1E00BC33F3 /* ImageViewAlpha.swift */; };
 		9694FA75295F82230016D367 /* BackgroundRemoval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9694FA74295F82230016D367 /* BackgroundRemoval.swift */; };
 		969BDB452A0883A200D8C141 /* ClothingItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969BDB442A0883A200D8C141 /* ClothingItemViewController.swift */; };
 		969BDB472A0886E600D8C141 /* ClothingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969BDB462A0886E600D8C141 /* ClothingItem.swift */; };
@@ -60,6 +61,7 @@
 		967ADA9128FCCB5B00942FF1 /* OutfitGeneratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OutfitGeneratorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		967ADA9328FCCB5B00942FF1 /* BackgroundRemovalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundRemovalTests.swift; sourceTree = "<group>"; };
 		967CC2052A5FA18200DA7583 /* GeneratorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorView.swift; sourceTree = "<group>"; };
+		968BF3BB2A709D1E00BC33F3 /* ImageViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewAlpha.swift; sourceTree = "<group>"; };
 		9694FA74295F82230016D367 /* BackgroundRemoval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundRemoval.swift; sourceTree = "<group>"; };
 		969BDB442A0883A200D8C141 /* ClothingItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingItemViewController.swift; sourceTree = "<group>"; };
 		969BDB462A0886E600D8C141 /* ClothingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingItem.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			children = (
 				9694FA74295F82230016D367 /* BackgroundRemoval.swift */,
 				96A93A1C2A01F46500A3D374 /* ImageScale.swift */,
+				968BF3BB2A709D1E00BC33F3 /* ImageViewAlpha.swift */,
 				962CD9922A63A48100D92ECA /* OutfitGenerator.swift */,
 				961A0B8F29E2632D005991B9 /* Queue.swift */,
 			);
@@ -361,6 +364,7 @@
 				967CC2062A5FA18200DA7583 /* GeneratorView.swift in Sources */,
 				969BDB472A0886E600D8C141 /* ClothingItem.swift in Sources */,
 				96E3447229A5BA50000131B1 /* ClothingCollectionReusableView.swift in Sources */,
+				968BF3BC2A709D1E00BC33F3 /* ImageViewAlpha.swift in Sources */,
 				969BDB452A0883A200D8C141 /* ClothingItemViewController.swift in Sources */,
 				961A0B9029E2632D005991B9 /* Queue.swift in Sources */,
 				967328EA28FA5C2400F7D909 /* ClosetViewController.swift in Sources */,
