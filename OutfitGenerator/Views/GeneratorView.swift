@@ -33,16 +33,34 @@ class GeneratorView: UIView {
         verticalStackView.translatesAutoresizingMaskIntoConstraints = false
         
         topsImageView.contentMode = .scaleAspectFit
+        topsImageView.tag = 0
         verticalStackView.addArrangedSubview(topsImageView)
         topsImageView.translatesAutoresizingMaskIntoConstraints = false
+        topsImageView.isUserInteractionEnabled = true
+        topsImageView.addGestureRecognizer(UITapGestureRecognizer(
+            target: self,
+            action: #selector(imageViewTapped)
+        ))
         
         bottomsImageView.contentMode = .scaleAspectFit
+        bottomsImageView.tag = 1
         verticalStackView.addArrangedSubview(bottomsImageView)
         bottomsImageView.translatesAutoresizingMaskIntoConstraints = false
+        bottomsImageView.isUserInteractionEnabled = true
+        bottomsImageView.addGestureRecognizer(UITapGestureRecognizer(
+            target: self,
+            action: #selector(imageViewTapped)
+        ))
         
         shoesImageView.contentMode = .scaleAspectFit
+        shoesImageView.tag = 2
         verticalStackView.addArrangedSubview(shoesImageView)
         shoesImageView.translatesAutoresizingMaskIntoConstraints = false
+        shoesImageView.isUserInteractionEnabled = true
+        shoesImageView.addGestureRecognizer(UITapGestureRecognizer(
+            target: self,
+            action: #selector(imageViewTapped)
+        ))
         
         let horizontalStackView = UIStackView()
         horizontalStackView.clipsToBounds = true
@@ -102,8 +120,14 @@ class GeneratorView: UIView {
     @objc func sideButtonTapped() {
         delegate?.generateOutfit()
     }
+    
+    @objc func imageViewTapped(sender: UITapGestureRecognizer) {
+        delegate?.changeItem(sender: sender)
+    }
 }
 
 protocol GeneratorViewDelegate {
+    func changeItem(sender: UITapGestureRecognizer)
+    
     func generateOutfit()
 }

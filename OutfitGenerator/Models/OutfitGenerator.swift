@@ -66,4 +66,18 @@ class OutfitGenerator {
         
         return ["top": top, "bottom": bottom, "shoes": shoes]
     }
+    
+    func change(forSection: Int) -> String? {
+        let item: String?
+        
+        if forSection == 0 {
+            item = topsImageReferencesArray.randomElement()
+        } else if forSection == 1 {
+            item = bottomsImageReferencesArray.randomElement()
+        } else {
+            item = shoesImageReferencesArray.randomElement()
+        }
+        
+        return item
+    }
 }

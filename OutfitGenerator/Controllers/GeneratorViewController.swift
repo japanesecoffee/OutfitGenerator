@@ -117,4 +117,23 @@ extension GeneratorViewController: GeneratorViewDelegate {
         generatorView.bottomsImageView.sd_setImage(with: storageReference.child(bottom))
         generatorView.shoesImageView.sd_setImage(with: storageReference.child(shoes))
     }
+    
+    func changeItem(sender: UITapGestureRecognizer) {
+        guard let imageView = sender.view as? UIImageView else {
+            print("Could not get image view for tap gesture recognizer.")
+            return
+        }
+        
+        let touchPoint = sender.location(in: imageView)
+        let alphaValue = imageView.alpha(from: touchPoint)
+        
+        if alphaValue > 0 {            
+            guard let item = outfitGenerator.change(forSection: imageView.tag) else {
+                print("No items found.")
+                return
+            }
+            
+            imageView.sd_setImage(with: storageReference.child(item))
+        }
+    }
 }
