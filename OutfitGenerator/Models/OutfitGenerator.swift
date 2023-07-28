@@ -10,15 +10,20 @@ import Foundation
 
 class OutfitGenerator {
     
-    private var topsImageReferencesArray = [String]()
-    private var bottomsImageReferencesArray = [String]()
-    private var shoesImageReferencesArray = [String]()
+    typealias FinishedGettingItems = () -> Void
     
-    func getClothingItems() {
+    var topsImageReferencesArray = [String]()
+    var bottomsImageReferencesArray = [String]()
+    var shoesImageReferencesArray = [String]()
+    
+    func getClothingItems(completion: @escaping FinishedGettingItems) {
         let topsDatabaseReference = Database.database().reference().child("tops")
         let bottomsDatabaseReference = Database.database().reference().child("bottoms")
         let shoesDatabaseReference = Database.database().reference().child("shoes")
         
+        let group = DispatchGroup()
+        
+        group.enter()
         topsDatabaseReference.observeSingleEvent(of: .value) { (snapshot) in
             self.topsImageReferencesArray = []
             
@@ -30,8 +35,10 @@ class OutfitGenerator {
                     self.topsImageReferencesArray.append(value)
                 }
             }
+            group.leave()
         }
         
+        group.enter()
         bottomsDatabaseReference.observeSingleEvent(of: .value) { (snapshot) in
             self.bottomsImageReferencesArray = []
             
@@ -43,8 +50,10 @@ class OutfitGenerator {
                     self.bottomsImageReferencesArray.append(value)
                 }
             }
+            group.leave()
         }
         
+        group.enter()
         shoesDatabaseReference.observeSingleEvent(of: .value) { (snapshot) in
             self.shoesImageReferencesArray = []
             
@@ -56,6 +65,11 @@ class OutfitGenerator {
                     self.shoesImageReferencesArray.append(value)
                 }
             }
+            group.leave()
+        }
+        
+        group.notify(queue: DispatchQueue.main) {
+            completion()
         }
     }
     

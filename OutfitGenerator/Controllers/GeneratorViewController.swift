@@ -34,14 +34,14 @@ class GeneratorViewController: UIViewController {
         topsDatabaseReference = Database.database().reference().child("tops")
         bottomsDatabaseReference = Database.database().reference().child("bottoms")
         shoesDatabaseReference = Database.database().reference().child("shoes")
-        
-        outfitGenerator.getClothingItems()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        loadOutfit()
+        outfitGenerator.getClothingItems {
+            self.loadOutfit()
+        }
     }
     
     // MARK: - Outfit loading methods
@@ -54,41 +54,20 @@ class GeneratorViewController: UIViewController {
             renderingMode: .alwaysOriginal
         )
         
-        topsDatabaseReference.observeSingleEvent(of: .childAdded) { (snapshot) in
-            if snapshot.exists() {
-                guard let value = snapshot.value as? String else {
-                    return
-                }
-                self.generatorView.topsImageView.sd_setImage(
-                    with: self.storageReference.child(value),
-                    placeholderImage: placeholderImage
-                )
-            }
-        }
+        self.generatorView.topsImageView.sd_setImage(
+            with: self.storageReference.child(outfitGenerator.topsImageReferencesArray[0]),
+            placeholderImage: placeholderImage
+        )
         
-        bottomsDatabaseReference.observeSingleEvent(of: .childAdded) { (snapshot) in
-            if snapshot.exists() {
-                guard let value = snapshot.value as? String else {
-                    return
-                }
-                self.generatorView.bottomsImageView.sd_setImage(
-                    with: self.storageReference.child(value),
-                    placeholderImage: placeholderImage
-                )
-            }
-        }
+        self.generatorView.bottomsImageView.sd_setImage(
+            with: self.storageReference.child(outfitGenerator.bottomsImageReferencesArray[0]),
+            placeholderImage: placeholderImage
+        )
         
-        shoesDatabaseReference.observeSingleEvent(of: .childAdded) { (snapshot) in
-            if snapshot.exists() {
-                guard let value = snapshot.value as? String else {
-                    return
-                }
-                self.generatorView.shoesImageView.sd_setImage(
-                    with: self.storageReference.child(value),
-                    placeholderImage: placeholderImage
-                )
-            }
-        }
+        self.generatorView.shoesImageView.sd_setImage(
+            with: self.storageReference.child(outfitGenerator.shoesImageReferencesArray[0]),
+            placeholderImage: placeholderImage
+        )
     }
 }
 
