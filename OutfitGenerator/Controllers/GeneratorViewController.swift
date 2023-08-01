@@ -70,20 +70,59 @@ class GeneratorViewController: UIViewController {
                 renderingMode: .alwaysOriginal
             )
             
-            self.generatorView.topsImageView.sd_setImage(
-                with: self.storageReference.child(outfitGenerator.topsImageReferencesArray[0]),
-                placeholderImage: placeholderImage
-            )
+            if outfitGenerator.topsImageReferencesArray.isEmpty {
+                let label = UILabel(
+                    frame: CGRect(
+                        x: 0,
+                        y: (generatorView.topsImageView.frame.height - 50) / 2,
+                        width: 200,
+                        height: 50
+                    )
+                )
+                label.text = "No tops in closet."
+                generatorView.topsImageView.addSubview(label)
+            } else {
+                generatorView.topsImageView.sd_setImage(
+                    with: storageReference.child(outfitGenerator.topsImageReferencesArray[0]),
+                    placeholderImage: placeholderImage
+                )
+            }
             
-            self.generatorView.bottomsImageView.sd_setImage(
-                with: self.storageReference.child(outfitGenerator.bottomsImageReferencesArray[0]),
-                placeholderImage: placeholderImage
-            )
+            if outfitGenerator.bottomsImageReferencesArray.isEmpty {
+                let label = UILabel(
+                    frame: CGRect(
+                        x: 0,
+                        y: (generatorView.bottomsImageView.frame.height - 50) / 2,
+                        width: 200,
+                        height: 50
+                    )
+                )
+                label.text = "No bottoms in closet."
+                generatorView.bottomsImageView.addSubview(label)
+            } else {
+                generatorView.bottomsImageView.sd_setImage(
+                    with: storageReference.child(outfitGenerator.bottomsImageReferencesArray[0]),
+                    placeholderImage: placeholderImage
+                )
+            }
             
-            self.generatorView.shoesImageView.sd_setImage(
-                with: self.storageReference.child(outfitGenerator.shoesImageReferencesArray[0]),
-                placeholderImage: placeholderImage
-            )
+            if outfitGenerator.shoesImageReferencesArray.isEmpty {
+                let label = UILabel(
+                    frame: CGRect(
+                        x: 0,
+                        y: (generatorView.shoesImageView.frame.height - 50) / 2,
+                        width: 200,
+                        height: 50
+                    )
+                )
+                label.text = "No shoes in closet."
+                generatorView.shoesImageView.addSubview(label)
+            } else {
+                generatorView.shoesImageView.sd_setImage(
+                    with: storageReference.child(outfitGenerator.shoesImageReferencesArray[0]),
+                    placeholderImage: placeholderImage
+                )
+            }
         }
     }
 }
@@ -100,25 +139,18 @@ extension GeneratorViewController: GeneratorViewDelegate {
         }
         
         let outfit = outfitGenerator.generate()
-        
-        guard let top = outfit["top"] as? String else {
-            print("Top not found.")
-            return
+
+        if let top = outfit["top"] as? String {
+            generatorView.topsImageView.sd_setImage(with: storageReference.child(top))
         }
-        
-        guard let bottom = outfit["bottom"] as? String else {
-            print("Bottom not found.")
-            return
+
+        if let bottom = outfit["bottom"] as? String {
+            generatorView.bottomsImageView.sd_setImage(with: storageReference.child(bottom))
         }
-        
-        guard let shoes = outfit["shoes"] as? String else {
-            print("Shoes not found.")
-            return
+
+        if let shoes = outfit["shoes"] as? String {
+            generatorView.shoesImageView.sd_setImage(with: storageReference.child(shoes))
         }
-        
-        generatorView.topsImageView.sd_setImage(with: storageReference.child(top))
-        generatorView.bottomsImageView.sd_setImage(with: storageReference.child(bottom))
-        generatorView.shoesImageView.sd_setImage(with: storageReference.child(shoes))
     }
     
     func changeItem(sender: UITapGestureRecognizer) {
@@ -134,16 +166,13 @@ extension GeneratorViewController: GeneratorViewDelegate {
             return
         }
         
-        let touchPoint = sender.location(in: imageView)
-        let alphaValue = imageView.alpha(from: touchPoint)
-        
-        if alphaValue > 0 {            
-            guard let item = outfitGenerator.change(forSection: imageView.tag) else {
-                print("No items found.")
-                return
-            }
+        if let item = outfitGenerator.change(forSection: imageView.tag) {
+            let touchPoint = sender.location(in: imageView)
+            let alphaValue = imageView.alpha(from: touchPoint)
             
-            imageView.sd_setImage(with: storageReference.child(item))
+            if alphaValue > 0 {
+                imageView.sd_setImage(with: storageReference.child(item))
+            }
         }
     }
 }
