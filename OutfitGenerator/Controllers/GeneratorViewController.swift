@@ -47,27 +47,44 @@ class GeneratorViewController: UIViewController {
     // MARK: - Outfit loading methods
     
     private func loadOutfit() {
-        let placeholderImage = UIImage(
-            systemName: "photo"
-        )?.withTintColor(
-            .systemGray6,
-            renderingMode: .alwaysOriginal
-        )
-        
-        self.generatorView.topsImageView.sd_setImage(
-            with: self.storageReference.child(outfitGenerator.topsImageReferencesArray[0]),
-            placeholderImage: placeholderImage
-        )
-        
-        self.generatorView.bottomsImageView.sd_setImage(
-            with: self.storageReference.child(outfitGenerator.bottomsImageReferencesArray[0]),
-            placeholderImage: placeholderImage
-        )
-        
-        self.generatorView.shoesImageView.sd_setImage(
-            with: self.storageReference.child(outfitGenerator.shoesImageReferencesArray[0]),
-            placeholderImage: placeholderImage
-        )
+        if outfitGenerator.topsImageReferencesArray.isEmpty &&
+            outfitGenerator.bottomsImageReferencesArray.isEmpty &&
+            outfitGenerator.shoesImageReferencesArray.isEmpty
+        {
+            let label = UILabel(
+                frame: CGRect(
+                    x: 0,
+                    y: (generatorView.bottomsImageView.frame.height - 50) / 2,
+                    width: 200,
+                    height: 50
+                )
+            )
+            label.text = "Go to the closet tab to start adding items."
+            label.numberOfLines = 0
+            generatorView.bottomsImageView.addSubview(label)
+        } else {
+            let placeholderImage = UIImage(
+                systemName: "photo"
+            )?.withTintColor(
+                .systemGray6,
+                renderingMode: .alwaysOriginal
+            )
+            
+            self.generatorView.topsImageView.sd_setImage(
+                with: self.storageReference.child(outfitGenerator.topsImageReferencesArray[0]),
+                placeholderImage: placeholderImage
+            )
+            
+            self.generatorView.bottomsImageView.sd_setImage(
+                with: self.storageReference.child(outfitGenerator.bottomsImageReferencesArray[0]),
+                placeholderImage: placeholderImage
+            )
+            
+            self.generatorView.shoesImageView.sd_setImage(
+                with: self.storageReference.child(outfitGenerator.shoesImageReferencesArray[0]),
+                placeholderImage: placeholderImage
+            )
+        }
     }
 }
 
@@ -75,6 +92,13 @@ class GeneratorViewController: UIViewController {
 
 extension GeneratorViewController: GeneratorViewDelegate {
     func generateOutfit() {
+        if outfitGenerator.topsImageReferencesArray.isEmpty &&
+            outfitGenerator.bottomsImageReferencesArray.isEmpty &&
+            outfitGenerator.shoesImageReferencesArray.isEmpty
+        {
+            return
+        }
+        
         let outfit = outfitGenerator.generate()
         
         guard let top = outfit["top"] as? String else {
@@ -98,6 +122,13 @@ extension GeneratorViewController: GeneratorViewDelegate {
     }
     
     func changeItem(sender: UITapGestureRecognizer) {
+        if outfitGenerator.topsImageReferencesArray.isEmpty &&
+            outfitGenerator.bottomsImageReferencesArray.isEmpty &&
+            outfitGenerator.shoesImageReferencesArray.isEmpty
+        {
+            return
+        }
+        
         guard let imageView = sender.view as? UIImageView else {
             print("Could not get image view for tap gesture recognizer.")
             return
