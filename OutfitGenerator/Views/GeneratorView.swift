@@ -21,7 +21,7 @@ class GeneratorView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .white
+        self.backgroundColor = .systemBackground
         
         let verticalStackView = UIStackView()
         verticalStackView.clipsToBounds = true
