@@ -47,6 +47,10 @@ class GeneratorViewController: UIViewController {
     // MARK: - Outfit loading methods
     
     private func loadOutfit() {
+        outfitGenerator.currentOutfit["top"] = nil
+        outfitGenerator.currentOutfit["bottom"] = nil
+        outfitGenerator.currentOutfit["shoes"] = nil
+        
         if outfitGenerator.topsImageReferencesArray.isEmpty &&
             outfitGenerator.bottomsImageReferencesArray.isEmpty &&
             outfitGenerator.shoesImageReferencesArray.isEmpty
@@ -86,6 +90,8 @@ class GeneratorViewController: UIViewController {
                     with: storageReference.child(outfitGenerator.topsImageReferencesArray[0]),
                     placeholderImage: placeholderImage
                 )
+                
+                outfitGenerator.currentOutfit["top"] = outfitGenerator.topsImageReferencesArray[0]
             }
             
             if outfitGenerator.bottomsImageReferencesArray.isEmpty {
@@ -104,6 +110,8 @@ class GeneratorViewController: UIViewController {
                     with: storageReference.child(outfitGenerator.bottomsImageReferencesArray[0]),
                     placeholderImage: placeholderImage
                 )
+                
+                outfitGenerator.currentOutfit["bottom"] = outfitGenerator.bottomsImageReferencesArray[0]
             }
             
             if outfitGenerator.shoesImageReferencesArray.isEmpty {
@@ -122,6 +130,8 @@ class GeneratorViewController: UIViewController {
                     with: storageReference.child(outfitGenerator.shoesImageReferencesArray[0]),
                     placeholderImage: placeholderImage
                 )
+                
+                outfitGenerator.currentOutfit["shoes"] = outfitGenerator.shoesImageReferencesArray[0]
             }
         }
     }

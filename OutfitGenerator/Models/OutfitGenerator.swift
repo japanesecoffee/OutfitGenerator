@@ -16,6 +16,8 @@ class OutfitGenerator {
     var bottomsImageReferencesArray = [String]()
     var shoesImageReferencesArray = [String]()
     
+    var currentOutfit: [String: String?] = ["top": nil, "bottom": nil, "shoes": nil]
+    
     func getClothingItems(completion: @escaping FinishedGettingItems) {
         let topsDatabaseReference = Database.database().reference().child("tops")
         let bottomsDatabaseReference = Database.database().reference().child("bottoms")
@@ -78,20 +80,65 @@ class OutfitGenerator {
         let bottom = bottomsImageReferencesArray.randomElement()
         let shoes = shoesImageReferencesArray.randomElement()
         
-        return ["top": top, "bottom": bottom, "shoes": shoes]
+        var outfit = ["top": top, "bottom": bottom, "shoes": shoes]
+        
+        var sections = [String: [String]]()
+        
+        if topsImageReferencesArray.count > 1 {
+            sections["top"] = topsImageReferencesArray
+        }
+        
+        if bottomsImageReferencesArray.count > 1 {
+            sections["bottom"] = bottomsImageReferencesArray
+        }
+        
+        if shoesImageReferencesArray.count > 1 {
+            sections["shoes"] = shoesImageReferencesArray
+        }
+        
+        if let section = sections.randomElement() {
+            if outfit == currentOutfit {
+                let currentItem = outfit[section.key]!!
+                outfit[section.key] = nextItem(to: currentItem, in: section.value)
+            }
+        }
+        
+        currentOutfit = outfit
+        
+        return outfit
     }
     
     func change(forSection: Int) -> String? {
-        let item: String?
+        let sectionArray: [String]
+        let section: String
         
         if forSection == 0 {
-            item = topsImageReferencesArray.randomElement()
+            sectionArray = topsImageReferencesArray
+            section = "top"
         } else if forSection == 1 {
-            item = bottomsImageReferencesArray.randomElement()
+            sectionArray = bottomsImageReferencesArray
+            section = "bottom"
         } else {
-            item = shoesImageReferencesArray.randomElement()
+            sectionArray = shoesImageReferencesArray
+            section = "shoes"
         }
         
+        var item = sectionArray.randomElement()
+        
+        if sectionArray.count > 1 {
+            if item == currentOutfit[section] {
+                item = nextItem(to: item!, in: sectionArray)
+            }
+        }
+        
+        currentOutfit[section] = item
+        
         return item
+    }
+    
+    private func nextItem(to currentItem: String, in array: [String]) -> String {
+        let currentIndex = array.firstIndex(of: currentItem)!
+        let nextIndex = array.indices.contains(currentIndex + 1) ? currentIndex + 1 : 0
+        return array[nextIndex]
     }
 }
