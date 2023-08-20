@@ -55,17 +55,7 @@ class GeneratorViewController: UIViewController {
             outfitGenerator.bottomsImageReferencesArray.isEmpty &&
             outfitGenerator.shoesImageReferencesArray.isEmpty
         {
-            let label = UILabel(
-                frame: CGRect(
-                    x: 0,
-                    y: (generatorView.bottomsImageView.frame.height - 50) / 2,
-                    width: 200,
-                    height: 50
-                )
-            )
-            label.text = "Go to the closet tab to start adding items."
-            label.numberOfLines = 0
-            generatorView.bottomsImageView.addSubview(label)
+            generatorView.startAddingItemsLabel.isHidden = false
         } else {
             let placeholderImage = UIImage(
                 systemName: "photo"
@@ -75,16 +65,7 @@ class GeneratorViewController: UIViewController {
             )
             
             if outfitGenerator.topsImageReferencesArray.isEmpty {
-                let label = UILabel(
-                    frame: CGRect(
-                        x: 0,
-                        y: (generatorView.topsImageView.frame.height - 50) / 2,
-                        width: 200,
-                        height: 50
-                    )
-                )
-                label.text = "No tops in closet."
-                generatorView.topsImageView.addSubview(label)
+                generatorView.noTopsLabel.isHidden = false
             } else {
                 generatorView.topsImageView.sd_setImage(
                     with: storageReference.child(outfitGenerator.topsImageReferencesArray[0]),
@@ -95,16 +76,7 @@ class GeneratorViewController: UIViewController {
             }
             
             if outfitGenerator.bottomsImageReferencesArray.isEmpty {
-                let label = UILabel(
-                    frame: CGRect(
-                        x: 0,
-                        y: (generatorView.bottomsImageView.frame.height - 50) / 2,
-                        width: 200,
-                        height: 50
-                    )
-                )
-                label.text = "No bottoms in closet."
-                generatorView.bottomsImageView.addSubview(label)
+                generatorView.noBottomsLabel.isHidden = false
             } else {
                 generatorView.bottomsImageView.sd_setImage(
                     with: storageReference.child(outfitGenerator.bottomsImageReferencesArray[0]),
@@ -115,16 +87,7 @@ class GeneratorViewController: UIViewController {
             }
             
             if outfitGenerator.shoesImageReferencesArray.isEmpty {
-                let label = UILabel(
-                    frame: CGRect(
-                        x: 0,
-                        y: (generatorView.shoesImageView.frame.height - 50) / 2,
-                        width: 200,
-                        height: 50
-                    )
-                )
-                label.text = "No shoes in closet."
-                generatorView.shoesImageView.addSubview(label)
+                generatorView.noShoesLabel.isHidden = false
             } else {
                 generatorView.shoesImageView.sd_setImage(
                     with: storageReference.child(outfitGenerator.shoesImageReferencesArray[0]),
