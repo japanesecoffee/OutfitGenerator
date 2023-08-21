@@ -47,9 +47,9 @@ class GeneratorViewController: UIViewController {
     // MARK: - Outfit loading methods
     
     private func loadOutfit() {
-        outfitGenerator.currentOutfit["top"] = nil
-        outfitGenerator.currentOutfit["bottom"] = nil
-        outfitGenerator.currentOutfit["shoes"] = nil
+        outfitGenerator.currentOutfit.updateValue(nil, forKey: "top")
+        outfitGenerator.currentOutfit.updateValue(nil, forKey: "bottom")
+        outfitGenerator.currentOutfit.updateValue(nil, forKey: "shoes")
         
         if outfitGenerator.topsImageReferencesArray.isEmpty &&
             outfitGenerator.bottomsImageReferencesArray.isEmpty &&
