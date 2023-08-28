@@ -8,37 +8,98 @@
 import UIKit
 
 class GeneratorView: UIView {
-
-    var topsImageView = UIImageView()
-    var bottomsImageView = UIImageView()
-    var shoesImageView = UIImageView()
+    
+    // MARK: - Properties
     
     var delegate: GeneratorViewDelegate?
     
-    let noTopsLabel = UILabel()
-    let noBottomsLabel = UILabel()
-    let noShoesLabel = UILabel()
-    let startAddingItemsLabel = UILabel()
+    let verticalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.clipsToBounds = true
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
+        stackView.alignment = .center
+        stackView.isLayoutMarginsRelativeArrangement = true
+        return stackView
+    }()
+    
+    let horizontalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.clipsToBounds = true
+        stackView.axis = .horizontal
+        stackView.distribution = .equalSpacing
+        stackView.alignment = .center
+        stackView.isLayoutMarginsRelativeArrangement = true
+        return stackView
+    }()
+    
+    let topsImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.tag = 0
+        return imageView
+    }()
+    
+    let bottomsImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.tag = 1
+        return imageView
+    }()
+    
+    let shoesImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.tag = 2
+        return imageView
+    }()
+    
+    let noTopsLabel: UILabel = {
+        let label = UILabel()
+        label.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
+        label.text = "No tops in closet."
+        label.isHidden = true
+        return label
+    }()
+    
+    let noBottomsLabel: UILabel = {
+        let label = UILabel()
+        label.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
+        label.text = "No bottoms in closet."
+        label.isHidden = true
+        return label
+    }()
+    
+    let noShoesLabel: UILabel = {
+        let label = UILabel()
+        label.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
+        label.text = "No shoes in closet."
+        label.isHidden = true
+        return label
+    }()
+    
+    let startAddingItemsLabel: UILabel = {
+        let label = UILabel()
+        label.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
+        label.text = "Go to the closet tab to start adding items."
+        label.numberOfLines = 0
+        label.isHidden = true
+        return label
+    }()
     
     let leftSideButton = UIButton(type: .system)
     let rightSideButton = UIButton(type: .system)
+    
+    // MARK: - Initialization methods
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.backgroundColor = .systemBackground
         
-        let verticalStackView = UIStackView()
-        verticalStackView.clipsToBounds = true
-        verticalStackView.axis = .vertical
-        verticalStackView.distribution = .equalSpacing
-        verticalStackView.alignment = .center
-        verticalStackView.isLayoutMarginsRelativeArrangement = true
         addSubview(verticalStackView)
         verticalStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        topsImageView.contentMode = .scaleAspectFit
-        topsImageView.tag = 0
         verticalStackView.addArrangedSubview(topsImageView)
         topsImageView.translatesAutoresizingMaskIntoConstraints = false
         topsImageView.isUserInteractionEnabled = true
@@ -47,14 +108,9 @@ class GeneratorView: UIView {
             action: #selector(imageViewTapped)
         ))
         
-        noTopsLabel.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
-        noTopsLabel.text = "No tops in closet."
-        noTopsLabel.isHidden = true
         topsImageView.addSubview(noTopsLabel)
         noTopsLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        bottomsImageView.contentMode = .scaleAspectFit
-        bottomsImageView.tag = 1
         verticalStackView.addArrangedSubview(bottomsImageView)
         bottomsImageView.translatesAutoresizingMaskIntoConstraints = false
         bottomsImageView.isUserInteractionEnabled = true
@@ -63,14 +119,9 @@ class GeneratorView: UIView {
             action: #selector(imageViewTapped)
         ))
         
-        noBottomsLabel.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
-        noBottomsLabel.text = "No bottoms in closet."
-        noBottomsLabel.isHidden = true
         bottomsImageView.addSubview(noBottomsLabel)
         noBottomsLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        shoesImageView.contentMode = .scaleAspectFit
-        shoesImageView.tag = 2
         verticalStackView.addArrangedSubview(shoesImageView)
         shoesImageView.translatesAutoresizingMaskIntoConstraints = false
         shoesImageView.isUserInteractionEnabled = true
@@ -79,18 +130,9 @@ class GeneratorView: UIView {
             action: #selector(imageViewTapped)
         ))
         
-        noShoesLabel.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
-        noShoesLabel.text = "No shoes in closet."
-        noShoesLabel.isHidden = true
         shoesImageView.addSubview(noShoesLabel)
         noShoesLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        let horizontalStackView = UIStackView()
-        horizontalStackView.clipsToBounds = true
-        horizontalStackView.axis = .horizontal
-        horizontalStackView.distribution = .equalSpacing
-        horizontalStackView.alignment = .center
-        horizontalStackView.isLayoutMarginsRelativeArrangement = true
         addSubview(horizontalStackView)
         horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -110,10 +152,6 @@ class GeneratorView: UIView {
         rightSideButton.translatesAutoresizingMaskIntoConstraints = false
         rightSideButton.addTarget(self, action: #selector(sideButtonTapped), for: .touchUpInside)
         
-        startAddingItemsLabel.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
-        startAddingItemsLabel.text = "Go to the closet tab to start adding items."
-        startAddingItemsLabel.numberOfLines = 0
-        startAddingItemsLabel.isHidden = true
         addSubview(startAddingItemsLabel)
         startAddingItemsLabel.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -161,11 +199,13 @@ class GeneratorView: UIView {
         rightSideButton.widthAnchor.constraint(equalToConstant: width / 2).isActive = true
     }
     
-    @objc func sideButtonTapped() {
+    // MARK: - Action methods
+    
+    @objc private func sideButtonTapped() {
         delegate?.generateOutfit()
     }
     
-    @objc func imageViewTapped(sender: UITapGestureRecognizer) {
+    @objc private func imageViewTapped(sender: UITapGestureRecognizer) {
         delegate?.changeItem(sender: sender)
     }
 }

@@ -16,7 +16,7 @@ class OutfitGenerator {
     var bottomsImageReferencesArray = [String]()
     var shoesImageReferencesArray = [String]()
     
-    var currentOutfit: [String: String?] = ["top": nil, "bottom": nil, "shoes": nil]
+    var currentOutfit: [String: String?] = [:]
     
     func getClothingItems(completion: @escaping FinishedGettingItems) {
         let topsDatabaseReference = Database.database().reference().child("tops")

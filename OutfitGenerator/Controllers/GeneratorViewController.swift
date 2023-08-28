@@ -46,6 +46,7 @@ class GeneratorViewController: UIViewController {
     
     // MARK: - Outfit loading methods
     
+    // Shows the initial outfit.
     private func loadOutfit() {
         outfitGenerator.currentOutfit.updateValue(nil, forKey: "top")
         outfitGenerator.currentOutfit.updateValue(nil, forKey: "bottom")
@@ -103,6 +104,7 @@ class GeneratorViewController: UIViewController {
 // MARK: - Generator view protocol methods
 
 extension GeneratorViewController: GeneratorViewDelegate {
+    // Changes the entire outfit.
     func generateOutfit() {
         if outfitGenerator.topsImageReferencesArray.isEmpty &&
             outfitGenerator.bottomsImageReferencesArray.isEmpty &&
@@ -126,6 +128,7 @@ extension GeneratorViewController: GeneratorViewDelegate {
         }
     }
     
+    // Changes the item for a specific section.
     func changeItem(sender: UITapGestureRecognizer) {
         if outfitGenerator.topsImageReferencesArray.isEmpty &&
             outfitGenerator.bottomsImageReferencesArray.isEmpty &&
