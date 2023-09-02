@@ -25,6 +25,7 @@
 		969BDB472A0886E600D8C141 /* ClothingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969BDB462A0886E600D8C141 /* ClothingItem.swift */; };
 		96A93A1D2A01F46500A3D374 /* ImageScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A93A1C2A01F46500A3D374 /* ImageScale.swift */; };
 		96A93A1F2A020A2D00A3D374 /* ImageScaleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A93A1E2A020A2D00A3D374 /* ImageScaleTests.swift */; };
+		96B34E782AA17F3C00005447 /* OutfitGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B34E772AA17F3C00005447 /* OutfitGeneratorTests.swift */; };
 		96E3447229A5BA50000131B1 /* ClothingCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E3447129A5BA50000131B1 /* ClothingCollectionReusableView.swift */; };
 		96F0E5AF291CBBBC00B5BB3F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96F0E5AE291CBBBB00B5BB3F /* GoogleService-Info.plist */; };
 		BC302B78A1602231CDA09574 /* Pods_OutfitGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C01469FAA1C35AE26E434C /* Pods_OutfitGenerator.framework */; };
@@ -67,6 +68,7 @@
 		969BDB462A0886E600D8C141 /* ClothingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingItem.swift; sourceTree = "<group>"; };
 		96A93A1C2A01F46500A3D374 /* ImageScale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScale.swift; sourceTree = "<group>"; };
 		96A93A1E2A020A2D00A3D374 /* ImageScaleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScaleTests.swift; sourceTree = "<group>"; };
+		96B34E772AA17F3C00005447 /* OutfitGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitGeneratorTests.swift; sourceTree = "<group>"; };
 		96E3447129A5BA50000131B1 /* ClothingCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingCollectionReusableView.swift; sourceTree = "<group>"; };
 		96F0E5AE291CBBBB00B5BB3F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EC30F54E629E0E4ED0444460 /* Pods_BackgroundRemovalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BackgroundRemovalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +145,7 @@
 		967ADA9228FCCB5B00942FF1 /* OutfitGeneratorTests */ = {
 			isa = PBXGroup;
 			children = (
+				96B34E772AA17F3C00005447 /* OutfitGeneratorTests.swift */,
 				96A93A1E2A020A2D00A3D374 /* ImageScaleTests.swift */,
 				967ADA9328FCCB5B00942FF1 /* BackgroundRemovalTests.swift */,
 			);
@@ -384,6 +387,7 @@
 			files = (
 				96A93A1F2A020A2D00A3D374 /* ImageScaleTests.swift in Sources */,
 				967ADA9428FCCB5B00942FF1 /* BackgroundRemovalTests.swift in Sources */,
+				96B34E782AA17F3C00005447 /* OutfitGeneratorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
