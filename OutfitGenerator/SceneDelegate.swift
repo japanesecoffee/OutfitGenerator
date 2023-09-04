@@ -38,13 +38,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return generatorViewController
     }
     
+    func createFavoritesViewController() -> FavoritesViewController {
+        let favoritesViewController = FavoritesViewController()
+        favoritesViewController.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "star.fill"), selectedImage: nil)
+        
+        return favoritesViewController
+    }
+    
     func createTabBarController() -> UITabBarController {
         let tabBarController = UITabBarController()
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.configureWithDefaultBackground()
         UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
         UITabBar.appearance().tintColor = .systemGreen
-        tabBarController.viewControllers = [createClosetViewController(), createGeneratorViewController()]
+        tabBarController.viewControllers = [createClosetViewController(), createGeneratorViewController(), createFavoritesViewController()]
         tabBarController.selectedIndex = 1
         
         return tabBarController
