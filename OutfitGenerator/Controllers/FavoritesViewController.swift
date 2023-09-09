@@ -8,11 +8,13 @@
 import UIKit
 
 class FavoritesViewController: UIViewController {
+    
+    private let favoritesView = FavoritesView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .systemBackground
+        view = favoritesView
     }
     
 
