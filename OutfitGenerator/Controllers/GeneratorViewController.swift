@@ -104,6 +104,12 @@ class GeneratorViewController: UIViewController {
 // MARK: - Generator view protocol methods
 
 extension GeneratorViewController: GeneratorViewDelegate {
+    func addToFavorites(sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        
+        Database.database().reference().child("favorites").childByAutoId().setValue(outfitGenerator.currentOutfit)
+    }
+    
     // Changes the entire outfit.
     func generateOutfit() {
         if outfitGenerator.topsImageReferencesArray.isEmpty &&
