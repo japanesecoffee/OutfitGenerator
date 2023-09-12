@@ -42,6 +42,8 @@ class GeneratorViewController: UIViewController {
         outfitGenerator.getClothingItems {
             self.loadOutfit()
         }
+        
+        generatorView.favoriteButton.isSelected = false
     }
     
     // MARK: - Outfit loading methods
@@ -132,6 +134,8 @@ extension GeneratorViewController: GeneratorViewDelegate {
         if let shoes = outfit["shoes"] as? String {
             generatorView.shoesImageView.sd_setImage(with: storageReference.child(shoes))
         }
+        
+        generatorView.favoriteButton.isSelected = false
     }
     
     // Changes the item for a specific section.
@@ -156,5 +160,7 @@ extension GeneratorViewController: GeneratorViewDelegate {
                 imageView.sd_setImage(with: storageReference.child(item))
             }
         }
+        
+        generatorView.favoriteButton.isSelected = false
     }
 }
