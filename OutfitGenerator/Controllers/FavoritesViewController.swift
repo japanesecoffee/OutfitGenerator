@@ -152,8 +152,23 @@ class FavoritesViewController: UIViewController {
     }
 }
 
+// MARK: - Favorites view protocol methods
+
 extension FavoritesViewController: FavoritesViewDelegate {
     func deleteFavorite() {
+        let index = Int(favoritesView.scrollView.contentOffset.x / favoritesView.scrollView.bounds.size.width)
+        let databaseReference = favoritesDatabaseReference.child(favoritesDatabaseReferencesArray[index])
         
+        // Deletes reference from Firebase Realtime Database.
+        databaseReference.removeValue { (error, databaseReference) in
+            if let error = error {
+                print("There was an error deleting from Realtime Database: \(error)")
+            }
+        }
+        
+        // Removes existing subviews so that new subviews can be added without overlap.
+        for subview in favoritesView.scrollView.subviews {
+            subview.removeFromSuperview()
+        }
     }
 }
