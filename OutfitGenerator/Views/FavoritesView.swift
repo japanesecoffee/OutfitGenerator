@@ -20,7 +20,7 @@ class FavoritesView: UIView {
         return scrollView
     }()
     
-    private let deleteButton: UIButton = {
+    let deleteButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Delete", for: .normal)
         button.setTitleColor(.systemGreen, for: .normal)
