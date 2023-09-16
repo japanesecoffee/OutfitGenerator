@@ -30,6 +30,7 @@ class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        favoritesView.delegate = self
         view = favoritesView
         
         favoritesDatabaseReference = Database.database().reference().child("favorites")
@@ -83,17 +84,15 @@ class FavoritesViewController: UIViewController {
         )
 
         let scrollViewWidth = self.favoritesView.scrollView.frame.size.width
-
-        let statusBarHeight = self.view.window?.windowScene?.statusBarManager?.statusBarFrame.height
         let tabBarController = self.view.window?.rootViewController as! UITabBarController
         let tabBarHeight = tabBarController.tabBar.frame.size.height
 
         for index in 0..<self.favoritesImageReferencesArray.count {
             let view = UIView(frame: CGRect(
                 x: CGFloat(index) * scrollViewWidth + padding,
-                y: self.favoritesView.scrollView.bounds.origin.y + statusBarHeight!,
+                y: self.favoritesView.scrollView.bounds.origin.y + padding * 2,
                 width: scrollViewWidth - padding,
-                height: self.favoritesView.scrollView.bounds.size.height - statusBarHeight! - tabBarHeight - padding
+                height: self.favoritesView.scrollView.bounds.size.height - tabBarHeight - padding * 4
             ))
             self.favoritesView.scrollView.addSubview(view)
 
@@ -150,5 +149,11 @@ class FavoritesViewController: UIViewController {
             width: scrollViewWidth * CGFloat(self.favoritesImageReferencesArray.count),
             height: self.favoritesView.scrollView.frame.size.height
         )
+    }
+}
+
+extension FavoritesViewController: FavoritesViewDelegate {
+    func deleteFavorite() {
+        
     }
 }
