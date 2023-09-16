@@ -162,19 +162,32 @@ class FavoritesViewController: UIViewController {
 
 extension FavoritesViewController: FavoritesViewDelegate {
     func deleteFavorite() {
-        let index = Int(favoritesView.scrollView.contentOffset.x / favoritesView.scrollView.bounds.size.width)
-        let databaseReference = favoritesDatabaseReference.child(favoritesDatabaseReferencesArray[index])
+        let alert = UIAlertController(
+            title: "Delete Favorite",
+            message: "This action cannot be undone.",
+            preferredStyle: .alert
+        )
         
-        // Deletes reference from Firebase Realtime Database.
-        databaseReference.removeValue { (error, databaseReference) in
-            if let error = error {
-                print("There was an error deleting from Realtime Database: \(error)")
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            alert.dismiss(animated: true)
+        })
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            let index = Int(self.favoritesView.scrollView.contentOffset.x / self.favoritesView.scrollView.bounds.size.width)
+            let databaseReference = self.favoritesDatabaseReference.child(self.favoritesDatabaseReferencesArray[index])
+            
+            // Deletes reference from Firebase Realtime Database.
+            databaseReference.removeValue { (error, databaseReference) in
+                if let error = error {
+                    print("There was an error deleting from Realtime Database: \(error)")
+                }
             }
-        }
+            
+            // Removes existing subviews so that new subviews can be added without overlap.
+            for subview in self.favoritesView.scrollView.subviews {
+                subview.removeFromSuperview()
+            }
+        })
         
-        // Removes existing subviews so that new subviews can be added without overlap.
-        for subview in favoritesView.scrollView.subviews {
-            subview.removeFromSuperview()
-        }
+        present(alert, animated: true)
     }
 }
