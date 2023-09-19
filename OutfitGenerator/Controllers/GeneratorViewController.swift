@@ -41,6 +41,7 @@ class GeneratorViewController: UIViewController {
         
         outfitGenerator.getClothingItems {
             self.loadOutfit()
+            self.setUpFavoriteButton()
         }
         
         generatorView.favoriteButton.isSelected = false
@@ -99,6 +100,17 @@ class GeneratorViewController: UIViewController {
                 
                 outfitGenerator.currentOutfit["shoes"] = outfitGenerator.shoesImageReferencesArray[0]
             }
+        }
+    }
+    
+    private func setUpFavoriteButton() {
+        if !outfitGenerator.topsImageReferencesArray.isEmpty &&
+            !outfitGenerator.bottomsImageReferencesArray.isEmpty &&
+            !outfitGenerator.shoesImageReferencesArray.isEmpty
+        {
+            generatorView.favoriteButton.isEnabled = true
+        } else {
+            generatorView.favoriteButton.isEnabled = false
         }
     }
 }
