@@ -119,7 +119,13 @@ class GeneratorViewController: UIViewController {
 
 extension GeneratorViewController: GeneratorViewDelegate {
     func addToFavorites(sender: UIButton) {
-        sender.isSelected = !sender.isSelected
+        let alert = UIAlertController(title: "", message: "Added to favorites", preferredStyle: .actionSheet)
+        present(alert, animated: true)
+        
+        let delay = DispatchTime.now() + 1
+        DispatchQueue.main.asyncAfter(deadline: delay) {
+            alert.dismiss(animated: true)
+        }
         
         Database.database().reference().child("favorites").childByAutoId().setValue(outfitGenerator.currentOutfit)
     }
