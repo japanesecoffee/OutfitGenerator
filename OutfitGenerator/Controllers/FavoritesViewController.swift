@@ -99,6 +99,10 @@ class FavoritesViewController: UIViewController {
                     width: scrollViewWidth - padding,
                     height: self.favoritesView.scrollView.bounds.size.height - tabBarHeight - padding * 4
                 ))
+                view.layer.borderWidth = 1
+                view.layer.borderColor = UIColor.systemGray.cgColor
+                view.layer.cornerRadius = 5
+                view.layer.masksToBounds = true
                 self.favoritesView.scrollView.addSubview(view)
                 
                 let stackView = UIStackView()
