@@ -15,10 +15,6 @@ class GeneratorViewController: UIViewController {
     
     private var generatorView = GeneratorView()
     
-    private var topsDatabaseReference: DatabaseReference!
-    private var bottomsDatabaseReference: DatabaseReference!
-    private var shoesDatabaseReference: DatabaseReference!
-    
     private let storageReference = Storage.storage().reference()
     
     private let outfitGenerator = OutfitGenerator()
@@ -30,10 +26,6 @@ class GeneratorViewController: UIViewController {
 
         generatorView.delegate = self
         view = generatorView
-        
-        topsDatabaseReference = Database.database().reference().child("tops")
-        bottomsDatabaseReference = Database.database().reference().child("bottoms")
-        shoesDatabaseReference = Database.database().reference().child("shoes")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,8 +35,6 @@ class GeneratorViewController: UIViewController {
             self.loadOutfit()
             self.setUpFavoriteButton()
         }
-        
-        generatorView.favoriteButton.isSelected = false
     }
     
     // MARK: - Outfit loading methods
@@ -139,7 +129,6 @@ extension GeneratorViewController: GeneratorViewDelegate {
             return
         }
         
-        let currentOutfit = outfitGenerator.currentOutfit 
         let outfit = outfitGenerator.generate()
 
         if let top = outfit["top"] as? String {
@@ -153,10 +142,6 @@ extension GeneratorViewController: GeneratorViewDelegate {
         if let shoes = outfit["shoes"] as? String {
             generatorView.shoesImageView.sd_setImage(with: storageReference.child(shoes))
         }
-        
-        if currentOutfit != outfit && generatorView.favoriteButton.isSelected {
-            generatorView.favoriteButton.isSelected = false
-        }
     }
     
     // Changes the item for a specific section.
@@ -167,8 +152,6 @@ extension GeneratorViewController: GeneratorViewDelegate {
         {
             return
         }
-        
-        let currentOutfit = outfitGenerator.currentOutfit
         
         guard let imageView = sender.view as? UIImageView else {
             print("Could not get image view for tap gesture recognizer.")
@@ -182,12 +165,6 @@ extension GeneratorViewController: GeneratorViewDelegate {
             if alphaValue > 0 {
                 imageView.sd_setImage(with: storageReference.child(item))
             }
-        }
-        
-        let outfitAfterChange = outfitGenerator.currentOutfit
-        
-        if currentOutfit != outfitAfterChange && generatorView.favoriteButton.isSelected {
-            generatorView.favoriteButton.isSelected = false
         }
     }
 }

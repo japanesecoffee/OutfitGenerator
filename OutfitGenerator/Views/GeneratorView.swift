@@ -106,17 +106,9 @@ class GeneratorView: UIView {
             .systemGreen,
             renderingMode: .alwaysOriginal
         )
-        let selectedButtonImage = UIImage(
-            systemName: "star.fill"
-        )?.withTintColor(
-            .systemGreen,
-            renderingMode: .alwaysOriginal
-        )
         button.setImage(normalButtonImage, for: .normal)
-        button.setImage(selectedButtonImage, for: .selected)
         let configuration = UIImage.SymbolConfiguration(pointSize: 25)
         button.setPreferredSymbolConfiguration(configuration, forImageIn: .normal)
-        button.setPreferredSymbolConfiguration(configuration, forImageIn: .selected)
         return button
     }()
     

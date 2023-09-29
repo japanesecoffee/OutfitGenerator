@@ -81,82 +81,73 @@ class FavoritesViewController: UIViewController {
             
             let padding = 20.0
             
-            self.favoritesView.scrollView.frame = CGRect(
-                x: self.view.frame.origin.x + padding,
-                y: self.view.frame.origin.y,
-                width: self.view.frame.size.width - padding * 3,
-                height: self.view.frame.size.height
+            favoritesView.scrollView.frame = CGRect(
+                x: view.frame.origin.x + padding,
+                y: view.frame.origin.y,
+                width: view.frame.size.width - padding * 3,
+                height: view.frame.size.height
             )
             
-            let scrollViewWidth = self.favoritesView.scrollView.frame.size.width
-            let tabBarController = self.view.window?.rootViewController as! UITabBarController
+            let scrollViewWidth = favoritesView.scrollView.frame.size.width
+            let tabBarController = view.window?.rootViewController as! UITabBarController
             let tabBarHeight = tabBarController.tabBar.frame.size.height
             
-            for index in 0..<self.favoritesImageReferencesArray.count {
-                let view = UIView(frame: CGRect(
+            for index in 0..<favoritesImageReferencesArray.count {                
+                let stackView = UIStackView(frame: CGRect(
                     x: CGFloat(index) * scrollViewWidth + padding,
-                    y: self.favoritesView.scrollView.bounds.origin.y + padding * 2,
+                    y: favoritesView.scrollView.bounds.origin.y + padding * 2,
                     width: scrollViewWidth - padding,
-                    height: self.favoritesView.scrollView.bounds.size.height - tabBarHeight - padding * 4
+                    height: favoritesView.scrollView.bounds.size.height - tabBarHeight - padding * 4
                 ))
-                view.layer.borderWidth = 1
-                view.layer.borderColor = UIColor.systemGray.cgColor
-                view.layer.cornerRadius = 5
-                view.layer.masksToBounds = true
-                self.favoritesView.scrollView.addSubview(view)
-                
-                let stackView = UIStackView()
+                stackView.layer.borderWidth = 1
+                stackView.layer.borderColor = UIColor.systemGray.cgColor
+                stackView.layer.cornerRadius = 5
+                stackView.layer.masksToBounds = true
                 stackView.clipsToBounds = true
                 stackView.axis = .vertical
                 stackView.distribution = .equalSpacing
                 stackView.alignment = .center
                 stackView.isLayoutMarginsRelativeArrangement = true
-                view.addSubview(stackView)
-                stackView.translatesAutoresizingMaskIntoConstraints = false
-                NSLayoutConstraint.activate([
-                    stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                    stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                    stackView.topAnchor.constraint(equalTo: view.topAnchor),
-                    stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-                ])
+                favoritesView.scrollView.addSubview(stackView)
+                stackView.translatesAutoresizingMaskIntoConstraints = true
                 
-                let outfit = self.favoritesImageReferencesArray[index]
+                let outfit = favoritesImageReferencesArray[index]
                 
                 let topsImageView = UIImageView()
                 topsImageView.contentMode = .scaleAspectFit
                 if let top = outfit["top"] as? String {
-                    topsImageView.sd_setImage(with: self.storageReference.child(top))
+                    topsImageView.sd_setImage(with: storageReference.child(top))
                 }
                 let bottomsImageView = UIImageView()
                 bottomsImageView.contentMode = .scaleAspectFit
                 if let bottom = outfit["bottom"] as? String {
-                    bottomsImageView.sd_setImage(with: self.storageReference.child(bottom))
+                    bottomsImageView.sd_setImage(with: storageReference.child(bottom))
                 }
                 let shoesImageView = UIImageView()
                 shoesImageView.contentMode = .scaleAspectFit
                 if let shoes = outfit["shoes"] as? String {
-                    shoesImageView.sd_setImage(with: self.storageReference.child(shoes))
+                    shoesImageView.sd_setImage(with: storageReference.child(shoes))
                 }
                 
                 stackView.addArrangedSubview(topsImageView)
                 topsImageView.translatesAutoresizingMaskIntoConstraints = false
-                topsImageView.heightAnchor.constraint(equalToConstant: view.frame.size.height / 3).isActive = true
-                topsImageView.widthAnchor.constraint(equalToConstant: view.frame.size.height / 3).isActive = true
+                topsImageView.heightAnchor.constraint(equalToConstant: stackView.frame.size.height / 3).isActive = true
+                topsImageView.widthAnchor.constraint(equalToConstant: stackView.frame.size.height / 3).isActive = true
                 
                 stackView.addArrangedSubview(bottomsImageView)
                 bottomsImageView.translatesAutoresizingMaskIntoConstraints = false
-                bottomsImageView.heightAnchor.constraint(equalToConstant: view.frame.size.height / 3).isActive = true
-                bottomsImageView.widthAnchor.constraint(equalToConstant: view.frame.size.height / 3).isActive = true
+                bottomsImageView.heightAnchor.constraint(equalToConstant: stackView.frame.size.height / 3).isActive = true
+                bottomsImageView.widthAnchor.constraint(equalToConstant: stackView.frame.size.height / 3).isActive = true
                 
                 stackView.addArrangedSubview(shoesImageView)
                 shoesImageView.translatesAutoresizingMaskIntoConstraints = false
-                shoesImageView.heightAnchor.constraint(equalToConstant: view.frame.size.height / 3).isActive = true
-                shoesImageView.widthAnchor.constraint(equalToConstant: view.frame.size.height / 3).isActive = true
+                shoesImageView.heightAnchor.constraint(equalToConstant: stackView.frame.size.height / 3).isActive = true
+                shoesImageView.widthAnchor.constraint(equalToConstant: stackView.frame.size.height / 3).isActive = true
             }
             
-            self.favoritesView.scrollView.contentSize = CGSize(
-                width: scrollViewWidth * CGFloat(self.favoritesImageReferencesArray.count),
-                height: self.favoritesView.scrollView.frame.size.height
+            favoritesView.scrollView.contentSize = CGSize(
+                width: scrollViewWidth * CGFloat(favoritesImageReferencesArray.count),
+                height: favoritesView.scrollView.frame.size.height
             )
         }
     }
