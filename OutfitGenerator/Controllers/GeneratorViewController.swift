@@ -15,10 +15,6 @@ class GeneratorViewController: UIViewController {
     
     private var generatorView = GeneratorView()
     
-    private var topsDatabaseReference: DatabaseReference!
-    private var bottomsDatabaseReference: DatabaseReference!
-    private var shoesDatabaseReference: DatabaseReference!
-    
     private let storageReference = Storage.storage().reference()
     
     private let outfitGenerator = OutfitGenerator()
@@ -30,10 +26,6 @@ class GeneratorViewController: UIViewController {
 
         generatorView.delegate = self
         view = generatorView
-        
-        topsDatabaseReference = Database.database().reference().child("tops")
-        bottomsDatabaseReference = Database.database().reference().child("bottoms")
-        shoesDatabaseReference = Database.database().reference().child("shoes")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,6 +33,7 @@ class GeneratorViewController: UIViewController {
         
         outfitGenerator.getClothingItems {
             self.loadOutfit()
+            self.setUpFavoriteButton()
         }
     }
     
@@ -99,11 +92,34 @@ class GeneratorViewController: UIViewController {
             }
         }
     }
+    
+    private func setUpFavoriteButton() {
+        if !outfitGenerator.topsImageReferencesArray.isEmpty &&
+            !outfitGenerator.bottomsImageReferencesArray.isEmpty &&
+            !outfitGenerator.shoesImageReferencesArray.isEmpty
+        {
+            generatorView.favoriteButton.isEnabled = true
+        } else {
+            generatorView.favoriteButton.isEnabled = false
+        }
+    }
 }
 
 // MARK: - Generator view protocol methods
 
 extension GeneratorViewController: GeneratorViewDelegate {
+    func addToFavorites(sender: UIButton) {
+        let alert = UIAlertController(title: "", message: "Added to favorites", preferredStyle: .actionSheet)
+        present(alert, animated: true)
+        
+        let delay = DispatchTime.now() + 1
+        DispatchQueue.main.asyncAfter(deadline: delay) {
+            alert.dismiss(animated: true)
+        }
+        
+        Database.database().reference().child("favorites").childByAutoId().setValue(outfitGenerator.currentOutfit)
+    }
+    
     // Changes the entire outfit.
     func generateOutfit() {
         if outfitGenerator.topsImageReferencesArray.isEmpty &&
