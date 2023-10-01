@@ -167,4 +167,8 @@ extension GeneratorViewController: GeneratorViewDelegate {
             }
         }
     }
+    
+    func openSettings() {
+        print("opened settings")
+    }
 }

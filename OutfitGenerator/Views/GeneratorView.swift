@@ -23,6 +23,16 @@ class GeneratorView: UIView {
         return stackView
     }()
     
+    let leftSideStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.clipsToBounds = true
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
+        stackView.alignment = .center
+        stackView.isLayoutMarginsRelativeArrangement = true
+        return stackView
+    }()
+    
     let rightSideStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.clipsToBounds = true
@@ -97,6 +107,21 @@ class GeneratorView: UIView {
         return label
     }()
     
+    let settingsButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.imageView?.contentMode = .scaleAspectFit
+        let normalButtonImage = UIImage(
+            systemName: "gearshape"
+        )?.withTintColor(
+            .systemGreen,
+            renderingMode: .alwaysOriginal
+        )
+        button.setImage(normalButtonImage, for: .normal)
+        let configuration = UIImage.SymbolConfiguration(pointSize: 25)
+        button.setPreferredSymbolConfiguration(configuration, forImageIn: .normal)
+        return button
+    }()
+    
     let favoriteButton: UIButton = {
         let button = UIButton(type: .custom)
         button.imageView?.contentMode = .scaleAspectFit
@@ -131,7 +156,16 @@ class GeneratorView: UIView {
             horizontalStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
 
-        horizontalStackView.addArrangedSubview(leftSideButton)
+        horizontalStackView.addArrangedSubview(leftSideStackView)
+        leftSideStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        leftSideStackView.addArrangedSubview(settingsButton)
+        settingsButton.translatesAutoresizingMaskIntoConstraints = false
+        settingsButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        settingsButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        settingsButton.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
+        
+        leftSideStackView.addArrangedSubview(leftSideButton)
         leftSideButton.translatesAutoresizingMaskIntoConstraints = false
         leftSideButton.addTarget(self, action: #selector(sideButtonTapped), for: .touchUpInside)
 
@@ -224,7 +258,7 @@ class GeneratorView: UIView {
         )
         startAddingItemsLabel.center = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         
-        leftSideButton.heightAnchor.constraint(equalToConstant: height).isActive = true
+        leftSideButton.heightAnchor.constraint(equalToConstant: height - 44).isActive = true
         leftSideButton.widthAnchor.constraint(equalToConstant: width / 2).isActive = true
         
         rightSideButton.heightAnchor.constraint(equalToConstant: height - 44).isActive = true
@@ -241,6 +275,10 @@ class GeneratorView: UIView {
         delegate?.changeItem(sender: sender)
     }
     
+    @objc private func settingsButtonTapped() {
+        delegate?.openSettings()
+    }
+    
     @objc private func favoriteButtonTapped(sender: UIButton) {
         delegate?.addToFavorites(sender: sender)
     }
@@ -252,4 +290,6 @@ protocol GeneratorViewDelegate {
     func changeItem(sender: UITapGestureRecognizer)
     
     func generateOutfit()
+    
+    func openSettings()
 }
