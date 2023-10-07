@@ -12,6 +12,7 @@
 		961A0B9029E2632D005991B9 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961A0B8F29E2632D005991B9 /* Queue.swift */; };
 		9621ABC02995E69D00B77A6B /* ClothingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9621ABBF2995E69D00B77A6B /* ClothingCollectionViewCell.swift */; };
 		962CD9932A63A48100D92ECA /* OutfitGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962CD9922A63A48100D92ECA /* OutfitGenerator.swift */; };
+		963B3DAB2AD0D8DA00E0352C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963B3DAA2AD0D8DA00E0352C /* SettingsViewController.swift */; };
 		9644A5892AA69024008B668F /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9644A5882AA69024008B668F /* FavoritesViewController.swift */; };
 		967328E628FA5C2400F7D909 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967328E528FA5C2400F7D909 /* AppDelegate.swift */; };
 		967328E828FA5C2400F7D909 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967328E728FA5C2400F7D909 /* SceneDelegate.swift */; };
@@ -54,6 +55,7 @@
 		961A0B8F29E2632D005991B9 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		9621ABBF2995E69D00B77A6B /* ClothingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingCollectionViewCell.swift; sourceTree = "<group>"; };
 		962CD9922A63A48100D92ECA /* OutfitGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitGenerator.swift; sourceTree = "<group>"; };
+		963B3DAA2AD0D8DA00E0352C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		9644A5882AA69024008B668F /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		967328E228FA5C2400F7D909 /* OutfitGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutfitGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		967328E528FA5C2400F7D909 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				969BDB442A0883A200D8C141 /* ClothingItemViewController.swift */,
 				9644A5882AA69024008B668F /* FavoritesViewController.swift */,
 				960AF1B22A4E6ACD00377AAF /* GeneratorViewController.swift */,
+				963B3DAA2AD0D8DA00E0352C /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				962CD9932A63A48100D92ECA /* OutfitGenerator.swift in Sources */,
 				967328E828FA5C2400F7D909 /* SceneDelegate.swift in Sources */,
 				96A93A1D2A01F46500A3D374 /* ImageScale.swift in Sources */,
+				963B3DAB2AD0D8DA00E0352C /* SettingsViewController.swift in Sources */,
 				96D9F6972AABFDE800EAECAA /* FavoritesView.swift in Sources */,
 				9694FA75295F82230016D367 /* BackgroundRemoval.swift in Sources */,
 				9644A5892AA69024008B668F /* FavoritesViewController.swift in Sources */,
