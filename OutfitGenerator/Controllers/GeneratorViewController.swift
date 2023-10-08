@@ -169,6 +169,10 @@ extension GeneratorViewController: GeneratorViewDelegate {
     }
     
     func openSettings() {
-        print("opened settings")
+        let settingsViewController = SettingsViewController()
+        
+        let navigationController = UINavigationController(rootViewController: settingsViewController)
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true)
     }
 }
