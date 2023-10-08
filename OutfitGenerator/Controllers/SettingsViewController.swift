@@ -28,12 +28,12 @@ class SettingsViewController: UIViewController {
     }()
     
     private let tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
+        let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         return tableView
     }()
     
-    var settingOptions = ["account info", "delete account", "sign out"]
+    var settingOptions = ["Account info", "Delete account", "Sign out"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +50,7 @@ class SettingsViewController: UIViewController {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.frame = view.frame
+        tableView.frame = view.bounds
     }
     
     @objc private func backButtonTapped() {
@@ -68,6 +68,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         let option = settingOptions[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = option
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
