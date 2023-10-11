@@ -33,7 +33,7 @@ class SettingsViewController: UIViewController {
         return tableView
     }()
     
-    var settingOptions = ["Email", "Delete account", "Sign out"]
+    var settingOptions = ["Email", "Password", "Delete account", "Sign out"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +80,14 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             
             let navigationController = UINavigationController(
                 rootViewController: emailSettingsViewController
+            )
+            navigationController.modalPresentationStyle = .fullScreen
+            present(navigationController, animated: true)
+        } else if indexPath.row == 1 {
+            let passwordSettingsViewController = PasswordSettingsViewController()
+            
+            let navigationController = UINavigationController(
+                rootViewController: passwordSettingsViewController
             )
             navigationController.modalPresentationStyle = .fullScreen
             present(navigationController, animated: true)
