@@ -33,7 +33,7 @@ class SettingsViewController: UIViewController {
         return tableView
     }()
     
-    var settingOptions = ["Email", "Password", "Delete Account", "Sign out"]
+    var settingOptions = ["Email", "Password", "Delete Account", "Sign Out"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +99,21 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             )
             navigationController.modalPresentationStyle = .fullScreen
             present(navigationController, animated: true)
+        } else {
+            let alert = UIAlertController(
+                title: "Sign Out",
+                message: "Are you sure you want to sign out?",
+                preferredStyle: .alert
+            )
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+                alert.dismiss(animated: true)
+            })
+            alert.addAction(UIAlertAction(title: "Sign Out", style: .default) { (action) in
+                print("signed out")
+            })
+            
+            present(alert, animated: true)
         }
     }
 }
