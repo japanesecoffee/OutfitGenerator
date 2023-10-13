@@ -12,6 +12,7 @@
 		961A0B9029E2632D005991B9 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961A0B8F29E2632D005991B9 /* Queue.swift */; };
 		9621ABC02995E69D00B77A6B /* ClothingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9621ABBF2995E69D00B77A6B /* ClothingCollectionViewCell.swift */; };
 		962CD9932A63A48100D92ECA /* OutfitGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962CD9922A63A48100D92ECA /* OutfitGenerator.swift */; };
+		963B3DAB2AD0D8DA00E0352C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963B3DAA2AD0D8DA00E0352C /* SettingsViewController.swift */; };
 		9644A5892AA69024008B668F /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9644A5882AA69024008B668F /* FavoritesViewController.swift */; };
 		967328E628FA5C2400F7D909 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967328E528FA5C2400F7D909 /* AppDelegate.swift */; };
 		967328E828FA5C2400F7D909 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967328E728FA5C2400F7D909 /* SceneDelegate.swift */; };
@@ -27,7 +28,13 @@
 		96A93A1D2A01F46500A3D374 /* ImageScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A93A1C2A01F46500A3D374 /* ImageScale.swift */; };
 		96A93A1F2A020A2D00A3D374 /* ImageScaleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A93A1E2A020A2D00A3D374 /* ImageScaleTests.swift */; };
 		96B34E782AA17F3C00005447 /* OutfitGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B34E772AA17F3C00005447 /* OutfitGeneratorTests.swift */; };
+		96D525532AD75A2500AC68B9 /* PasswordSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D525522AD75A2500AC68B9 /* PasswordSettingsViewController.swift */; };
+		96D525552AD75A4600AC68B9 /* PasswordSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D525542AD75A4600AC68B9 /* PasswordSettingsView.swift */; };
+		96D525572AD76C0100AC68B9 /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D525562AD76C0100AC68B9 /* DeleteAccountViewController.swift */; };
+		96D525592AD76DD500AC68B9 /* DeleteAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D525582AD76DD500AC68B9 /* DeleteAccountView.swift */; };
 		96D9F6972AABFDE800EAECAA /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D9F6962AABFDE800EAECAA /* FavoritesView.swift */; };
+		96DAD4BA2AD62F0300E2C006 /* EmailSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DAD4B92AD62F0300E2C006 /* EmailSettingsViewController.swift */; };
+		96DAD4BC2AD62F4000E2C006 /* EmailSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DAD4BB2AD62F4000E2C006 /* EmailSettingsView.swift */; };
 		96E3447229A5BA50000131B1 /* ClothingCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E3447129A5BA50000131B1 /* ClothingCollectionReusableView.swift */; };
 		96F0E5AF291CBBBC00B5BB3F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96F0E5AE291CBBBB00B5BB3F /* GoogleService-Info.plist */; };
 		BC302B78A1602231CDA09574 /* Pods_OutfitGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C01469FAA1C35AE26E434C /* Pods_OutfitGenerator.framework */; };
@@ -54,6 +61,7 @@
 		961A0B8F29E2632D005991B9 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		9621ABBF2995E69D00B77A6B /* ClothingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingCollectionViewCell.swift; sourceTree = "<group>"; };
 		962CD9922A63A48100D92ECA /* OutfitGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitGenerator.swift; sourceTree = "<group>"; };
+		963B3DAA2AD0D8DA00E0352C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		9644A5882AA69024008B668F /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		967328E228FA5C2400F7D909 /* OutfitGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutfitGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		967328E528FA5C2400F7D909 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,7 +80,13 @@
 		96A93A1C2A01F46500A3D374 /* ImageScale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScale.swift; sourceTree = "<group>"; };
 		96A93A1E2A020A2D00A3D374 /* ImageScaleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScaleTests.swift; sourceTree = "<group>"; };
 		96B34E772AA17F3C00005447 /* OutfitGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitGeneratorTests.swift; sourceTree = "<group>"; };
+		96D525522AD75A2500AC68B9 /* PasswordSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSettingsViewController.swift; sourceTree = "<group>"; };
+		96D525542AD75A4600AC68B9 /* PasswordSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSettingsView.swift; sourceTree = "<group>"; };
+		96D525562AD76C0100AC68B9 /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
+		96D525582AD76DD500AC68B9 /* DeleteAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountView.swift; sourceTree = "<group>"; };
 		96D9F6962AABFDE800EAECAA /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		96DAD4B92AD62F0300E2C006 /* EmailSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSettingsViewController.swift; sourceTree = "<group>"; };
+		96DAD4BB2AD62F4000E2C006 /* EmailSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSettingsView.swift; sourceTree = "<group>"; };
 		96E3447129A5BA50000131B1 /* ClothingCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingCollectionReusableView.swift; sourceTree = "<group>"; };
 		96F0E5AE291CBBBB00B5BB3F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EC30F54E629E0E4ED0444460 /* Pods_BackgroundRemovalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BackgroundRemovalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,8 +119,11 @@
 				9621ABBF2995E69D00B77A6B /* ClothingCollectionViewCell.swift */,
 				96E3447129A5BA50000131B1 /* ClothingCollectionReusableView.swift */,
 				969BDB462A0886E600D8C141 /* ClothingItem.swift */,
+				96D525582AD76DD500AC68B9 /* DeleteAccountView.swift */,
+				96DAD4BB2AD62F4000E2C006 /* EmailSettingsView.swift */,
 				96D9F6962AABFDE800EAECAA /* FavoritesView.swift */,
 				967CC2052A5FA18200DA7583 /* GeneratorView.swift */,
+				96D525542AD75A4600AC68B9 /* PasswordSettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -174,8 +191,12 @@
 			children = (
 				967328E928FA5C2400F7D909 /* ClosetViewController.swift */,
 				969BDB442A0883A200D8C141 /* ClothingItemViewController.swift */,
+				96D525562AD76C0100AC68B9 /* DeleteAccountViewController.swift */,
+				96DAD4B92AD62F0300E2C006 /* EmailSettingsViewController.swift */,
 				9644A5882AA69024008B668F /* FavoritesViewController.swift */,
 				960AF1B22A4E6ACD00377AAF /* GeneratorViewController.swift */,
+				96D525522AD75A2500AC68B9 /* PasswordSettingsViewController.swift */,
+				963B3DAA2AD0D8DA00E0352C /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -373,7 +394,10 @@
 				967CC2062A5FA18200DA7583 /* GeneratorView.swift in Sources */,
 				969BDB472A0886E600D8C141 /* ClothingItem.swift in Sources */,
 				96E3447229A5BA50000131B1 /* ClothingCollectionReusableView.swift in Sources */,
+				96DAD4BC2AD62F4000E2C006 /* EmailSettingsView.swift in Sources */,
 				968BF3BC2A709D1E00BC33F3 /* ImageViewAlpha.swift in Sources */,
+				96D525552AD75A4600AC68B9 /* PasswordSettingsView.swift in Sources */,
+				96D525572AD76C0100AC68B9 /* DeleteAccountViewController.swift in Sources */,
 				969BDB452A0883A200D8C141 /* ClothingItemViewController.swift in Sources */,
 				961A0B9029E2632D005991B9 /* Queue.swift in Sources */,
 				967328EA28FA5C2400F7D909 /* ClosetViewController.swift in Sources */,
@@ -382,7 +406,11 @@
 				962CD9932A63A48100D92ECA /* OutfitGenerator.swift in Sources */,
 				967328E828FA5C2400F7D909 /* SceneDelegate.swift in Sources */,
 				96A93A1D2A01F46500A3D374 /* ImageScale.swift in Sources */,
+				963B3DAB2AD0D8DA00E0352C /* SettingsViewController.swift in Sources */,
+				96D525532AD75A2500AC68B9 /* PasswordSettingsViewController.swift in Sources */,
+				96D525592AD76DD500AC68B9 /* DeleteAccountView.swift in Sources */,
 				96D9F6972AABFDE800EAECAA /* FavoritesView.swift in Sources */,
+				96DAD4BA2AD62F0300E2C006 /* EmailSettingsViewController.swift in Sources */,
 				9694FA75295F82230016D367 /* BackgroundRemoval.swift in Sources */,
 				9644A5892AA69024008B668F /* FavoritesViewController.swift in Sources */,
 				960AF1B32A4E6ACD00377AAF /* GeneratorViewController.swift in Sources */,
