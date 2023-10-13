@@ -79,14 +79,14 @@ class EmailSettingsView: UIView {
         
         stackView.addArrangedSubview(emailAddressTextField)
         emailAddressTextField.translatesAutoresizingMaskIntoConstraints = false
-        emailAddressTextField.leftAnchor.constraint(equalTo: stackView.leftAnchor).isActive = true
-        emailAddressTextField.rightAnchor.constraint(equalTo: stackView.rightAnchor).isActive = true
+        emailAddressTextField.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+        emailAddressTextField.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
         emailAddressTextField.heightAnchor.constraint(equalToConstant: 34).isActive = true
         
         stackView.addArrangedSubview(passwordTextField)
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.leftAnchor.constraint(equalTo: stackView.leftAnchor).isActive = true
-        passwordTextField.rightAnchor.constraint(equalTo: stackView.rightAnchor).isActive = true
+        passwordTextField.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+        passwordTextField.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
         passwordTextField.heightAnchor.constraint(equalToConstant: 34).isActive = true
     }
 

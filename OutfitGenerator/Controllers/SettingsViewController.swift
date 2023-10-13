@@ -33,7 +33,7 @@ class SettingsViewController: UIViewController {
         return tableView
     }()
     
-    var settingOptions = ["Email", "Password", "Delete Account", "Sign Out"]
+    private let settingOptions = ["Email", "Password", "Delete Account", "Sign Out"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +56,6 @@ class SettingsViewController: UIViewController {
     @objc private func backButtonTapped() {
         dismiss(animated: true)
     }
-
 }
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -65,9 +64,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let option = settingOptions[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = option
+        cell.textLabel?.text = settingOptions[indexPath.row]
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -75,30 +73,14 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        let viewController: UIViewController
+        
         if indexPath.row == 0 {
-            let emailSettingsViewController = EmailSettingsViewController()
-            
-            let navigationController = UINavigationController(
-                rootViewController: emailSettingsViewController
-            )
-            navigationController.modalPresentationStyle = .fullScreen
-            present(navigationController, animated: true)
+            viewController = EmailSettingsViewController()
         } else if indexPath.row == 1 {
-            let passwordSettingsViewController = PasswordSettingsViewController()
-            
-            let navigationController = UINavigationController(
-                rootViewController: passwordSettingsViewController
-            )
-            navigationController.modalPresentationStyle = .fullScreen
-            present(navigationController, animated: true)
+            viewController = PasswordSettingsViewController()
         } else if indexPath.row == 2 {
-            let deleteAccountViewController = DeleteAccountViewController()
-            
-            let navigationController = UINavigationController(
-                rootViewController: deleteAccountViewController
-            )
-            navigationController.modalPresentationStyle = .fullScreen
-            present(navigationController, animated: true)
+            viewController = DeleteAccountViewController()
         } else {
             let alert = UIAlertController(
                 title: "Sign Out",
@@ -114,6 +96,14 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             })
             
             present(alert, animated: true)
+            
+            return
         }
+        
+        let navigationController = UINavigationController(
+            rootViewController: viewController
+        )
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true)
     }
 }

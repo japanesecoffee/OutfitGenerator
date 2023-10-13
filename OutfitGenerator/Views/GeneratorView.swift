@@ -13,7 +13,7 @@ class GeneratorView: UIView {
     
     var delegate: GeneratorViewDelegate?
     
-    let verticalStackView: UIStackView = {
+    let middleStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.clipsToBounds = true
         stackView.axis = .vertical
@@ -169,10 +169,10 @@ class GeneratorView: UIView {
         leftSideButton.translatesAutoresizingMaskIntoConstraints = false
         leftSideButton.addTarget(self, action: #selector(sideButtonTapped), for: .touchUpInside)
 
-        horizontalStackView.addArrangedSubview(verticalStackView)
-        verticalStackView.translatesAutoresizingMaskIntoConstraints = false
+        horizontalStackView.addArrangedSubview(middleStackView)
+        middleStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        verticalStackView.addArrangedSubview(topsImageView)
+        middleStackView.addArrangedSubview(topsImageView)
         topsImageView.translatesAutoresizingMaskIntoConstraints = false
         topsImageView.isUserInteractionEnabled = true
         topsImageView.addGestureRecognizer(UITapGestureRecognizer(
@@ -183,7 +183,7 @@ class GeneratorView: UIView {
         topsImageView.addSubview(noTopsLabel)
         noTopsLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        verticalStackView.addArrangedSubview(bottomsImageView)
+        middleStackView.addArrangedSubview(bottomsImageView)
         bottomsImageView.translatesAutoresizingMaskIntoConstraints = false
         bottomsImageView.isUserInteractionEnabled = true
         bottomsImageView.addGestureRecognizer(UITapGestureRecognizer(
@@ -194,7 +194,7 @@ class GeneratorView: UIView {
         bottomsImageView.addSubview(noBottomsLabel)
         noBottomsLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        verticalStackView.addArrangedSubview(shoesImageView)
+        middleStackView.addArrangedSubview(shoesImageView)
         shoesImageView.translatesAutoresizingMaskIntoConstraints = false
         shoesImageView.isUserInteractionEnabled = true
         shoesImageView.addGestureRecognizer(UITapGestureRecognizer(
